@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply Now — Austin AI School</title>
+  <meta name="description" content="Apply to Austin AI School. Start your journey to becoming an AI Engineer in 12 weeks.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">⚡</span> AI School
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="programs.html">Programs</a>
+        <a href="curriculum.html">Curriculum</a>
+        <a href="outcomes.html">Outcomes</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Blog</a>
+        <a href="apply.html" class="nav-cta active">Apply Now</a>
+      </div>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="programs.html">Programs</a>
+    <a href="curriculum.html">Curriculum</a>
+    <a href="outcomes.html">Outcomes</a>
+    <a href="about.html">About</a>
+    <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="apply.html">Apply Now</a>
+  </div>
+
+  <!-- Apply Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="label-tag">📝 Applications Open</span>
+      <h1>Start Your <span>AI Career</span></h1>
+      <p>No application fee. No coding experience required. Just a desire to build the future.</p>
+    </div>
+  </section>
+
+  <!-- Application Form -->
+  <section class="section">
+    <div class="container">
+      <div class="form-layout">
+        <div class="form-sidebar">
+          <h3>What to Expect</h3>
+          <div class="timeline-list">
+            <div class="timeline-item">
+              <div class="timeline-dot">1</div>
+              <div>
+                <strong>Submit Application</strong>
+                <p>Fill out the form — takes about 5 minutes.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot">2</div>
+              <div>
+                <strong>Phone Interview</strong>
+                <p>A 15-minute chat about your goals and background.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot">3</div>
+              <div>
+                <strong>Technical Assessment</strong>
+                <p>A simple logic + problem-solving exercise (no coding).</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot">4</div>
+              <div>
+                <strong>Acceptance</strong>
+                <p>Decisions within 48 hours. Scholarships available.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-info-box">
+            <h4>💡 No Experience Needed</h4>
+            <p>We accept students from all backgrounds — teachers, marketers, designers, military veterans, career changers. If you're motivated, we'll teach you the rest.</p>
+          </div>
+
+          <div class="sidebar-info-box">
+            <h4>💰 Financing Available</h4>
+            <p>ISAs, monthly payment plans, employer sponsorship, and scholarships for underrepresented groups. Don't let cost stop you.</p>
+          </div>
+        </div>
+
+        <div class="form-main">
+          <form id="application-form" class="application-form">
+            <h2>Your Application</h2>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required placeholder="Jane">
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required placeholder="Doe">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required placeholder="jane@example.com">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(512) 555-0123">
+            </div>
+
+            <div class="form-group">
+              <label for="program">Preferred Program *</label>
+              <select id="program" name="program" required>
+                <option value="">Select a program...</option>
+                <option value="fulltime">Full-Time Bootcamp (12 weeks, $15,000)</option>
+                <option value="parttime">Part-Time Evening (8 weeks, $8,000)</option>
+                <option value="corporate">Corporate Training (custom)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="startDate">Preferred Start Date *</label>
+              <select id="startDate" name="startDate" required>
+                <option value="">Select a cohort...</option>
+                <option value="2026-06">June 2026</option>
+                <option value="2026-09">September 2026</option>
+                <option value="2026-12">December 2026</option>
+                <option value="2027-03">March 2027</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="background">Professional Background *</label>
+              <textarea id="background" name="background" required rows="3" placeholder="Tell us about your current role and experience. What do you do today?"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="motivation">Why AI School? *</label>
+              <textarea id="motivation" name="motivation" required rows="4" placeholder="What excites you about AI? What do you hope to build or achieve after graduating?"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="codingExp">Coding Experience</label>
+              <select id="codingExp" name="codingExp">
+                <option value="">Select your level...</option>
+                <option value="none">No experience</option>
+                <option value="beginner">Beginner (some tutorials/courses)</option>
+                <option value="intermediate">Intermediate (personal projects)</option>
+                <option value="advanced">Advanced (professional developer)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="howHeard">How did you hear about us?</label>
+              <select id="howHeard" name="howHeard">
+                <option value="">Select...</option>
+                <option value="google">Google Search</option>
+                <option value="social">Social Media</option>
+                <option value="referral">Friend/Colleague Referral</option>
+                <option value="event">Meetup/Event</option>
+                <option value="news">News Article</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group checkbox-group">
+              <label>
+                <input type="checkbox" name="terms" required>
+                I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Submit Application</button>
+            <p class="form-note">We review applications within 48 hours. Check your email for next steps.</p>
+          </form>
+
+          <div id="form-success" class="form-success" style="display:none;">
+            <div class="success-icon">🎉</div>
+            <h2>Application Received!</h2>
+            <p>Thank you for applying to Austin AI School. We'll review your application and get back to you within 48 hours.</p>
+            <p>In the meantime, check your email for a confirmation and some resources to get started with AI concepts.</p>
+            <a href="index.html" class="btn btn-secondary">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="margin-bottom: 4px;">
+            <span class="logo-icon">⚡</span> AI School
+          </div>
+          <p>Austin's premier AI engineering bootcamp. Building the next generation of AI engineers since 2024.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="GitHub">⌨</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <a href="programs.html">Full-Time Bootcamp</a>
+          <a href="programs.html">Part-Time Evening</a>
+          <a href="programs.html">Corporate Training</a>
+          <a href="curriculum.html">Curriculum</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="outcomes.html">Outcomes</a>
+          <a href="blog.html">Blog</a>
+          <a href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Stay Updated</h4>
+          <p style="font-size:0.85rem;margin-bottom:12px;">Get AI insights and program updates delivered to your inbox.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="your@email.com" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Austin AI School. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+    // Application form handler
+    document.getElementById('application-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+      data.submittedAt = new Date().toISOString();
+
+      // Save to localStorage as simple persistence
+      const apps = JSON.parse(localStorage.getItem('aischool_applications') || '[]');
+      apps.push(data);
+      localStorage.setItem('aischool_applications', JSON.stringify(apps));
+
+      // Show success message
+      document.getElementById('application-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+
+      // Log to console for webhook integration
+      console.log('Application submitted:', JSON.stringify(data, null, 2));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum — Austin AI School</title>
+    <meta name="description" content="12-week AI engineering curriculum: LLMs, RAG, agents, fine-tuning, MLOps, and capstone project.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-gradient">AI School</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="programs.html">Programs</a>
+                <a href="curriculum.html" class="active">Curriculum</a>
+                <a href="outcomes.html">Outcomes</a>
+                <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+                <a href="apply.html" class="nav-cta">Apply Now</a>
+            </div>
+            <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-badge">12-Week Journey</div>
+            <h1>The <span class="gradient-text">Curriculum</span></h1>
+            <p class="hero-subtitle">A rigorous, project-based curriculum designed by AI engineers who build production systems every day.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="curriculum-timeline">
+
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-number">Week 1–2</span>
+                        <h3>Foundations of AI Engineering</h3>
+                    </div>
+                    <div class="week-content">
+                        <ul>
+                            <li><strong>Python for AI:</strong> Advanced Python patterns — async, generators, decorators, type hints</li>
+                            <li><strong>LLM Fundamentals:</strong> Transformer architecture, tokenization, attention mechanisms</li>
+                            <li><strong>Prompt Engineering:</strong> System prompts, few-shot learning, chain-of-thought, structured output</li>
+                            <li><strong>API Integration:</strong> OpenAI, Anthropic, and open-source model APIs</li>
+                        </ul>
+                        <div class="week-project">
+                            <strong>Project:</strong> Build a multi-model chatbot that routes queries to the best model for each task.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-number">Week 3–4</span>
+                        <h3>RAG &amp; Knowledge Systems</h3>
+                    </div>
+                    <div class="week-content">
+                        <ul>
+                            <li><strong>Vector Databases:</strong> Embeddings, similarity search, Pinecone, Weaviate, pgvector</li>
+                            <li><strong>Document Processing:</strong> PDF parsing, chunking strategies, metadata extraction</li>
+                            <li><strong>RAG Pipelines:</strong> Retrieval, reranking, context window management, citation</li>
+                            <li><strong>Evaluation:</strong> RAG metrics — faithfulness, relevance, answer correctness</li>
+                        </ul>
+                        <div class="week-project">
+                            <strong>Project:</strong> Build a RAG system over a 10,000-page legal document corpus with citation and source attribution.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-number">Week 5–6</span>
+                        <h3>AI Agents &amp; Tool Use</h3>
+                    </div>
+                    <div class="week-content">
+                        <ul>
+                            <li><strong>Agent Architecture:</strong> ReAct, function calling, planning loops, memory systems</li>
+                            <li><strong>Tool Integration:</strong> Building tools, API connectors, browser automation, code execution</li>
+                            <li><strong>Multi-Agent Systems:</strong> Agent coordination, delegation patterns, shared state</li>
+                            <li><strong>Safety &amp; Guardrails:</strong> Input validation, output filtering, human-in-the-loop</li>
+                        </ul>
+                        <div class="week-project">
+                            <strong>Project:</strong> Build a 3-agent team (researcher, writer, reviewer) that produces publication-ready technical reports.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-number">Week 7–8</span>
+                        <h3>Fine-Tuning &amp; Model Optimization</h3>
+                    </div>
+                    <div class="week-content">
+                        <ul>
+                            <li><strong>Fine-Tuning:</strong> LoRA, QLoRA, PEFT, dataset preparation, training loops</li>
+                            <li><strong>Evaluation:</strong> Benchmarking, A/B testing, human evaluation protocols</li>
+                            <li><strong>Optimization:</strong> Quantization (GGUF, GPTQ), distillation, inference optimization</li>
+                            <li><strong>Open-Source Models:</strong> LLaMA, Mistral, Qwen — when to fine-tune vs. use APIs</li>
+                        </ul>
+                        <div class="week-project">
+                            <strong>Project:</strong> Fine-tune an open-source model on a custom dataset and deploy it with 10x lower latency than the base model.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-number">Week 9–10</span>
+                        <h3>Production Systems &amp; MLOps</h3>
+                    </div>
+                    <div class="week-content">
+                        <ul>
+                            <li><strong>Deployment:</strong> Docker, Kubernetes, serverless (Modal, Lambda), GPU cloud</li>
+                            <li><strong>Monitoring:</strong> LLM observability, cost tracking, latency dashboards, error budgets</li>
+                            <li><strong>Scaling:</strong> Load balancing, caching, rate limiting, batch processing</li>
+                            <li><strong>Security:</strong> Prompt injection defense, PII handling, audit logging, compliance</li>
+                        </ul>
+                        <div class="week-project">
+                            <strong>Project:</strong> Deploy a production AI service with monitoring, auto-scaling, and a full CI/CD pipeline.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="week-block">
+                    <div class="week-header">
+                        <span class="week-number">Week 11–12</span>
+                        <h3>Capstone Project &amp; Career Prep</h3>
+                    </div>
+                    <div class="week-content">
+                        <ul>
+                            <li><strong>Capstone:</strong> Design, build, and deploy a full AI agent system solving a real business problem</li>
+                            <li><strong>Demo Day:</strong> Present to hiring partners and Austin tech community</li>
+                            <li><strong>Portfolio:</strong> Polish GitHub, write technical blog posts, record demo videos</li>
+                            <li><strong>Career:</strong> Resume workshop, mock interviews, salary negotiation, networking</li>
+                        </ul>
+                        <div class="week-project">
+                            <strong>Capstone:</strong> Students choose from partner company challenges or propose their own. Past examples: AI customer support agent, automated financial analysis pipeline, multi-agent content creation system.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technologies You'll Master</h2>
+                <p class="section-subtitle">Industry-standard tools used at top AI companies.</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item">Python</div>
+                <div class="tech-item">PyTorch</div>
+                <div class="tech-item">LangChain</div>
+                <div class="tech-item">OpenAI API</div>
+                <div class="tech-item">Anthropic API</div>
+                <div class="tech-item">Hugging Face</div>
+                <div class="tech-item">Pinecone</div>
+                <div class="tech-item">pgvector</div>
+                <div class="tech-item">Docker</div>
+                <div class="tech-item">FastAPI</div>
+                <div class="tech-item">PostgreSQL</div>
+                <div class="tech-item">Redis</div>
+                <div class="tech-item">AWS / GCP</div>
+                <div class="tech-item">Git / GitHub</div>
+                <div class="tech-item">Weights &amp; Biases</div>
+                <div class="tech-item">Grafana</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ready to Master AI Engineering?</h2>
+                <p>Our next cohort starts soon. Secure your spot — class sizes are limited to 25 students.</p>
+                <a href="apply.html" class="btn btn-primary">Apply Now →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-icon">🎓</span>
+                        <span class="logo-gradient">AI School</span>
+                    </div>
+                    <p>Austin's premier AI engineering bootcamp. Build production AI agent systems in 12 weeks.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="programs.html">AI Engineering Bootcamp</a></li>
+                        <li><a href="programs.html">AI Engineering Flex</a></li>
+                        <li><a href="curriculum.html">Curriculum</a></li>
+                        <li><a href="outcomes.html">Outcomes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="apply.html">Apply Now</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:hello@aischool.com">hello@aischool.com</a></li>
+                        <li><a href="#">Austin, TX</a></li>
+                        <li><a href="#">(512) 555-0142</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AI School. All rights reserved.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Twitter">𝕏</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="YouTube">▶</a>
+                    <a href="#" aria-label="GitHub">⌨</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+            navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => navLinks.classList.remove('active')); });
+        }
+    </script>
+</body>
+</html>
