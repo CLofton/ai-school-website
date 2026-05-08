@@ -3,223 +3,360 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Austin AI School — Become an AI Engineer in 12 Weeks</title>
-  <meta name="description" content="The only bootcamp that teaches you to build production AI agent systems. Become an AI Engineer in 12 weeks.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Austin AI School — Corporate Training & Workforce Development</title>
+  <meta name="description" content="Austin AI School delivers corporate AI training and workforce development programs. Weekly webinars, bootcamps, and custom enterprise training.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <span class="logo-icon">⚡</span> AI School
-      </a>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">🧠 Austin AI School</a>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
       <div class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="programs.html">Programs</a>
-        <a href="curriculum.html">Curriculum</a>
-        <a href="outcomes.html">Outcomes</a>
-        <a href="about.html">About</a>
-        <a href="faq.html">FAQ</a>
-        <a href="blog.html">Blog</a>
-        <a href="apply.html" class="nav-cta">Apply Now</a>
-      </div>
-      <div class="hamburger">
-        <span></span><span></span><span></span>
+        <a href="#programs">Programs</a>
+        <a href="#corporate">Corporate Training</a>
+        <a href="#workforce">Workforce Dev</a>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#apply" class="btn btn-nav">Register Now</a>
       </div>
     </div>
   </nav>
-  <div class="mobile-nav">
-    <a href="index.html">Home</a>
-    <a href="programs.html">Programs</a>
-    <a href="curriculum.html">Curriculum</a>
-    <a href="outcomes.html">Outcomes</a>
-    <a href="about.html">About</a>
-    <a href="faq.html">FAQ</a>
-    <a href="blog.html">Blog</a>
-    <a href="apply.html">Apply Now</a>
-  </div>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-grid"></div>
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">Corporate Training & Workforce Development</div>
+      <h1 class="hero-title">AI Training for the<br><span class="gradient-text">Modern Workforce</span></h1>
+      <p class="hero-sub">Austin AI School delivers practical AI training for organizations — from executive AI literacy to hands-on agent engineering. Upskill your team, train your workforce, launch your career.</p>
+      <div class="hero-ctas">
+        <a href="#corporate" class="btn btn-primary btn-lg">Corporate Programs →</a>
+        <a href="#events" class="btn btn-outline btn-lg">Free Weekly Webinars</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">$145K</span><span class="stat-label">Avg AI Eng Salary</span></div>
+        <div class="stat"><span class="stat-num">93%</span><span class="stat-label">Job Placement</span></div>
+        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Corporate Clients</span></div>
+        <div class="stat"><span class="stat-num">10K+</span><span class="stat-label">Students Trained</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORPORATE TRAINING -->
+  <section id="corporate" class="section">
     <div class="container">
-      <div class="hero-content">
-        <span class="label-tag">🚀 Now Enrolling — Cohort Starts June 2026</span>
-        <h1>Become an <span>AI Engineer</span> in 12 Weeks</h1>
-        <p>The only bootcamp that teaches you to build production AI agent systems — the same technology replacing entire departments at Fortune 500 companies.</p>
-        <div class="hero-buttons">
-          <a href="apply.html" class="btn btn-primary btn-lg">Apply Now — It's Free</a>
-          <a href="programs.html" class="btn btn-secondary btn-lg">View Programs</a>
+      <div class="section-badge">Enterprise Solutions</div>
+      <h2 class="section-title">Corporate AI Training</h2>
+      <p class="section-sub">Upskill your entire organization — from the C-suite to the engineering floor. Custom programs designed for your team's needs.</p>
+      <div class="programs-grid">
+        <div class="program-card">
+          <div class="program-tier">1 Day</div>
+          <h3>AI Literacy Workshop</h3>
+          <div class="program-price">$500<span>/person</span></div>
+          <p>For executives and managers. Understand what AI can do for your business, identify opportunities, and build your AI strategy.</p>
+          <ul>
+            <li>What AI is and isn't — cut through the hype</li>
+            <li>AI use cases for your specific industry</li>
+            <li>Hands-on: use AI tools effectively today</li>
+            <li>Build your 90-day AI adoption roadmap</li>
+          </ul>
+          <a href="#apply" class="btn btn-outline" style="width:100%; margin-top: 16px;">Book for Your Team</a>
         </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <h3>93%</h3>
-            <p>Job Placement Rate</p>
-          </div>
-          <div class="hero-stat">
-            <h3>$145K</h3>
-            <p>Average Starting Salary</p>
-          </div>
-          <div class="hero-stat">
-            <h3>12</h3>
-            <p>Weeks to Career Change</p>
-          </div>
-          <div class="hero-stat">
-            <h3>500+</h3>
-            <p>Graduates & Counting</p>
-          </div>
+        <div class="program-card featured">
+          <div class="featured-tag">Most Popular</div>
+          <div class="program-tier">3 Days</div>
+          <h3>AI Implementation Program</h3>
+          <div class="program-price">$2,000<span>/person</span></div>
+          <p>For technical managers and team leads. Learn to evaluate, deploy, and manage AI solutions across your organization.</p>
+          <ul>
+            <li>AI vendor evaluation framework</li>
+            <li>ROI analysis and business case building</li>
+            <li>Change management for AI adoption</li>
+            <li>Hands-on: deploy your first AI agent</li>
+          </ul>
+          <a href="#apply" class="btn btn-primary" style="width:100%; margin-top: 16px;">Book for Your Team</a>
+        </div>
+        <div class="program-card">
+          <div class="program-tier">5 Days</div>
+          <h3>AI Engineering Intensive</h3>
+          <div class="program-price">$5,000<span>/person</span></div>
+          <p>For developers and engineers. Build production AI agents, RAG systems, and multi-agent architectures. Ship real code.</p>
+          <ul>
+            <li>LLM APIs, embeddings, vector databases</li>
+            <li>Agent frameworks: LangChain, CrewAI</li>
+            <li>Production deployment & monitoring</li>
+            <li>Build a working AI agent system</li>
+          </ul>
+          <a href="#apply" class="btn btn-outline" style="width:100%; margin-top: 16px;">Book for Your Team</a>
+        </div>
+      </div>
+      <div class="custom-training">
+        <h3>🏢 Custom Enterprise Training</h3>
+        <p>Need something tailored? We design custom AI training programs for organizations of any size. Multi-day workshops, cohort-based programs, ongoing enablement — we build it around your stack, your data, and your goals.</p>
+        <a href="#apply" class="btn btn-primary">Request Custom Program →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKFORCE DEVELOPMENT -->
+  <section id="workforce" class="section section-dark">
+    <div class="container">
+      <div class="section-badge">Workforce Development</div>
+      <h2 class="section-title">Building the AI Workforce</h2>
+      <p class="section-sub">Partner with us to train the next generation of AI professionals. Programs for workforce boards, community organizations, and government agencies.</p>
+      <div class="wf-grid">
+        <div class="wf-card">
+          <div class="wf-icon">🏛️</div>
+          <h3>Workforce Development Boards</h3>
+          <p>AI training programs aligned with regional labor market needs. Grant-eligible curriculum. Measurable outcomes.</p>
+        </div>
+        <div class="wf-card">
+          <div class="wf-icon">🤝</div>
+          <h3>Community Organizations</h3>
+          <p>Launch AI career pathways in underserved communities. No prerequisites required. Sliding-scale and scholarship options.</p>
+        </div>
+        <div class="wf-card">
+          <div class="wf-icon">🔄</div>
+          <h3>Corrections & Reentry</h3>
+          <p>AI and tech skills training for incarcerated individuals and those reentering the workforce. Proven to reduce recidivism.</p>
+        </div>
+        <div class="wf-card">
+          <div class="wf-icon">🎖️</div>
+          <h3>Veterans Programs</h3>
+          <p>GI Bill-eligible AI training. Translate military discipline and technical skills into high-paying AI engineering careers.</p>
+        </div>
+        <div class="wf-card">
+          <div class="wf-icon">🏢</div>
+          <h3>Employer Partnerships</h3>
+          <p>We train, you hire. Custom pipelines that deliver job-ready AI engineers directly to your organization.</p>
+        </div>
+        <div class="wf-card">
+          <div class="wf-icon">🇺🇸</div>
+          <h3>Government & GSA</h3>
+          <p>GSA-ready. Deploy AI training programs at scale across multiple sites. Federal, state, and local contracts.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Feature Highlights -->
-  <section class="section features-section">
+  <!-- PROGRAMS -->
+  <section id="programs" class="section">
     <div class="container">
-      <div class="section-header">
-        <span class="label-tag">Why AI School</span>
-        <h2>Everything You Need to Launch an AI Career</h2>
-        <p>We don't teach theory in a vacuum. You'll build real AI agent systems that solve real business problems.</p>
-      </div>
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-icon">🤖</div>
-          <h3>Production AI Agents</h3>
-          <p>Build autonomous AI agents that can reason, plan, and execute complex workflows — not just chatbots.</p>
+      <div class="section-badge">Individual Programs</div>
+      <h2 class="section-title">Bootcamp & Self-Paced Programs</h2>
+      <p class="section-sub">Career changers and aspiring AI engineers — launch your career with intensive, hands-on programs.</p>
+      <div class="boot-grid">
+        <div class="boot-card">
+          <h3>12-Week AI Engineering Bootcamp</h3>
+          <div class="boot-price">$15,000</div>
+          <p>Full-time intensive. Go from zero to production AI engineer. Build agents, deploy systems, launch your career. Includes career services, interview prep, and hiring partner introductions.</p>
+          <div class="boot-meta">
+            <span>📅 Full-time, 12 weeks</span>
+            <span>💼 93% job placement</span>
+            <span>💰 $145K avg salary</span>
+          </div>
+          <a href="#apply" class="btn btn-primary" style="width:100%; margin-top: 16px;">Apply Now</a>
         </div>
-        <div class="card">
-          <div class="card-icon">🏢</div>
-          <h3>Enterprise-Grade Systems</h3>
-          <p>Learn RAG pipelines, vector databases, LLM orchestration, and deployment patterns used by top tech companies.</p>
+        <div class="boot-card">
+          <h3>Part-Time Evening Program</h3>
+          <div class="boot-price">$8,000</div>
+          <p>8-week evening track for working professionals. Same core curriculum, flexible schedule. Tue/Thu 6-9pm + Saturday workshops.</p>
+          <div class="boot-meta">
+            <span>📅 Part-time, 8 weeks</span>
+            <span>🌙 Evenings & Saturdays</span>
+            <span>💼 Career support included</span>
+          </div>
+          <a href="#apply" class="btn btn-outline" style="width:100%; margin-top: 16px;">Apply Now</a>
         </div>
-        <div class="card">
-          <div class="card-icon">💼</div>
-          <h3>Career Support</h3>
-          <p>1-on-1 career coaching, resume reviews, mock interviews, and direct introductions to our hiring partners.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">👨‍🏫</div>
-          <h3>Expert Instructors</h3>
-          <p>Learn from AI engineers who've built production systems at companies like Google, OpenAI, and Anthropic.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🛠️</div>
-          <h3>Project Portfolio</h3>
-          <p>Graduate with 6+ production-quality projects showcasing your skills to potential employers.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🌐</div>
-          <h3>Austin Tech Network</h3>
-          <p>Tap into Austin's booming tech scene with exclusive access to meetups, events, and industry connections.</p>
+        <div class="boot-card">
+          <h3>Online Self-Paced</h3>
+          <div class="boot-price">$3,000</div>
+          <p>Learn at your own speed. Same curriculum as the bootcamp, delivered through our AI-powered LMS. Mentor support included.</p>
+          <div class="boot-meta">
+            <span>📅 Self-paced, ~16 weeks</span>
+            <span>🌐 100% online</span>
+            <span>🤖 AI tutor + mentor</span>
+          </div>
+          <a href="#apply" class="btn btn-outline" style="width:100%; margin-top: 16px;">Enroll Now</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="section">
+  <!-- WEEKLY EVENTS -->
+  <section id="events" class="section section-dark">
     <div class="container">
-      <div class="section-header">
-        <span class="label-tag">Student Stories</span>
-        <h2>Hear From Our Graduates</h2>
-        <p>Real outcomes from real people who transformed their careers through AI School.</p>
+      <div class="section-badge">Free Weekly Events</div>
+      <h2 class="section-title">Tuesday Night AI — 7pm CT</h2>
+      <p class="section-sub">Free weekly webinars every Tuesday at 7pm. Learn AI, ask questions, meet the community.</p>
+      
+      <div class="event-featured">
+        <div class="event-live-tag">🔴 UPCOMING</div>
+        <h3>OpenCall Launch — Our First Community Webinar</h3>
+        <div class="event-meta">
+          <span>📅 Tuesday, May 13, 2026</span>
+          <span>🕖 7:00 PM CT</span>
+          <span>⏱️ 60 minutes</span>
+          <span>👤 Chris Lofton, CEO</span>
+        </div>
+        <p>Join us for the inaugural Austin AI School community call. What is AI agent engineering and why it matters. Live demo: building an AI agent in 30 minutes. Q&A: ask anything about AI careers. Plus announcements about upcoming programs.</p>
+        <div class="event-spots">🎟️ Limited to 100 attendees</div>
+        <a href="#apply" class="btn btn-primary btn-lg">Register Free →</a>
       </div>
-      <div class="grid-3">
-        <div class="testimonial-card">
-          <p>"I went from being a marketing manager to an AI Engineer at a Series B startup in just 14 weeks. The curriculum is incredibly practical — I was building real agent systems by week 3."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">SM</div>
-            <div class="testimonial-info">
-              <strong>Sarah Mitchell</strong>
-              <span>AI Engineer at TechFlow • Cohort 5</span>
-            </div>
-          </div>
+
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-date">May 20</div>
+          <h4>AI Agents 101</h4>
+          <p>What they are and why companies pay $150K+ for engineers who build them.</p>
+          <a href="#apply" class="event-reg">Register →</a>
         </div>
-        <div class="testimonial-card">
-          <p>"The corporate training program transformed how our engineering team thinks about AI. We deployed our first autonomous agent system within 6 weeks of the program ending."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">JR</div>
-            <div class="testimonial-info">
-              <strong>James Rodriguez</strong>
-              <span>VP Engineering at DataCo • Corporate</span>
-            </div>
-          </div>
+        <div class="event-card">
+          <div class="event-date">May 27</div>
+          <h4>From Zero to AI Engineer</h4>
+          <p>Career change roadmap — how to break into AI regardless of your background.</p>
+          <a href="#apply" class="event-reg">Register →</a>
         </div>
-        <div class="testimonial-card">
-          <p>"As a self-taught developer, I needed structured guidance to break into AI. AI School gave me exactly that — plus connections that led directly to my current role."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">AP</div>
-            <div class="testimonial-info">
-              <strong>Aisha Patel</strong>
-              <span>ML Engineer at Nexus AI • Cohort 7</span>
-            </div>
-          </div>
+        <div class="event-card">
+          <div class="event-date">Jun 3</div>
+          <h4>Live Build: RAG Knowledge Base</h4>
+          <p>Watch us build a production RAG system in 45 minutes. Follow along.</p>
+          <a href="#apply" class="event-reg">Register →</a>
+        </div>
+        <div class="event-card">
+          <div class="event-date">Jun 10</div>
+          <h4>AI in the Enterprise</h4>
+          <p>How companies are replacing entire departments with AI agent teams.</p>
+          <a href="#apply" class="event-reg">Register →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-banner">
-    <div class="container">
-      <h2>Ready to Build the Future?</h2>
-      <p>Applications for our next cohort are open. Seats are limited — apply today and take the first step toward your AI career.</p>
-      <a href="apply.html" class="btn btn-primary btn-lg">Start Your Application</a>
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container" style="max-width: 800px; text-align: center;">
+      <div class="section-badge">Our Mission</div>
+      <h2 class="section-title">About Austin AI School</h2>
+      <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px;">Austin AI School is a workforce development and corporate training organization dedicated to making AI skills accessible to everyone — from Fortune 500 engineering teams to career changers to returning citizens.</p>
+      <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px;">Founded by Chris Lofton, who has managed education programs across 240+ locations and trained 10,000+ students, Austin AI School brings institutional-grade training to the AI revolution.</p>
+      <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.8;">Every Tuesday at 7pm, we host free community webinars. Every week, we train teams. Every month, new AI engineers enter the workforce. That's our mission — and we're just getting started.</p>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- REGISTRATION -->
+  <section id="apply" class="section section-dark">
+    <div class="container" style="max-width: 600px; text-align: center;">
+      <div class="section-badge">Get Started</div>
+      <h2 class="section-title">Register</h2>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto;">Whether you're signing up for a webinar, applying for a program, or inquiring about corporate training.</p>
+      <form id="reg-form" class="reg-form">
+        <input type="text" name="name" placeholder="Full Name *" required>
+        <input type="email" name="email" placeholder="Email *" required>
+        <input type="text" name="company" placeholder="Company / Organization">
+        <select name="interest" required>
+          <option value="">What are you interested in?</option>
+          <option value="webinar">Free Tuesday Webinar</option>
+          <option value="corporate-1day">Corporate: AI Literacy (1 day)</option>
+          <option value="corporate-3day">Corporate: AI Implementation (3 day)</option>
+          <option value="corporate-5day">Corporate: AI Engineering (5 day)</option>
+          <option value="corporate-custom">Corporate: Custom Program</option>
+          <option value="bootcamp">12-Week Bootcamp</option>
+          <option value="parttime">Part-Time Evening Program</option>
+          <option value="online">Online Self-Paced</option>
+          <option value="workforce">Workforce Development Partnership</option>
+          <option value="other">Something Else</option>
+        </select>
+        <textarea name="message" placeholder="Tell us more (optional)" rows="3"></textarea>
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Submit →</button>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px;">We'll respond within 24 hours. No spam, ever.</p>
+      </form>
+      <div id="reg-success" style="display: none; padding: 40px 0;">
+        <div style="font-size: 48px; margin-bottom: 16px;">🎉</div>
+        <h3 style="font-size: 22px; margin-bottom: 8px;">You're registered!</h3>
+        <p style="color: var(--text-secondary);">Check your inbox — we'll send you details shortly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="nav-logo" style="margin-bottom: 4px;">
-            <span class="logo-icon">⚡</span> AI School
-          </div>
-          <p>Austin's premier AI engineering bootcamp. Building the next generation of AI engineers since 2024.</p>
-          <div class="footer-social">
-            <a href="#" aria-label="Twitter">𝕏</a>
-            <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="GitHub">⌨</a>
-            <a href="#" aria-label="YouTube">▶</a>
-          </div>
+          <strong>🧠 Austin AI School</strong>
+          <p>Corporate Training & Workforce Development</p>
+          <p style="margin-top: 8px;">Austin, TX</p>
         </div>
         <div class="footer-col">
           <h4>Programs</h4>
-          <a href="programs.html">Full-Time Bootcamp</a>
-          <a href="programs.html">Part-Time Evening</a>
-          <a href="programs.html">Corporate Training</a>
-          <a href="curriculum.html">Curriculum</a>
+          <a href="#corporate">Corporate Training</a>
+          <a href="#programs">Bootcamp</a>
+          <a href="#workforce">Workforce Dev</a>
+          <a href="#events">Weekly Webinars</a>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
-          <a href="about.html">About Us</a>
-          <a href="outcomes.html">Outcomes</a>
+          <a href="#about">About</a>
           <a href="blog.html">Blog</a>
           <a href="faq.html">FAQ</a>
+          <a href="mailto:hello@austinai.school">Contact</a>
         </div>
         <div class="footer-col">
-          <h4>Stay Updated</h4>
-          <p style="font-size:0.85rem;margin-bottom:12px;">Get AI insights and program updates delivered to your inbox.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="your@email.com" required>
-            <button type="submit">Subscribe</button>
-          </form>
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 Austin AI School. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Contact</a>
-        </div>
+        <p>&copy; 2026 Austin AI School. All rights reserved.</p>
       </div>
     </div>
   </footer>
-  <script src="script.js"></script>
+
+  <script>
+    // Nav toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (toggle) toggle.addEventListener('click', () => links.classList.toggle('active'));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const el = document.querySelector(a.getAttribute('href'));
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (links.classList.contains('active')) links.classList.remove('active');
+      });
+    });
+
+    // Form
+    document.getElementById('reg-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this));
+      data.submitted_at = new Date().toISOString();
+      data.source = window.location.href;
+      fetch('https://formsubmit.co/ajax/c.lofton@zollege.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).finally(() => {
+        this.style.display = 'none';
+        document.getElementById('reg-success').style.display = 'block';
+      });
+    });
+
+    // Scroll animations
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.program-card, .wf-card, .boot-card, .event-card').forEach(el => {
+      el.classList.add('fade-in');
+      obs.observe(el);
+    });
+  </script>
 </body>
 </html>
