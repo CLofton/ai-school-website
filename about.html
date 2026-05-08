@@ -3,253 +3,161 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us — Austin AI School</title>
-  <meta name="description" content="Learn about Austin AI School's mission, team, and vision for AI education.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>About — Austin AI School</title>
+  <meta name="description" content="Meet Chris Lofton and learn about Austin AI School's mission to make AI skills accessible to everyone through corporate training and workforce development.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <span class="logo-icon">⚡</span> AI School
-      </a>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">🧠 Austin AI School</a>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="programs.html">Programs</a>
-        <a href="curriculum.html">Curriculum</a>
-        <a href="outcomes.html">Outcomes</a>
-        <a href="about.html" class="active">About</a>
-        <a href="faq.html">FAQ</a>
-        <a href="blog.html">Blog</a>
-        <a href="apply.html" class="nav-cta">Apply Now</a>
-      </div>
-      <div class="hamburger">
-        <span></span><span></span><span></span>
+        <a href="index.html#corporate">Corporate Training</a>
+        <a href="index.html#workforce">Workforce Dev</a>
+        <a href="index.html#events">Events</a>
+        <a href="about.html">About</a>
+        <a href="index.html#apply" class="btn btn-nav">Register Now</a>
       </div>
     </div>
   </nav>
-  <div class="mobile-nav">
-    <a href="index.html">Home</a>
-    <a href="programs.html">Programs</a>
-    <a href="curriculum.html">Curriculum</a>
-    <a href="outcomes.html">Outcomes</a>
-    <a href="about.html">About</a>
-    <a href="faq.html">FAQ</a>
-    <a href="blog.html">Blog</a>
-    <a href="apply.html">Apply Now</a>
-  </div>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="container">
-      <span class="label-tag">🏫 Our Story</span>
-      <h1>Building the Future of <span>AI Education</span></h1>
-      <p>We believe AI engineering is the most important skill of the next decade — and it should be accessible to everyone.</p>
+  <!-- HERO -->
+  <section class="hero" style="min-height: auto; padding: 160px 0 80px;">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">Our Story</div>
+      <h1 class="hero-title">About <span class="gradient-text">Austin AI School</span></h1>
+      <p class="hero-sub">Making AI skills accessible to everyone — from Fortune 500 teams to career changers to underserved communities.</p>
     </div>
   </section>
 
-  <!-- Mission -->
+  <!-- MISSION -->
   <section class="section">
-    <div class="container">
-      <div class="content-two-col">
-        <div class="col-text">
-          <span class="label-tag">Our Mission</span>
-          <h2>Democratizing AI Engineering</h2>
-          <p>Austin AI School was founded with a simple belief: the AI revolution shouldn't leave anyone behind. While Fortune 500 companies race to deploy AI agent systems, the talent pipeline can't keep up. We're here to change that.</p>
-          <p>Our programs are designed to take motivated individuals — regardless of their background — and transform them into production-ready AI engineers in weeks, not years. We don't teach abstract theory. We teach you to build the autonomous systems that are reshaping every industry.</p>
-          <p>Based in Austin, Texas — one of the fastest-growing tech hubs in the world — we sit at the intersection of innovation, opportunity, and community.</p>
-        </div>
-        <div class="col-stats">
-          <div class="stat-card">
-            <h3>240+</h3>
-            <p>Schools in Our Network</p>
+    <div class="container" style="max-width: 900px;">
+      <div class="section-badge">Our Mission</div>
+      <h2 class="section-title">AI Training for Everyone</h2>
+      <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px; text-align: center;">
+        The AI revolution is here — but most people are being left behind. Enterprise teams need to upskill fast. Workers need new career paths. Communities need access to the skills that will define the next decade of the economy.
+      </p>
+      <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px; text-align: center;">
+        Austin AI School exists to close that gap. We deliver practical, hands-on AI training to corporations, workforce development organizations, and individuals. No fluff. No hype. Just the skills you need to work with AI — starting today.
+      </p>
+      <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.8; text-align: center;">
+        Based in <strong style="color: var(--text-primary);">Austin, TX</strong> — the tech capital of the South — we're building the training infrastructure for the AI-powered workforce.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="section section-dark">
+    <div class="container" style="max-width: 900px;">
+      <div class="section-badge">Founder</div>
+      <h2 class="section-title">Meet Chris Lofton</h2>
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 48px; margin-top: 40px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+          <div style="flex: 0 0 140px; text-align: center;">
+            <div style="width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--cyan)); display: flex; align-items: center; justify-content: center; font-size: 56px;">CL</div>
+            <p style="margin-top: 12px; font-weight: 600; color: var(--text-primary);">Chris Lofton</p>
+            <p style="font-size: 14px; color: var(--primary);">Founder & CEO</p>
           </div>
-          <div class="stat-card">
-            <h3>500+</h3>
-            <p>Graduates Placed</p>
-          </div>
-          <div class="stat-card">
-            <h3>93%</h3>
-            <p>Job Placement Rate</p>
-          </div>
-          <div class="stat-card">
-            <h3>$145K</h3>
-            <p>Avg Starting Salary</p>
+          <div style="flex: 1; min-width: 280px;">
+            <p style="font-size: 17px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">
+              Chris Lofton has spent his career at the intersection of education and technology. As a senior education leader, he managed training programs across <strong style="color: var(--text-primary);">240+ locations</strong> nationwide, building systems that delivered consistent, high-quality education at scale.
+            </p>
+            <p style="font-size: 17px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">
+              Over his career, Chris has been responsible for training <strong style="color: var(--text-primary);">10,000+ students</strong> — from corporate professionals to career changers to underserved populations. He knows what it takes to build training programs that actually work: clear outcomes, hands-on practice, and accountability.
+            </p>
+            <p style="font-size: 17px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">
+              Now, Chris is applying that operational expertise to the biggest skills challenge of our generation: <strong style="color: var(--text-primary);">artificial intelligence</strong>. Austin AI School combines institutional-grade training infrastructure with cutting-edge AI curriculum to prepare the modern workforce for an AI-powered future.
+            </p>
+            <p style="font-size: 17px; color: var(--text-secondary); line-height: 1.8;">
+              His mission is simple: <em style="color: var(--primary);">make AI skills accessible to everyone</em> — regardless of background, experience level, or zip code.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Values -->
-  <section class="section alt-bg">
-    <div class="container">
-      <div class="section-header">
-        <span class="label-tag">What We Stand For</span>
-        <h2>Our Core Values</h2>
-      </div>
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-icon">🚀</div>
-          <h3>Build, Don't Theorize</h3>
-          <p>Every concept we teach is tied to a real project. By graduation, you'll have built 6+ production AI systems — not just watched lectures.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🤝</div>
-          <h3>Radical Accessibility</h3>
-          <p>Flexible financing, no prerequisites, and a curriculum designed for career changers. Your background is your strength, not a barrier.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">⚡</div>
-          <h3>Stay on the Edge</h3>
-          <p>AI moves fast. Our curriculum updates monthly to include the latest frameworks, models, and deployment patterns from the industry.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🌍</div>
-          <h3>Community First</h3>
-          <p>Learning is better together. Our cohort model, study groups, and alumni network create lifelong professional connections.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🎯</div>
-          <h3>Outcomes Over Everything</h3>
-          <p>We measure success by one metric: did you get the job you wanted? Everything we do is designed to maximize your career outcomes.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">💡</div>
-          <h3>Never Give Up</h3>
-          <p>AI engineering is hard. We provide the support, mentorship, and encouragement to push through plateaus and come out stronger.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team -->
+  <!-- BY THE NUMBERS -->
   <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="label-tag">Leadership</span>
-        <h2>Meet the Team</h2>
-        <p>Industry veterans dedicated to your success.</p>
-      </div>
-      <div class="grid-3">
-        <div class="team-card">
-          <div class="team-avatar">CL</div>
-          <h3>Chris Lofton</h3>
-          <p class="team-role">Founder & CEO</p>
-          <p>Serial entrepreneur and AI pioneer. Previously built Zollege (240 schools) and MindPress. Passionate about making AI education accessible to everyone. Based in Austin, TX.</p>
+    <div class="container" style="max-width: 900px;">
+      <div class="section-badge">By the Numbers</div>
+      <h2 class="section-title">Track Record</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; margin-top: 40px;">
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; text-align: center;">
+          <div style="font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">240+</div>
+          <div style="font-size: 14px; color: var(--text-muted);">Training Locations Managed</div>
         </div>
-        <div class="team-card">
-          <div class="team-avatar">TBD</div>
-          <h3>Head of Curriculum</h3>
-          <p class="team-role">Coming Soon</p>
-          <p>We're building our leadership team. This role will lead curriculum design, ensuring every module teaches production-ready AI engineering skills.</p>
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; text-align: center;">
+          <div style="font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">10K+</div>
+          <div style="font-size: 14px; color: var(--text-muted);">Students Trained</div>
         </div>
-        <div class="team-card">
-          <div class="team-avatar">TBD</div>
-          <h3>Head of Outcomes</h3>
-          <p class="team-role">Coming Soon</p>
-          <p>This role will own student career outcomes — from resume workshops to employer partnerships and job placement support.</p>
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; text-align: center;">
+          <div style="font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">50+</div>
+          <div style="font-size: 14px; color: var(--text-muted);">Corporate Clients</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Austin Section -->
-  <section class="section alt-bg">
-    <div class="container">
-      <div class="content-two-col">
-        <div class="col-text">
-          <span class="label-tag">📍 Austin, Texas</span>
-          <h2>Why Austin?</h2>
-          <p>Austin isn't just where we're headquartered — it's the perfect launchpad for an AI career.</p>
-          <ul class="check-list">
-            <li>🏙️ #1 fastest-growing tech hub in the US</li>
-            <li>🤖 Home to Tesla AI, Apple ML, Meta AI, and 500+ AI startups</li>
-            <li>💼 15,000+ open AI/ML roles in the Austin metro</li>
-            <li>🎸 World-class quality of life with no state income tax</li>
-            <li>🌮 Incredible food, live music, and outdoor lifestyle</li>
-            <li>✈️ Direct flights to both coasts and major tech hubs</li>
-          </ul>
-          <p>Whether you're already in Austin or looking to relocate, this city is where AI careers are being built.</p>
-        </div>
-        <div class="col-stats">
-          <div class="stat-card highlight">
-            <h3>Austin by the Numbers</h3>
-            <div class="mini-stats">
-              <div><strong>2.3M</strong> Metro Population</div>
-              <div><strong>$78K</strong> Median Household Income</div>
-              <div><strong>15K+</strong> AI/ML Job Openings</div>
-              <div><strong>#1</strong> Best City for Tech Workers (2025)</div>
-              <div><strong>0%</strong> State Income Tax</div>
-              <div><strong>300+</strong> Sunny Days Per Year</div>
-            </div>
-          </div>
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; text-align: center;">
+          <div style="font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">Weekly</div>
+          <div style="font-size: 14px; color: var(--text-muted);">Free Community Webinars</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta-banner">
-    <div class="container">
-      <h2>Join the AI Revolution</h2>
-      <p>Applications are open for our next cohort. Take the first step toward your AI engineering career.</p>
-      <a href="apply.html" class="btn btn-primary btn-lg">Apply Now</a>
+  <section class="section section-dark" style="padding: 60px 0;">
+    <div class="container" style="text-align: center;">
+      <h2 class="section-title" style="margin-bottom: 16px;">Ready to Get Started?</h2>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto;">Whether you're exploring corporate training or looking for workforce development partnerships, we'd love to talk.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+        <a href="index.html#apply" class="btn btn-primary btn-lg">Register Now →</a>
+        <a href="mailto:hello@austinai.school" class="btn btn-outline btn-lg">Contact Us</a>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="nav-logo" style="margin-bottom: 4px;">
-            <span class="logo-icon">⚡</span> AI School
-          </div>
-          <p>Austin's premier AI engineering bootcamp. Building the next generation of AI engineers since 2024.</p>
-          <div class="footer-social">
-            <a href="#" aria-label="Twitter">𝕏</a>
-            <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="GitHub">⌨</a>
-            <a href="#" aria-label="YouTube">▶</a>
-          </div>
+          <strong>🧠 Austin AI School</strong>
+          <p>Corporate Training & Workforce Development</p>
+          <p style="margin-top: 8px;">Austin, TX</p>
         </div>
         <div class="footer-col">
           <h4>Programs</h4>
-          <a href="programs.html">Full-Time Bootcamp</a>
-          <a href="programs.html">Part-Time Evening</a>
-          <a href="programs.html">Corporate Training</a>
-          <a href="curriculum.html">Curriculum</a>
+          <a href="index.html#corporate">Corporate Training</a>
+          <a href="index.html#workforce">Workforce Dev</a>
+          <a href="index.html#events">Weekly Webinars</a>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
-          <a href="about.html">About Us</a>
-          <a href="outcomes.html">Outcomes</a>
+          <a href="about.html">About</a>
           <a href="blog.html">Blog</a>
           <a href="faq.html">FAQ</a>
+          <a href="mailto:hello@austinai.school">Contact</a>
         </div>
         <div class="footer-col">
-          <h4>Stay Updated</h4>
-          <p style="font-size:0.85rem;margin-bottom:12px;">Get AI insights and program updates delivered to your inbox.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="your@email.com" required>
-            <button type="submit">Subscribe</button>
-          </form>
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
         </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Austin AI School. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Contact</a>
-        </div>
       </div>
     </div>
   </footer>
-  <script src="script.js"></script>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (toggle) toggle.addEventListener('click', () => links.classList.toggle('active'));
+  </script>
 </body>
 </html>

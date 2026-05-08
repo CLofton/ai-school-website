@@ -4,326 +4,293 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQ — Austin AI School</title>
-  <meta name="description" content="Frequently asked questions about Austin AI School programs, admissions, financing, and more.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Frequently asked questions about Austin AI School's corporate AI training, workforce development programs, webinars, and more.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .faq-list {
+      max-width: 800px;
+      margin: 48px auto 0;
+    }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      background: var(--surface);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .faq-item.active {
+      border-color: var(--primary);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 28px;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: inherit;
+      line-height: 1.4;
+    }
+    .faq-question:hover {
+      color: var(--primary);
+    }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: transform 0.3s;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-answer-inner {
+      padding: 0 28px 24px;
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <span class="logo-icon">⚡</span> AI School
-      </a>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">🧠 Austin AI School</a>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="programs.html">Programs</a>
-        <a href="curriculum.html">Curriculum</a>
-        <a href="outcomes.html">Outcomes</a>
+        <a href="index.html#corporate">Corporate Training</a>
+        <a href="index.html#workforce">Workforce Dev</a>
+        <a href="index.html#events">Events</a>
         <a href="about.html">About</a>
-        <a href="faq.html" class="active">FAQ</a>
-        <a href="blog.html">Blog</a>
-        <a href="apply.html" class="nav-cta">Apply Now</a>
-      </div>
-      <div class="hamburger">
-        <span></span><span></span><span></span>
+        <a href="index.html#apply" class="btn btn-nav">Register Now</a>
       </div>
     </div>
   </nav>
-  <div class="mobile-nav">
-    <a href="index.html">Home</a>
-    <a href="programs.html">Programs</a>
-    <a href="curriculum.html">Curriculum</a>
-    <a href="outcomes.html">Outcomes</a>
-    <a href="about.html">About</a>
-    <a href="faq.html">FAQ</a>
-    <a href="blog.html">Blog</a>
-    <a href="apply.html">Apply Now</a>
-  </div>
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="container">
-      <span class="label-tag">❓ Got Questions?</span>
-      <h1>Frequently Asked <span>Questions</span></h1>
-      <p>Everything you need to know about AI School. Can't find your answer? Email us at hello@aischool.com.</p>
+  <!-- HERO -->
+  <section class="hero" style="min-height: auto; padding: 160px 0 80px;">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">Questions & Answers</div>
+      <h1 class="hero-title">Frequently Asked <span class="gradient-text">Questions</span></h1>
+      <p class="hero-sub">Everything you need to know about Austin AI School, our programs, and how to get started.</p>
     </div>
   </section>
 
-  <!-- FAQ Content -->
+  <!-- FAQ -->
   <section class="section">
-    <div class="container faq-container">
-
-      <!-- Admissions -->
-      <div class="faq-category">
-        <h2 class="faq-category-title">📋 Admissions</h2>
+    <div class="container">
+      <div class="faq-list">
 
         <div class="faq-item">
           <button class="faq-question">
-            <span>Do I need coding experience to apply?</span>
+            What is AI training, and what will I learn?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>No! We accept students from all backgrounds — marketing, teaching, finance, military, you name it. Our curriculum starts with fundamentals and ramps up quickly. What matters most is your motivation and willingness to put in the work. About 40% of our students come in with zero coding experience.</p>
+            <div class="faq-answer-inner">
+              AI training at Austin AI School covers the practical skills needed to understand, use, and build AI systems. Depending on the program, you'll learn AI literacy (understanding what AI can and can't do), how to use AI tools effectively in your daily work, and — for technical tracks — how to build AI agents, work with LLM APIs, create RAG systems, and deploy production AI applications. Our focus is always on hands-on, practical skills you can apply immediately.
+            </div>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question">
-            <span>What is the admissions process?</span>
+            Who is this training for?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>It's simple: (1) Submit the online application — takes about 5 minutes. (2) Complete a 15-minute phone interview with our admissions team. (3) Take a short logical reasoning assessment (not a coding test). (4) Receive your decision within 48 hours. No application fee.</p>
+            <div class="faq-answer-inner">
+              Our programs serve a wide range of learners. Corporate training is designed for business teams — executives, managers, and engineers who need to upskill in AI. Workforce development programs serve career changers, job seekers, veterans, returning citizens, and anyone looking to build AI skills for the modern economy. Our weekly webinars are open to everyone, regardless of experience level.
+            </div>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question">
-            <span>What are the prerequisites?</span>
+            Do I need coding experience to participate?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>Just a laptop, reliable internet, and the ability to commit to the program schedule. For the full-time bootcamp, that's 40+ hours per week. For part-time evening, about 20 hours per week. No degree required. No coding experience required. We provide a free prep course before your cohort starts.</p>
+            <div class="faq-answer-inner">
+              Not for all programs. Our AI Literacy Workshop and many workforce development programs require zero coding experience — they focus on understanding AI concepts and using AI tools effectively. Our more technical programs (AI Implementation and AI Engineering Intensive) do involve some coding, primarily in Python. We'll let you know the prerequisites for each program upfront so you can choose the right fit.
+            </div>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question">
-            <span>When do cohorts start?</span>
+            How much does corporate training cost?
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
-            <p>We run new cohorts quarterly — typically January, April, June, and September. Our next available cohort starts June 2026. Class sizes are limited to 30 students to ensure personalized instruction, so we recommend applying early.</p>
+            <div class="faq-answer-inner">
+              Corporate training pricing depends on the program: the 1-day AI Literacy Workshop is $500/person, the 3-day AI Implementation Program is $2,000/person, and the 5-day AI Engineering Intensive is $5,000/person. We also offer custom enterprise programs with volume pricing for larger teams. <a href="index.html#apply" style="color: var(--primary);">Contact us</a> for a custom quote tailored to your organization's needs.
+            </div>
           </div>
         </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            When are the free weekly webinars?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Our free community webinars — called "Tuesday Night AI" — happen every Tuesday at 7:00 PM Central Time. Each session is approximately 60 minutes and covers a different AI topic, from career advice to live coding demos to industry trends. They're completely free and open to everyone. <a href="index.html#apply" style="color: var(--primary);">Register here</a> to save your spot for the next one.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            How do I register for a program or webinar?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              You can register through the form on our <a href="index.html#apply" style="color: var(--primary);">homepage</a>. Just fill in your name, email, and select what you're interested in — whether that's a free webinar, a specific corporate training program, or a workforce development partnership. We'll respond within 24 hours with next steps, scheduling details, and any additional information you need.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I attend training remotely, or is it in-person only?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              We offer both options. Our weekly webinars are fully remote via video conference. Corporate training programs can be delivered on-site at your office, at our Austin location, or fully remote — whatever works best for your team. Workforce development programs vary by partnership, but most include remote-friendly options. Just let us know your preference when you register.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            Do you offer certificates upon completion?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Yes. All participants who complete a corporate training program or workforce development course receive an Austin AI School Certificate of Completion. This certificate documents the skills covered, hours completed, and competencies demonstrated. For corporate clients, we also provide detailed team progress reports. Our certificates are recognized by employers across the Austin tech ecosystem and beyond.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            What is your refund policy?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              We offer a full refund if you cancel at least 7 days before your program start date. Cancellations within 7 days of the start date are eligible for a 50% refund or full credit toward a future program. If you're unsatisfied after the first day of a multi-day program, we'll work with you to find a solution — including a prorated refund. Free webinars, of course, have no cost and no cancellation policy. Contact us at <a href="mailto:hello@austinai.school" style="color: var(--primary);">hello@austinai.school</a> for any refund requests.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            How can I contact Austin AI School?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              The best way to reach us is by email at <a href="mailto:hello@austinai.school" style="color: var(--primary);">hello@austinai.school</a>. You can also use the <a href="index.html#apply" style="color: var(--primary);">registration form</a> on our website to send us a message. We typically respond within 24 hours. For corporate training inquiries, include your company name, team size, and goals — it helps us get back to you with the most relevant information.
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      <!-- Programs -->
-      <div class="faq-category">
-        <h2 class="faq-category-title">🎓 Programs</h2>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What's the difference between full-time and part-time?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p><strong>Full-Time Bootcamp (12 weeks, $15,000):</strong> Monday-Friday, 9am-5pm. Intense, immersive, designed for career changers who can commit full-time. You'll build 6+ projects and graduate job-ready.</p>
-            <p><strong>Part-Time Evening (8 weeks, $8,000):</strong> Tuesday/Thursday evenings 6-9pm + Saturday mornings. Perfect if you're currently employed. Covers core AI agent engineering with 3+ projects. Takes longer but fits around your schedule.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What technologies will I learn?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Python, LLM APIs (OpenAI, Anthropic, open-source), LangChain/LlamaIndex, vector databases (Pinecone, Weaviate), RAG systems, autonomous agent frameworks, prompt engineering, fine-tuning, deployment (Docker, AWS/GCP), and production monitoring. We update our tech stack monthly to stay current.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Is the program in-person or online?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Our full-time bootcamp is in-person at our Austin campus, with a hybrid option for remote students. The part-time evening program is fully online with live instruction (not pre-recorded). Corporate training can be delivered on-site at your company or virtually.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What makes this different from other bootcamps?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>We're the only bootcamp focused specifically on <strong>production AI agent systems</strong> — the same technology replacing entire departments at Fortune 500 companies. While other programs teach generic data science or basic ML, we teach you to build autonomous AI systems that can reason, plan, and execute complex workflows. Our graduates don't just understand AI — they build the AI systems that run businesses.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Financing -->
-      <div class="faq-category">
-        <h2 class="faq-category-title">💰 Financing</h2>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What financing options are available?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>We offer multiple ways to make AI School affordable:</p>
-            <ul>
-              <li><strong>Income Share Agreement (ISA):</strong> Pay nothing upfront. Pay 15% of your salary for 24 months after you land a job paying $50K+.</li>
-              <li><strong>Monthly Payment Plan:</strong> Split tuition into 6 or 12 monthly installments with 0% interest.</li>
-              <li><strong>Employer Sponsorship:</strong> We provide a formal proposal template for your employer. Many companies cover 50-100% of tuition.</li>
-              <li><strong>Scholarships:</strong> $2,000-$5,000 scholarships available for veterans, underrepresented groups, and career changers from non-tech backgrounds.</li>
-              <li><strong>Early Bird Discount:</strong> $1,500 off when you apply 8+ weeks before cohort start.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Is there a refund policy?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. Full refund if you withdraw within the first week. After week 1, we offer a prorated refund based on weeks completed. For ISA students, if you don't land a qualifying job within 12 months of graduating, you owe nothing. We put our money where our mouth is.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Schedule -->
-      <div class="faq-category">
-        <h2 class="faq-category-title">📅 Schedule & Logistics</h2>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What is the daily schedule like?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p><strong>Full-Time:</strong> 9:00am - Morning lecture/demo (1.5 hrs) → 10:30am - Pair programming/lab (2 hrs) → 12:30pm - Lunch → 1:30pm - Project work (2 hrs) → 3:30pm - Code review & standup (1 hr) → 4:30pm - Office hours/self-study.</p>
-            <p><strong>Part-Time:</strong> Tuesday/Thursday 6:00-9:00pm — lecture + lab. Saturday 10:00am-1:00pm — project work + code review. Plus ~10 hrs/week self-paced work.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Where is the campus located?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>We're located in East Austin's tech corridor, near the intersection of I-35 and East Cesar Chavez. Free parking available, and we're a 10-minute walk from the Plaza Saltillo MetroRail station. The space features high-speed WiFi, standing desks, a lounge area, and free coffee.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Do I need my own laptop?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Yes, you'll need a laptop with at least 8GB RAM and 256GB storage. Mac, Windows, or Linux all work fine. We provide cloud GPU access for model training, so you don't need a powerful GPU. If you need financial assistance for a laptop, let us know — we have a loaner program.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Career Outcomes -->
-      <div class="faq-category">
-        <h2 class="faq-category-title">💼 Career Outcomes</h2>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What jobs can I get after graduating?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Our graduates land roles like: AI Engineer ($130K-$180K), ML Engineer ($125K-$170K), AI Solutions Architect ($140K-$190K), LLM Application Developer ($120K-$160K), AI Product Manager ($130K-$175K), and AI Consultant ($150K-$200K). The average starting salary for our 2025 graduates was $145,000.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What kind of career support do you provide?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Starting in week 6, you'll work with a dedicated career coach who provides: resume and LinkedIn optimization, portfolio review, mock technical interviews, behavioral interview prep, salary negotiation coaching, and direct introductions to our hiring partner network. Career support continues for 12 months after graduation.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>Who are your hiring partners?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>We partner with 50+ companies ranging from AI startups to Fortune 500 enterprises. While we can't guarantee specific placements, our hiring partners actively recruit from our graduate pool. Companies include tech firms, consulting agencies, healthcare organizations, fintech companies, and government contractors — all seeking AI engineering talent.</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta-banner">
-    <div class="container">
-      <h2>Still Have Questions?</h2>
-      <p>Schedule a free 15-minute call with our admissions team. We're happy to answer anything.</p>
-      <div class="hero-buttons" style="justify-content:center;">
-        <a href="apply.html" class="btn btn-primary btn-lg">Apply Now</a>
-        <a href="mailto:hello@aischool.com" class="btn btn-secondary btn-lg">Email Us</a>
+  <section class="section section-dark" style="padding: 60px 0;">
+    <div class="container" style="text-align: center;">
+      <h2 class="section-title" style="margin-bottom: 16px;">Still Have Questions?</h2>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto;">We're happy to help. Reach out anytime or join a free Tuesday webinar to ask live.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
+        <a href="index.html#apply" class="btn btn-primary btn-lg">Register Now →</a>
+        <a href="mailto:hello@austinai.school" class="btn btn-outline btn-lg">Email Us</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="nav-logo" style="margin-bottom: 4px;">
-            <span class="logo-icon">⚡</span> AI School
-          </div>
-          <p>Austin's premier AI engineering bootcamp. Building the next generation of AI engineers since 2024.</p>
-          <div class="footer-social">
-            <a href="#" aria-label="Twitter">𝕏</a>
-            <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="GitHub">⌨</a>
-            <a href="#" aria-label="YouTube">▶</a>
-          </div>
+          <strong>🧠 Austin AI School</strong>
+          <p>Corporate Training & Workforce Development</p>
+          <p style="margin-top: 8px;">Austin, TX</p>
         </div>
         <div class="footer-col">
           <h4>Programs</h4>
-          <a href="programs.html">Full-Time Bootcamp</a>
-          <a href="programs.html">Part-Time Evening</a>
-          <a href="programs.html">Corporate Training</a>
-          <a href="curriculum.html">Curriculum</a>
+          <a href="index.html#corporate">Corporate Training</a>
+          <a href="index.html#workforce">Workforce Dev</a>
+          <a href="index.html#events">Weekly Webinars</a>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
-          <a href="about.html">About Us</a>
-          <a href="outcomes.html">Outcomes</a>
+          <a href="about.html">About</a>
           <a href="blog.html">Blog</a>
           <a href="faq.html">FAQ</a>
+          <a href="mailto:hello@austinai.school">Contact</a>
         </div>
         <div class="footer-col">
-          <h4>Stay Updated</h4>
-          <p style="font-size:0.85rem;margin-bottom:12px;">Get AI insights and program updates delivered to your inbox.</p>
-          <form class="newsletter-form">
-            <input type="email" placeholder="your@email.com" required>
-            <button type="submit">Subscribe</button>
-          </form>
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
         </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2026 Austin AI School. All rights reserved.</p>
-        <div class="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Contact</a>
-        </div>
       </div>
     </div>
   </footer>
-  <script src="script.js"></script>
+
   <script>
+    // Nav toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (toggle) toggle.addEventListener('click', () => links.classList.toggle('active'));
+
     // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        const item = this.parentElement;
-        const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasActive = item.classList.contains('active');
         // Close all
-        document.querySelectorAll('.faq-item').forEach(function(el) { el.classList.remove('open'); });
-        // Toggle current
-        if (!isOpen) item.classList.add('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        // Toggle clicked
+        if (!wasActive) item.classList.add('active');
       });
     });
   </script>
