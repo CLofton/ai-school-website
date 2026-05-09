@@ -7,6 +7,8 @@
   <meta name="description" content="Austin AI School delivers corporate AI training and workforce development programs. Weekly webinars, bootcamps, and custom enterprise training.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+  <meta name="theme-color" content="#0a0a0f">
 </head>
 <body>
   <!-- NAV -->
@@ -144,7 +146,7 @@
 
 
   <!-- WEEKLY EVENTS -->
-  <section id="events" class="section section-dark">
+  <section id="events" class="section">
     <div class="container">
       <div class="section-badge">Free Weekly Events</div>
       <h2 class="section-title">Tuesday Night AI — 7pm CT</h2>
@@ -306,7 +308,7 @@
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.program-card, .wf-card, .boot-card, .event-card').forEach(el => {
+    document.querySelectorAll('.program-card, .wf-card, .event-card').forEach(el => {
       el.classList.add('fade-in');
       obs.observe(el);
     });

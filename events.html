@@ -7,9 +7,11 @@
   <meta name="description" content="Free weekly AI webinars, hands-on workshops, and community meetups. Join Austin AI School's events to level up your AI skills.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+  <meta name="theme-color" content="#0a0a0f">
   <style>
     /* ─── Events Page Styles ─── */
-    .events-hero { position: relative; padding: 120px 0 60px; text-align: center; overflow: hidden; }
+    .events-hero { position: relative; padding: 140px 0 60px; text-align: center; overflow: hidden; }
     .events-hero .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.15) 0%, transparent 70%); pointer-events: none; }
     .events-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 16px; position: relative; }
     .events-hero p { font-size: 1.15rem; color: #94a3b8; max-width: 600px; margin: 0 auto 32px; position: relative; }
@@ -212,7 +214,7 @@
       const d = new Date(iso);
       return { month: d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(), day: d.getDate() };
     }
-    function isUpcoming(ev) { return new Date(ev.date) > now; }
+    function isUpcoming(ev) { return new Date(ev.date) > new Date(); }
 
     // ─── Countdown Timer ───
     const upcoming = EVENTS.filter(isUpcoming).sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -275,6 +277,9 @@
 
     const grid = document.getElementById('events-grid');
     grid.innerHTML = upcomingEvents.map(renderCard).join('');
+    if (upcomingEvents.length === 0) {
+      grid.innerHTML = '<p style="color:#94a3b8;text-align:center;grid-column:1/-1;padding:60px 20px;font-size:1.1rem;">No upcoming events right now. Check back soon or subscribe below to get notified!</p>';
+    }
 
     if (pastEvents.length > 0) {
       document.getElementById('past-section').style.display = 'block';
