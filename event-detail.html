@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event — Austin AI School</title>
+  <meta name="description" content="Register for this Austin AI School event. Free webinars, workshops, and meetups to level up your AI skills.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ─── Event Detail Styles ─── */
+    .detail-hero { position: relative; padding: 120px 0 48px; overflow: hidden; }
+    .detail-hero .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.15) 0%, transparent 70%); pointer-events: none; }
+    .detail-hero .container { position: relative; }
+    .detail-breadcrumb { font-size: 0.85rem; color: #64748b; margin-bottom: 16px; }
+    .detail-breadcrumb a { color: #8b5cf6; text-decoration: none; }
+    .detail-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .badge { font-size: 0.72rem; font-weight: 600; padding: 5px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-webinar { background: rgba(6,182,212,0.15); color: #06b6d4; }
+    .badge-workshop { background: rgba(249,115,22,0.15); color: #f97316; }
+    .badge-meetup { background: rgba(34,197,94,0.15); color: #22c55e; }
+    .badge-virtual { background: rgba(139,92,246,0.1); color: #a78bfa; }
+    .badge-in-person { background: rgba(236,72,153,0.1); color: #ec4899; }
+    .badge-free { background: rgba(34,197,94,0.1); color: #22c55e; }
+    .badge-paid { background: rgba(249,115,22,0.1); color: #f97316; }
+    .detail-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+    .detail-meta { display: flex; flex-wrap: wrap; gap: 24px; color: #94a3b8; font-size: 0.95rem; margin-bottom: 16px; }
+    .detail-meta span { display: flex; align-items: center; gap: 6px; }
+    .detail-speaker { color: #f1f5f9; font-weight: 600; }
+
+    /* Layout */
+    .detail-layout { display: grid; grid-template-columns: 1fr 380px; gap: 48px; padding-bottom: 60px; }
+    @media (max-width: 900px) { .detail-layout { grid-template-columns: 1fr; } }
+
+    /* Content */
+    .detail-content h2 { font-size: 1.3rem; font-weight: 700; margin: 32px 0 12px; }
+    .detail-content h2:first-child { margin-top: 0; }
+    .detail-content p { color: #cbd5e1; line-height: 1.8; margin-bottom: 16px; }
+    .agenda-list { list-style: none; padding: 0; }
+    .agenda-list li { padding: 12px 0; border-bottom: 1px solid #1e1e2e; color: #cbd5e1; display: flex; gap: 12px; align-items: start; }
+    .agenda-list li::before { content: '▸'; color: #8b5cf6; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .prereq-box { background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2); border-radius: 12px; padding: 20px; margin-top: 16px; }
+    .prereq-box h3 { font-size: 0.9rem; color: #06b6d4; font-weight: 600; margin-bottom: 8px; }
+    .prereq-box p { color: #94a3b8; font-size: 0.9rem; margin: 0; }
+
+    /* Sidebar */
+    .detail-sidebar { position: sticky; top: 100px; }
+    .reg-card { background: #111118; border: 1px solid #1e1e2e; border-radius: 16px; padding: 28px; margin-bottom: 24px; }
+    .reg-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .reg-price { font-size: 2rem; font-weight: 800; color: #8b5cf6; margin-bottom: 4px; }
+    .reg-spots { font-size: 0.85rem; color: #94a3b8; margin-bottom: 20px; }
+    .reg-spots strong { color: #22c55e; }
+    .spot-bar { height: 4px; background: #1e1e2e; border-radius: 4px; margin-top: 8px; overflow: hidden; }
+    .spot-bar-fill { height: 100%; background: linear-gradient(90deg, #8b5cf6, #06b6d4); border-radius: 4px; transition: width 0.5s; }
+    .reg-form { display: flex; flex-direction: column; gap: 12px; }
+    .reg-form input { padding: 12px 14px; background: #0a0a0f; border: 1px solid #222; border-radius: 8px; color: #f1f5f9; font-size: 0.95rem; font-family: inherit; }
+    .reg-form input:focus { outline: none; border-color: #8b5cf6; }
+    .reg-form .btn { width: 100%; text-align: center; }
+    .reg-success { display: none; text-align: center; padding: 20px; }
+    .reg-success .check { font-size: 2.5rem; margin-bottom: 8px; }
+    .reg-success h3 { color: #22c55e; margin-bottom: 4px; }
+    .reg-success p { color: #94a3b8; font-size: 0.9rem; }
+
+    /* Action buttons */
+    .action-btns { display: flex; flex-direction: column; gap: 8px; }
+    .action-btn { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 8px; border: 1px solid #1e1e2e; background: transparent; color: #94a3b8; font-size: 0.85rem; font-family: inherit; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+    .action-btn:hover { border-color: #8b5cf6; color: #f1f5f9; }
+    .copied-toast { color: #22c55e !important; }
+
+    /* Share */
+    .share-row { display: flex; gap: 8px; margin-top: 16px; }
+    .share-btn { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #1e1e2e; background: transparent; color: #94a3b8; font-size: 0.8rem; cursor: pointer; font-family: inherit; transition: all 0.2s; text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 4px; }
+    .share-btn:hover { border-color: #8b5cf6; color: #f1f5f9; }
+
+    /* Related */
+    .related-section { margin-top: 48px; padding-top: 48px; border-top: 1px solid #1e1e2e; }
+    .related-section h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 24px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .related-card { background: #111118; border: 1px solid #1e1e2e; border-radius: 12px; padding: 20px; transition: all 0.3s; }
+    .related-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-2px); }
+    .related-card .badge { margin-bottom: 8px; display: inline-block; }
+    .related-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .related-card h4 a { color: #f1f5f9; text-decoration: none; }
+    .related-card h4 a:hover { color: #8b5cf6; }
+    .related-card-meta { font-size: 0.8rem; color: #64748b; }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">🧠 Austin AI School</a>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
+      <div class="nav-links">
+        <a href="index.html#corporate">Corporate Training</a>
+        <a href="index.html#workforce">Workforce Dev</a>
+        <a href="events.html" style="color:#8b5cf6;">Events</a>
+        <a href="about.html">About</a>
+        <a href="index.html#apply" class="btn btn-nav">Register Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="detail-hero" id="detail-hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="detail-breadcrumb"><a href="events.html">← Events</a> / <span id="hero-type">Event</span></div>
+      <div class="detail-badges" id="hero-badges"></div>
+      <h1 id="hero-title">Loading...</h1>
+      <div class="detail-meta">
+        <span id="hero-date">📅 --</span>
+        <span id="hero-time">🕐 --</span>
+        <span id="hero-format">📍 --</span>
+        <span id="hero-speaker" class="detail-speaker">🎤 --</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="section" style="padding-top:0;">
+    <div class="container detail-layout">
+      <!-- Left: Content -->
+      <div class="detail-content" id="detail-content">
+        <h2>About This Event</h2>
+        <p id="full-desc"></p>
+
+        <h2>Agenda</h2>
+        <ul class="agenda-list" id="agenda-list"></ul>
+
+        <div class="prereq-box">
+          <h3>📋 Prerequisites</h3>
+          <p id="prereq-text"></p>
+        </div>
+
+        <h2>Speaker</h2>
+        <p><strong id="speaker-name"></strong></p>
+        <p id="speaker-bio" style="font-size:0.9rem;"></p>
+      </div>
+
+      <!-- Right: Sidebar -->
+      <div class="detail-sidebar">
+        <div class="reg-card">
+          <h3>Register for this Event</h3>
+          <div class="reg-price" id="reg-price">Free</div>
+          <div class="reg-spots" id="reg-spots"></div>
+          <div class="spot-bar"><div class="spot-bar-fill" id="spot-bar-fill"></div></div>
+          <br>
+          <form class="reg-form" id="reg-form">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="company" placeholder="Company (optional)">
+            <input type="hidden" name="event_id" id="form-event-id">
+            <input type="hidden" name="event_title" id="form-event-title">
+            <button type="submit" class="btn btn-primary" id="reg-submit">Register Now →</button>
+          </form>
+          <div class="reg-success" id="reg-success">
+            <div class="check">✅</div>
+            <h3>You're Registered!</h3>
+            <p>Check your email for confirmation and event details.</p>
+          </div>
+        </div>
+
+        <div class="action-btns">
+          <a href="#" id="gcal-btn" class="action-btn" target="_blank">📅 Add to Google Calendar</a>
+        </div>
+
+        <div class="share-row">
+          <a href="#" id="share-twitter" class="share-btn" target="_blank">𝕏 Tweet</a>
+          <a href="#" id="share-linkedin" class="share-btn" target="_blank">in Share</a>
+          <button class="share-btn" id="share-copy">🔗 Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Events -->
+    <div class="container">
+      <div class="related-section" id="related-section" style="display:none;">
+        <h2>More <span id="related-type">Events</span> You'll Love</h2>
+        <div class="related-grid" id="related-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>🧠 Austin AI School</strong>
+          <p>Corporate Training & Workforce Development</p>
+          <p style="margin-top: 8px;">Austin, TX</p>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <a href="index.html#corporate">Corporate Training</a>
+          <a href="index.html#workforce">Workforce Dev</a>
+          <a href="events.html">Events</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="faq.html">FAQ</a>
+          <a href="mailto:hello@austinai.school">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Austin AI School. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="events-data.js"></script>
+  <script>
+    // ─── Nav Toggle ───
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (toggle) toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+    // ─── Load Event ───
+    const params = new URLSearchParams(window.location.search);
+    const eventId = params.get('id');
+    const ev = EVENTS.find(e => e.id === eventId);
+
+    if (!ev) {
+      document.getElementById('hero-title').textContent = 'Event Not Found';
+      document.getElementById('detail-content').innerHTML = '<p>Sorry, we couldn\'t find this event. <a href="events.html" style="color:#8b5cf6;">Browse all events →</a></p>';
+    } else {
+      // Page title
+      document.title = ev.title + ' — Austin AI School';
+      document.querySelector('meta[name="description"]').content = ev.description;
+
+      // Hero
+      document.getElementById('hero-type').textContent = ev.type.charAt(0).toUpperCase() + ev.type.slice(1);
+      document.getElementById('hero-title').textContent = ev.title;
+      const dateObj = new Date(ev.date);
+      const formattedDate = dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      document.getElementById('hero-date').textContent = '📅 ' + formattedDate;
+      document.getElementById('hero-time').textContent = '🕐 ' + ev.time + ' – ' + ev.endTime;
+      document.getElementById('hero-format').textContent = (ev.format === 'virtual' ? '💻' : '📍') + ' ' + ev.format.charAt(0).toUpperCase() + ev.format.slice(1) + (ev.format === 'in-person' ? ' · Austin, TX' : '');
+      document.getElementById('hero-speaker').textContent = '🎤 ' + ev.speaker;
+
+      // Badges
+      const badgesHtml = `
+        <span class="badge badge-${ev.type}">${ev.type}</span>
+        <span class="badge badge-${ev.format}">${ev.format}</span>
+        ${ev.price === 0 ? '<span class="badge badge-free">Free</span>' : '<span class="badge badge-paid">$' + ev.price + '</span>'}
+      `;
+      document.getElementById('hero-badges').innerHTML = badgesHtml;
+
+      // Content
+      document.getElementById('full-desc').textContent = ev.fullDescription;
+      document.getElementById('agenda-list').innerHTML = ev.agenda.map(item => '<li>' + item + '</li>').join('');
+      document.getElementById('prereq-text').textContent = ev.prerequisites;
+      document.getElementById('speaker-name').textContent = ev.speaker;
+      document.getElementById('speaker-bio').textContent = ev.speakerBio;
+
+      // Registration sidebar
+      const spotsLeft = ev.spots - ev.registered;
+      const pctFull = Math.round((ev.registered / ev.spots) * 100);
+      document.getElementById('reg-price').textContent = ev.price === 0 ? 'Free' : '$' + ev.price;
+      document.getElementById('reg-spots').innerHTML = '<strong>' + spotsLeft + '</strong> of ' + ev.spots + ' spots remaining';
+      document.getElementById('spot-bar-fill').style.width = pctFull + '%';
+      document.getElementById('form-event-id').value = ev.id;
+      document.getElementById('form-event-title').value = ev.title;
+      if (ev.price > 0) document.getElementById('reg-submit').textContent = 'Register — $' + ev.price + ' →';
+
+      // Google Calendar link
+      const startStr = dateObj.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      const endDate = new Date(ev.date);
+      const endParts = ev.endTime.match(/(\d+):(\d+)\s*(AM|PM)/i);
+      if (endParts) {
+        let eh = parseInt(endParts[1]);
+        if (endParts[3].toUpperCase() === 'PM' && eh !== 12) eh += 12;
+        if (endParts[3].toUpperCase() === 'AM' && eh === 12) eh = 0;
+        endDate.setHours(eh, parseInt(endParts[2]), 0);
+      }
+      const endStr = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      const gcalUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+        '&text=' + encodeURIComponent(ev.title) +
+        '&dates=' + startStr + '/' + endStr +
+        '&details=' + encodeURIComponent(ev.description + '\n\nRegister: ' + window.location.href) +
+        '&location=' + encodeURIComponent(ev.format === 'virtual' ? 'Online (link sent after registration)' : 'Austin, TX');
+      document.getElementById('gcal-btn').href = gcalUrl;
+
+      // Share buttons
+      const pageUrl = window.location.href;
+      const shareText = ev.title + ' — Free AI event by Austin AI School';
+      document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(pageUrl);
+      document.getElementById('share-linkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(pageUrl);
+      document.getElementById('share-copy').addEventListener('click', function() {
+        navigator.clipboard.writeText(pageUrl).then(() => {
+          this.textContent = '✅ Copied!';
+          this.classList.add('copied-toast');
+          setTimeout(() => { this.textContent = '🔗 Copy'; this.classList.remove('copied-toast'); }, 2000);
+        });
+      });
+
+      // Registration form
+      document.getElementById('reg-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(this));
+        data.submitted_at = new Date().toISOString();
+        data.source = 'event-registration';
+        fetch('https://formsubmit.co/ajax/c.lofton@zollege.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        }).finally(() => {
+          this.style.display = 'none';
+          document.getElementById('reg-success').style.display = 'block';
+        });
+      });
+
+      // Related events
+      const now = new Date();
+      const related = EVENTS
+        .filter(e => e.type === ev.type && e.id !== ev.id && new Date(e.date) > now)
+        .sort((a, b) => new Date(a.date) - new Date(b.date))
+        .slice(0, 3);
+
+      if (related.length > 0) {
+        document.getElementById('related-section').style.display = 'block';
+        document.getElementById('related-type').textContent = ev.type.charAt(0).toUpperCase() + ev.type.slice(1) + 's';
+        document.getElementById('related-grid').innerHTML = related.map(r => {
+          const rd = new Date(r.date);
+          return `<div class="related-card">
+            <span class="badge badge-${r.type}">${r.type}</span>
+            <h4><a href="event-detail.html?id=${r.id}">${r.title}</a></h4>
+            <div class="related-card-meta">📅 ${rd.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} · ${r.time} · ${r.price === 0 ? 'Free' : '$' + r.price}</div>
+          </div>`;
+        }).join('');
+      }
+    }
+  </script>
+</body>
+</html>

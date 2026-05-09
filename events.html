@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events — Austin AI School</title>
+  <meta name="description" content="Free weekly AI webinars, hands-on workshops, and community meetups. Join Austin AI School's events to level up your AI skills.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ─── Events Page Styles ─── */
+    .events-hero { position: relative; padding: 120px 0 60px; text-align: center; overflow: hidden; }
+    .events-hero .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.15) 0%, transparent 70%); pointer-events: none; }
+    .events-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 16px; position: relative; }
+    .events-hero p { font-size: 1.15rem; color: #94a3b8; max-width: 600px; margin: 0 auto 32px; position: relative; }
+
+    /* Countdown */
+    .countdown-wrap { position: relative; background: #111118; border: 1px solid rgba(139,92,246,0.3); border-radius: 16px; padding: 32px; max-width: 700px; margin: 0 auto; }
+    .countdown-label { font-size: 0.85rem; color: #8b5cf6; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .countdown-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
+    .countdown-meta { color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px; }
+    .countdown-timer { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; }
+    .countdown-unit { background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); border-radius: 12px; padding: 12px 20px; min-width: 72px; text-align: center; }
+    .countdown-num { font-size: 1.8rem; font-weight: 800; color: #8b5cf6; display: block; }
+    .countdown-lbl { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+    .countdown-cta { display: inline-block; }
+
+    /* Filter Tabs */
+    .filter-bar { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .filter-btn { padding: 10px 24px; border-radius: 100px; border: 1px solid #222; background: transparent; color: #94a3b8; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+    .filter-btn:hover { border-color: #8b5cf6; color: #f1f5f9; }
+    .filter-btn.active { background: #8b5cf6; border-color: #8b5cf6; color: #fff; }
+
+    /* Event Cards Grid */
+    .events-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; margin-bottom: 60px; }
+    .event-card { background: #111118; border: 1px solid #1e1e2e; border-radius: 16px; padding: 28px; transition: all 0.3s; display: flex; flex-direction: column; }
+    .event-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-2px); }
+    .event-card-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px; gap: 8px; }
+    .event-date-badge { background: rgba(139,92,246,0.12); color: #8b5cf6; font-size: 0.78rem; font-weight: 700; padding: 6px 12px; border-radius: 8px; white-space: nowrap; text-align: center; line-height: 1.4; }
+    .event-date-badge .day { display: block; font-size: 1.3rem; }
+    .event-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+    .badge { font-size: 0.7rem; font-weight: 600; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-webinar { background: rgba(6,182,212,0.15); color: #06b6d4; }
+    .badge-workshop { background: rgba(249,115,22,0.15); color: #f97316; }
+    .badge-meetup { background: rgba(34,197,94,0.15); color: #22c55e; }
+    .badge-virtual { background: rgba(139,92,246,0.1); color: #a78bfa; }
+    .badge-in-person { background: rgba(236,72,153,0.1); color: #ec4899; }
+    .badge-free { background: rgba(34,197,94,0.1); color: #22c55e; }
+    .badge-paid { background: rgba(249,115,22,0.1); color: #f97316; }
+    .event-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+    .event-card h3 a { color: #f1f5f9; text-decoration: none; }
+    .event-card h3 a:hover { color: #8b5cf6; }
+    .event-card-desc { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px; flex: 1; }
+    .event-card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 16px; border-top: 1px solid #1e1e2e; }
+    .event-meta-row { display: flex; flex-direction: column; gap: 4px; }
+    .event-time { font-size: 0.85rem; color: #94a3b8; }
+    .event-spots { font-size: 0.8rem; color: #64748b; }
+    .event-spots strong { color: #22c55e; }
+    .btn-sm { padding: 8px 20px; font-size: 0.85rem; border-radius: 8px; }
+
+    /* Past Events */
+    .past-section { margin-bottom: 60px; }
+    .past-toggle { background: #111118; border: 1px solid #1e1e2e; border-radius: 12px; padding: 16px 24px; width: 100%; text-align: left; color: #94a3b8; font-size: 1rem; font-weight: 600; cursor: pointer; font-family: inherit; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s; }
+    .past-toggle:hover { border-color: #8b5cf6; color: #f1f5f9; }
+    .past-toggle .arrow { transition: transform 0.3s; }
+    .past-toggle.open .arrow { transform: rotate(180deg); }
+    .past-events-list { display: none; margin-top: 16px; }
+    .past-events-list.show { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+    .past-events-list .event-card { opacity: 0.65; }
+    .past-events-list .event-card:hover { opacity: 1; }
+
+    /* Newsletter */
+    .newsletter-section { background: #111118; border: 1px solid #1e1e2e; border-radius: 20px; padding: 48px; text-align: center; margin-bottom: 60px; }
+    .newsletter-section h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+    .newsletter-section p { color: #94a3b8; margin-bottom: 24px; }
+    .newsletter-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; }
+    .newsletter-form input { flex: 1; padding: 12px 16px; background: #0a0a0f; border: 1px solid #222; border-radius: 8px; color: #f1f5f9; font-size: 1rem; font-family: inherit; }
+    .newsletter-form input:focus { outline: none; border-color: #8b5cf6; }
+    .newsletter-success { display: none; color: #22c55e; font-weight: 600; margin-top: 16px; }
+
+    @media (max-width: 600px) {
+      .events-grid, .past-events-list.show { grid-template-columns: 1fr; }
+      .countdown-timer { gap: 8px; }
+      .countdown-unit { min-width: 56px; padding: 10px 12px; }
+      .countdown-num { font-size: 1.3rem; }
+      .newsletter-form { flex-direction: column; }
+      .event-card-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">🧠 Austin AI School</a>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
+      <div class="nav-links">
+        <a href="index.html#corporate">Corporate Training</a>
+        <a href="index.html#workforce">Workforce Dev</a>
+        <a href="events.html" style="color:#8b5cf6;">Events</a>
+        <a href="about.html">About</a>
+        <a href="index.html#apply" class="btn btn-nav">Register Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="events-hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <h1>AI <span class="gradient-text">Events</span></h1>
+      <p>Free weekly webinars, hands-on workshops, and community meetups. Learn AI with the Austin AI School community.</p>
+      <div class="countdown-wrap" id="countdown-wrap">
+        <div class="countdown-label">Next Event</div>
+        <div class="countdown-title" id="cd-title"></div>
+        <div class="countdown-meta" id="cd-meta"></div>
+        <div class="countdown-timer">
+          <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-lbl">Days</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-lbl">Hours</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-lbl">Min</span></div>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-lbl">Sec</span></div>
+        </div>
+        <a href="#" id="cd-link" class="btn btn-primary btn-sm countdown-cta">Register Free →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS SECTION -->
+  <section class="section">
+    <div class="container">
+      <!-- Filters -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Events</button>
+        <button class="filter-btn" data-filter="webinar">🎙 Webinars</button>
+        <button class="filter-btn" data-filter="workshop">🔧 Workshops</button>
+        <button class="filter-btn" data-filter="meetup">🤝 Meetups</button>
+      </div>
+
+      <!-- Upcoming Events -->
+      <div class="events-grid" id="events-grid"></div>
+
+      <!-- Past Events -->
+      <div class="past-section" id="past-section" style="display:none;">
+        <button class="past-toggle" id="past-toggle">
+          <span>📁 Past Events (<span id="past-count">0</span>)</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="past-events-list" id="past-events-list"></div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="newsletter-section">
+        <h2>Never Miss an Event</h2>
+        <p>Get weekly event reminders, recordings, and AI insights delivered to your inbox.</p>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" name="email" placeholder="your@email.com" required>
+          <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+        </form>
+        <div class="newsletter-success" id="newsletter-success">✅ You're subscribed! Check your inbox.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>🧠 Austin AI School</strong>
+          <p>Corporate Training & Workforce Development</p>
+          <p style="margin-top: 8px;">Austin, TX</p>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <a href="index.html#corporate">Corporate Training</a>
+          <a href="index.html#workforce">Workforce Dev</a>
+          <a href="events.html">Events</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="faq.html">FAQ</a>
+          <a href="mailto:hello@austinai.school">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Austin AI School. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="events-data.js"></script>
+  <script>
+    // ─── Nav Toggle ───
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (toggle) toggle.addEventListener('click', () => links.classList.toggle('active'));
+
+    // ─── Helpers ───
+    const now = new Date();
+    function formatDate(iso) {
+      const d = new Date(iso);
+      return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    }
+    function shortDate(iso) {
+      const d = new Date(iso);
+      return { month: d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(), day: d.getDate() };
+    }
+    function isUpcoming(ev) { return new Date(ev.date) > now; }
+
+    // ─── Countdown Timer ───
+    const upcoming = EVENTS.filter(isUpcoming).sort((a, b) => new Date(a.date) - new Date(b.date));
+    if (upcoming.length > 0) {
+      const next = upcoming[0];
+      document.getElementById('cd-title').textContent = next.title;
+      document.getElementById('cd-meta').textContent = formatDate(next.date) + ' · ' + next.time + ' · ' + (next.price === 0 ? 'Free' : '$' + next.price);
+      document.getElementById('cd-link').href = 'event-detail.html?id=' + next.id;
+      if (next.price > 0) document.getElementById('cd-link').textContent = 'Register — $' + next.price + ' →';
+
+      function updateCountdown() {
+        const diff = new Date(next.date) - new Date();
+        if (diff <= 0) { document.querySelector('.countdown-timer').innerHTML = '<p style="color:#22c55e;font-weight:700;">🔴 Happening Now!</p>'; return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cd-days').textContent = d;
+        document.getElementById('cd-hours').textContent = h;
+        document.getElementById('cd-mins').textContent = m;
+        document.getElementById('cd-secs').textContent = s;
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    }
+
+    // ─── Render Event Card ───
+    function renderCard(ev) {
+      const sd = shortDate(ev.date);
+      const spotsLeft = ev.spots - ev.registered;
+      const isPast = !isUpcoming(ev);
+      return `
+        <div class="event-card" data-type="${ev.type}">
+          <div class="event-card-header">
+            <div class="event-date-badge">
+              <span>${sd.month}</span>
+              <span class="day">${sd.day}</span>
+            </div>
+            <div class="event-badges">
+              <span class="badge badge-${ev.type}">${ev.type}</span>
+              <span class="badge badge-${ev.format}">${ev.format}</span>
+              ${ev.price === 0 ? '<span class="badge badge-free">Free</span>' : '<span class="badge badge-paid">$' + ev.price + '</span>'}
+            </div>
+          </div>
+          <h3><a href="event-detail.html?id=${ev.id}">${ev.title}</a></h3>
+          <div class="event-card-desc">${ev.description}</div>
+          <div class="event-card-footer">
+            <div class="event-meta-row">
+              <span class="event-time">🕐 ${ev.time}</span>
+              <span class="event-spots">${isPast ? '✅ Completed' : '<strong>' + spotsLeft + '</strong> spots left'}</span>
+            </div>
+            <a href="event-detail.html?id=${ev.id}" class="btn ${isPast ? 'btn-outline' : 'btn-primary'} btn-sm">${isPast ? 'View' : 'Register →'}</a>
+          </div>
+        </div>`;
+    }
+
+    // ─── Render Events ───
+    const upcomingEvents = EVENTS.filter(isUpcoming).sort((a, b) => new Date(a.date) - new Date(b.date));
+    const pastEvents = EVENTS.filter(e => !isUpcoming(e)).sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    const grid = document.getElementById('events-grid');
+    grid.innerHTML = upcomingEvents.map(renderCard).join('');
+
+    if (pastEvents.length > 0) {
+      document.getElementById('past-section').style.display = 'block';
+      document.getElementById('past-count').textContent = pastEvents.length;
+      document.getElementById('past-events-list').innerHTML = pastEvents.map(renderCard).join('');
+    }
+
+    // ─── Filter ───
+    let activeFilter = 'all';
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        const filtered = activeFilter === 'all' ? upcomingEvents : upcomingEvents.filter(e => e.type === activeFilter);
+        grid.innerHTML = filtered.length ? filtered.map(renderCard).join('') : '<p style="color:#94a3b8;text-align:center;grid-column:1/-1;padding:40px;">No upcoming ' + activeFilter + 's. Check back soon!</p>';
+
+        const filteredPast = activeFilter === 'all' ? pastEvents : pastEvents.filter(e => e.type === activeFilter);
+        if (filteredPast.length > 0) {
+          document.getElementById('past-section').style.display = 'block';
+          document.getElementById('past-count').textContent = filteredPast.length;
+          document.getElementById('past-events-list').innerHTML = filteredPast.map(renderCard).join('');
+        } else {
+          document.getElementById('past-section').style.display = 'none';
+        }
+      });
+    });
+
+    // ─── Past Toggle ───
+    document.getElementById('past-toggle').addEventListener('click', function() {
+      this.classList.toggle('open');
+      document.getElementById('past-events-list').classList.toggle('show');
+    });
+
+    // ─── Newsletter ───
+    document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this));
+      data.source = 'events-newsletter';
+      data.submitted_at = new Date().toISOString();
+      fetch('https://formsubmit.co/ajax/c.lofton@zollege.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      }).finally(() => {
+        this.style.display = 'none';
+        document.getElementById('newsletter-success').style.display = 'block';
+      });
+    });
+
+    // ─── Scroll Animations ───
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.event-card, .newsletter-section').forEach(el => {
+      el.classList.add('fade-in');
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>
