@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corporate AI Training Protocol — Austin AI School</title>
+  <meta name="description" content="Battle-tested enterprise AI training delivery framework. Discovery, program design, delivery, measurement, and scaling — from Austin AI School.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ─── Protocol Page Layout ─── */
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface-2: #16161f;
+      --border: #1e1e2e;
+      --border-hover: rgba(139,92,246,0.4);
+      --primary: #8b5cf6;
+      --primary-dim: rgba(139,92,246,0.12);
+      --cyan: #06b6d4;
+      --cyan-dim: rgba(6,182,212,0.12);
+      --text: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --green: #22c55e;
+      --orange: #f97316;
+      --red: #ef4444;
+      --yellow: #eab308;
+    }
+
+    .protocol-layout {
+      display: flex;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      gap: 48px;
+      position: relative;
+    }
+
+    /* ─── TOC Sidebar ─── */
+    .toc-sidebar {
+      position: sticky;
+      top: 80px;
+      align-self: flex-start;
+      width: 270px;
+      min-width: 270px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      padding: 24px 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    .toc-sidebar::-webkit-scrollbar { width: 4px; }
+    .toc-sidebar::-webkit-scrollbar-track { background: transparent; }
+    .toc-sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    .toc-header {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-left: 16px;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .toc-list li {
+      margin: 0;
+    }
+    .toc-link {
+      display: block;
+      padding: 7px 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+    .toc-link:hover {
+      color: var(--text-secondary);
+      border-left-color: var(--border);
+    }
+    .toc-link.active {
+      color: var(--primary);
+      border-left-color: var(--primary);
+      background: var(--primary-dim);
+      font-weight: 600;
+    }
+    .toc-link.sub {
+      padding-left: 32px;
+      font-size: 0.8rem;
+    }
+    .toc-download {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 20px 16px 0;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .toc-download:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* ─── Mobile TOC Toggle ─── */
+    .toc-mobile-toggle {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(139,92,246,0.4);
+      transition: transform 0.2s;
+    }
+    .toc-mobile-toggle:hover { transform: scale(1.05); }
+
+    .toc-mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 999;
+      backdrop-filter: blur(4px);
+    }
+    .toc-mobile-overlay.show { display: block; }
+
+    /* ─── Main Content ─── */
+    .protocol-content {
+      flex: 1;
+      min-width: 0;
+      padding: 32px 0 80px;
+    }
+
+    /* Hero / Title area */
+    .protocol-hero {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .protocol-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .protocol-hero .subtitle {
+      font-size: 1.1rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .protocol-hero .version {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .protocol-hero .lead {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      border-left: 3px solid var(--primary);
+      padding-left: 20px;
+      margin: 20px 0 0;
+      font-style: italic;
+    }
+    .download-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .download-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* ─── Section Headings ─── */
+    .protocol-content h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 64px 0 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      scroll-margin-top: 80px;
+    }
+    .protocol-content h2:first-of-type {
+      margin-top: 0;
+      border-top: none;
+      padding-top: 0;
+    }
+    .protocol-content h2 .section-num {
+      color: var(--primary);
+      margin-right: 8px;
+    }
+    .protocol-content h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 40px 0 16px;
+      color: var(--text);
+      scroll-margin-top: 80px;
+    }
+    .protocol-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 28px 0 12px;
+      color: var(--cyan);
+    }
+    .protocol-content p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    /* ─── Tables ─── */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 16px 0 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .protocol-content table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .protocol-content thead th {
+      background: var(--surface-2);
+      color: var(--text);
+      font-weight: 700;
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .protocol-content tbody td {
+      padding: 11px 16px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .protocol-content tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .protocol-content tbody tr:hover {
+      background: rgba(139,92,246,0.04);
+    }
+    .protocol-content tbody tr.total-row td {
+      font-weight: 700;
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    /* ─── Checklists ─── */
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 24px;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      transition: background 0.15s;
+    }
+    .checklist li:hover {
+      background: rgba(139,92,246,0.04);
+    }
+    .checklist li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      background: var(--surface);
+      display: block;
+    }
+    .checklist-group-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 20px 0 8px;
+      padding-left: 4px;
+    }
+
+    /* ─── Code Blocks ─── */
+    .protocol-content pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      overflow-x: auto;
+      margin: 16px 0 24px;
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+    .protocol-content pre code {
+      color: var(--cyan);
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    }
+    .protocol-content p code,
+    .protocol-content li code,
+    .protocol-content td code {
+      background: var(--primary-dim);
+      color: var(--primary);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    }
+
+    /* ─── Ordered / Unordered Lists ─── */
+    .protocol-content ol,
+    .protocol-content ul:not(.checklist):not(.toc-list) {
+      padding-left: 24px;
+      margin: 12px 0 20px;
+    }
+    .protocol-content ol li,
+    .protocol-content ul:not(.checklist):not(.toc-list) li {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 6px;
+      font-size: 0.92rem;
+    }
+
+    /* ─── Do's / Don'ts ─── */
+    .do-dont {
+      margin: 16px 0 24px;
+    }
+    .do-dont-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    .do-dont-item:hover {
+      background: rgba(139,92,246,0.04);
+    }
+    .do-dont-item .num {
+      flex-shrink: 0;
+      font-weight: 700;
+      color: var(--text-muted);
+      min-width: 24px;
+    }
+
+    /* ─── Quiz ─── */
+    .quiz-question {
+      margin: 20px 0;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    .quiz-question p {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .quiz-option {
+      display: block;
+      padding: 6px 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .quiz-option.correct {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    /* ─── Feedback/Rating items ─── */
+    .rating-item {
+      padding: 8px 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .rating-scale {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 8px 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .rating-scale span {
+      padding: 4px 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    /* ─── Badge/Level Cards ─── */
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin: 20px 0;
+    }
+    .cert-card h4 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+    .cert-card .validity {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 4px 12px;
+      background: var(--cyan-dim);
+      color: var(--cyan);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    /* ─── Track Cards ─── */
+    .track-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin: 24px 0;
+    }
+    .track-card h4 {
+      margin-top: 0;
+    }
+    .track-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 12px 0 16px;
+    }
+    .track-meta span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 4px 12px;
+      background: var(--surface-2);
+      border-radius: 100px;
+    }
+    .track-deliverables {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+    .track-deliverables strong {
+      color: var(--text);
+    }
+
+    /* ─── Horizontal Rule ─── */
+    .protocol-content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 40px 0;
+    }
+
+    /* ─── CTA Section ─── */
+    .protocol-cta {
+      background: linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(6,182,212,0.1) 100%);
+      border: 1px solid var(--border-hover);
+      border-radius: 20px;
+      padding: 56px 40px;
+      text-align: center;
+      margin: 64px 0 0;
+    }
+    .protocol-cta h2 {
+      border: none !important;
+      margin: 0 0 12px !important;
+      padding: 0 !important;
+      font-size: 1.8rem !important;
+    }
+    .protocol-cta p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+    }
+    .protocol-cta .btn-primary {
+      padding: 14px 36px;
+      font-size: 1rem;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+      .toc-sidebar {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 100vh;
+        max-height: 100vh;
+        background: var(--bg);
+        z-index: 1001;
+        padding: 24px;
+        border-right: 1px solid var(--border);
+        box-shadow: 4px 0 30px rgba(0,0,0,0.5);
+      }
+      .toc-sidebar.mobile-open {
+        display: block;
+      }
+      .toc-mobile-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .protocol-layout {
+        gap: 0;
+      }
+    }
+    @media (max-width: 600px) {
+      .protocol-content { padding: 16px 0 60px; }
+      .protocol-hero h1 { font-size: 1.5rem; }
+      .protocol-content h2 { font-size: 1.3rem; }
+      .protocol-cta { padding: 36px 20px; }
+      .table-wrap { margin-left: -16px; margin-right: -16px; border-radius: 0; border-left: none; border-right: none; }
+      .download-bar { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">🧠 Austin AI School</a>
+      <button class="nav-toggle" aria-label="Menu">☰</button>
+      <div class="nav-links">
+        <a href="index.html#corporate">Corporate Training</a>
+        <a href="index.html#workforce">Workforce Dev</a>
+        <a href="events.html">Events</a>
+        <a href="about.html">About</a>
+        <a href="index.html#apply" class="btn btn-nav">Register Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE TOC TOGGLE -->
+  <button class="toc-mobile-toggle" id="toc-toggle" aria-label="Table of Contents">☰</button>
+  <div class="toc-mobile-overlay" id="toc-overlay"></div>
+
+  <div class="protocol-layout">
+    <!-- TOC SIDEBAR -->
+    <aside class="toc-sidebar" id="toc-sidebar">
+      <div class="toc-header">On This Page</div>
+      <ul class="toc-list" id="toc-list">
+        <li><a class="toc-link" href="#section-1">1. Discovery &amp; Needs Assessment</a></li>
+        <li><a class="toc-link sub" href="#s1-1">1.1 Stakeholder Interview Template</a></li>
+        <li><a class="toc-link sub" href="#s1-2">1.2 AI Maturity Assessment</a></li>
+        <li><a class="toc-link sub" href="#s1-3">1.3 Skills Gap Analysis Matrix</a></li>
+        <li><a class="toc-link sub" href="#s1-4">1.4 Technology Stack Audit</a></li>
+        <li><a class="toc-link sub" href="#s1-5">1.5 Business Goals Alignment</a></li>
+        <li><a class="toc-link sub" href="#s1-6">1.6 ROI Projection Model</a></li>
+        <li><a class="toc-link" href="#section-2">2. Program Design</a></li>
+        <li><a class="toc-link sub" href="#s2-1">2.1 Training Tracks</a></li>
+        <li><a class="toc-link sub" href="#s2-2">2.2 Industry Customization</a></li>
+        <li><a class="toc-link sub" href="#s2-3">2.3 Learning Objectives (Bloom's)</a></li>
+        <li><a class="toc-link sub" href="#s2-4">2.4 Delivery Format Decision Tree</a></li>
+        <li><a class="toc-link sub" href="#s2-5">2.5 Resource Requirements</a></li>
+        <li><a class="toc-link" href="#section-3">3. Pre-Training Setup</a></li>
+        <li><a class="toc-link sub" href="#s3-1">3.1 Technical Environment</a></li>
+        <li><a class="toc-link sub" href="#s3-2">3.2 Pre-Assessment Quiz</a></li>
+        <li><a class="toc-link sub" href="#s3-3">3.3 LMS Configuration</a></li>
+        <li><a class="toc-link sub" href="#s3-4">3.4 Communication Timeline</a></li>
+        <li><a class="toc-link sub" href="#s3-5">3.5 Participant Welcome Packet</a></li>
+        <li><a class="toc-link" href="#section-4">4. Training Delivery</a></li>
+        <li><a class="toc-link sub" href="#s4-1">4.1 Session Structure</a></li>
+        <li><a class="toc-link sub" href="#s4-2">4.2 Facilitation Guidelines</a></li>
+        <li><a class="toc-link sub" href="#s4-3">4.3 Lab Exercise Framework</a></li>
+        <li><a class="toc-link sub" href="#s4-4">4.4 Virtual Delivery Best Practices</a></li>
+        <li><a class="toc-link sub" href="#s4-5">4.5 Assessment Checkpoint Rubric</a></li>
+        <li><a class="toc-link sub" href="#s4-6">4.6 Troubleshooting Playbook</a></li>
+        <li><a class="toc-link sub" href="#s4-7">4.7 Daily Feedback Form</a></li>
+        <li><a class="toc-link" href="#section-5">5. Post-Training &amp; Reinforcement</a></li>
+        <li><a class="toc-link sub" href="#s5-1">5.1 Knowledge Assessment</a></li>
+        <li><a class="toc-link sub" href="#s5-2">5.2 Certification &amp; Badges</a></li>
+        <li><a class="toc-link sub" href="#s5-3">5.3 30-60-90 Day Calendar</a></li>
+        <li><a class="toc-link sub" href="#s5-4">5.4 Mentor Matching</a></li>
+        <li><a class="toc-link sub" href="#s5-5">5.5 Community Setup</a></li>
+        <li><a class="toc-link sub" href="#s5-6">5.6 Capstone Project Template</a></li>
+        <li><a class="toc-link" href="#section-6">6. Measurement &amp; Reporting</a></li>
+        <li><a class="toc-link sub" href="#s6-1">6.1 Kirkpatrick 4-Level Evaluation</a></li>
+        <li><a class="toc-link sub" href="#s6-2">6.2 ROI Calculation Methodology</a></li>
+        <li><a class="toc-link sub" href="#s6-3">6.3 Executive Summary Template</a></li>
+        <li><a class="toc-link sub" href="#s6-4">6.4 Continuous Improvement</a></li>
+        <li><a class="toc-link" href="#section-7">7. Scaling &amp; Repeatability</a></li>
+        <li><a class="toc-link sub" href="#s7-1">7.1 Train-the-Trainer Program</a></li>
+        <li><a class="toc-link sub" href="#s7-2">7.2 Content Update Cadence</a></li>
+        <li><a class="toc-link sub" href="#s7-3">7.3 Multi-Site Deployment</a></li>
+        <li><a class="toc-link sub" href="#s7-4">7.4 QA Scoring Rubric</a></li>
+        <li><a class="toc-link sub" href="#s7-5">7.5 Partner Licensing Framework</a></li>
+        <li><a class="toc-link" href="#appendix">Appendix: Master Timeline</a></li>
+      </ul>
+      <a class="toc-download" href="corporate-training-protocol.md" download>
+        📄 Download .md source
+      </a>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="protocol-content">
+
+      <!-- HERO -->
+      <div class="protocol-hero">
+        <h1>Corporate AI Training Protocol</h1>
+        <div class="subtitle">Austin AI School — Enterprise Training Delivery Framework</div>
+        <div class="version">Version 2.1 · 2026</div>
+        <p class="lead">This protocol has been developed from training programs delivered across 240+ locations to 10,000+ professionals. It represents a battle-tested, repeatable framework for planning, delivering, and measuring corporate AI training at scale.</p>
+        <div class="download-bar">
+          <a class="download-btn" href="corporate-training-protocol.md" download>📄 Download Markdown (.md)</a>
+          <a class="download-btn" href="#section-1">📖 Start Reading →</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 1: DISCOVERY -->
+      <!-- ═══════════════════════════════════════ -->
+      <h2 id="section-1"><span class="section-num">1.</span> Discovery &amp; Needs Assessment <span style="color:var(--text-muted);font-weight:400;font-size:0.85rem;">(Week 1)</span></h2>
+
+      <h3 id="s1-1">1.1 Stakeholder Interview Template</h3>
+      <p>Conduct separate interviews with three stakeholder tiers. Allocate 45–60 minutes per session.</p>
+
+      <h4>C-Suite / Executive Sponsors (5–7 people)</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Question</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>What are your top 3 strategic priorities for the next 12 months, and where does AI fit within them?</td></tr>
+            <tr><td>2</td><td>What does a successful AI training program look like to you? What outcomes would justify the investment?</td></tr>
+            <tr><td>3</td><td>What is your current annual budget allocation for employee training and development?</td></tr>
+            <tr><td>4</td><td>Have you attempted any AI initiatives previously? What worked and what didn't?</td></tr>
+            <tr><td>5</td><td>What competitive pressures are driving your interest in AI adoption?</td></tr>
+            <tr><td>6</td><td>How do you currently measure employee productivity, and where do you see the biggest inefficiency gaps?</td></tr>
+            <tr><td>7</td><td>What is your risk tolerance for AI experimentation — conservative, moderate, or aggressive?</td></tr>
+            <tr><td>8</td><td>Are there regulatory or compliance constraints we need to design around (HIPAA, SOX, GDPR, etc.)?</td></tr>
+            <tr><td>9</td><td>What is your target timeline for seeing measurable ROI from this investment?</td></tr>
+            <tr><td>10</td><td>Who are the internal champions and potential resistors for this initiative?</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Department Heads / Managers (8–12 people across functions)</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Question</th></tr></thead>
+          <tbody>
+            <tr><td>11</td><td>Walk me through your team's typical workflow — what takes the most time and feels the most repetitive?</td></tr>
+            <tr><td>12</td><td>What tools and software does your team use daily? Which processes still involve manual data entry, copy-paste, or spreadsheet wrangling?</td></tr>
+            <tr><td>13</td><td>If your team could automate one task tomorrow, what would have the biggest impact?</td></tr>
+            <tr><td>14</td><td>What is your team's current comfort level with technology change on a 1–10 scale?</td></tr>
+            <tr><td>15</td><td>How much time per week could you realistically allocate for training without disrupting operations?</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>End Users / Individual Contributors (15–20 people, diverse roles)</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Question</th></tr></thead>
+          <tbody>
+            <tr><td>16</td><td>Have you used any AI tools (ChatGPT, Copilot, Gemini, etc.) in your personal or professional life?</td></tr>
+            <tr><td>17</td><td>On a scale of 1–5, how confident are you that AI will positively impact your job?</td></tr>
+            <tr><td>18</td><td>What part of your daily work do you wish a smart assistant could handle for you?</td></tr>
+            <tr><td>19</td><td>What concerns do you have about AI in the workplace (job security, accuracy, privacy)?</td></tr>
+            <tr><td>20</td><td>How do you prefer to learn new skills — video, live instruction, hands-on labs, self-paced reading, or peer learning?</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s1-2">1.2 AI Maturity Assessment</h3>
+      <p>Rate the organization across 8 dimensions using the 5-level scale below. The composite score determines the recommended starting point.</p>
+
+      <h4>Maturity Levels</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Level</th><th>Label</th><th>Score</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>Unaware</strong></td><td>0–10</td><td>No formal AI strategy. Employees may use AI tools ad hoc without organizational knowledge. No policies, no budget, no designated owner.</td></tr>
+            <tr><td>2</td><td><strong>Exploring</strong></td><td>11–25</td><td>Leadership is curious. A few individuals are experimenting. No formal training, no governance, no success metrics. Budget is exploratory only.</td></tr>
+            <tr><td>3</td><td><strong>Experimenting</strong></td><td>26–50</td><td>Pilot projects underway in 1–2 departments. Some employees have received basic training. AI use policy drafted but not enforced. ROI is anecdotal.</td></tr>
+            <tr><td>4</td><td><strong>Implementing</strong></td><td>51–75</td><td>AI tools integrated into multiple workflows. Formal training program exists. Governance policies enforced. Measurable productivity improvements documented.</td></tr>
+            <tr><td>5</td><td><strong>Optimizing</strong></td><td>76–100</td><td>AI is a core competency. Continuous learning culture established. Custom models/agents deployed. AI strategy directly tied to business KPIs. Innovation team in place.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Scoring Dimensions (rate each 0–12.5, total = 100)</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dimension</th><th>Questions to Evaluate</th><th>Score</th></tr></thead>
+          <tbody>
+            <tr><td>Leadership &amp; Vision</td><td>Is there executive sponsorship? Published AI strategy?</td><td>___ / 12.5</td></tr>
+            <tr><td>Talent &amp; Skills</td><td>Do employees have AI skills? Is there a training program?</td><td>___ / 12.5</td></tr>
+            <tr><td>Data Readiness</td><td>Is data accessible, clean, governed, and documented?</td><td>___ / 12.5</td></tr>
+            <tr><td>Technology Infrastructure</td><td>Are cloud platforms, APIs, and dev environments available?</td><td>___ / 12.5</td></tr>
+            <tr><td>Process Integration</td><td>Are workflows AI-augmented? Are there documented use cases?</td><td>___ / 12.5</td></tr>
+            <tr><td>Governance &amp; Ethics</td><td>Are there AI use policies, bias review processes, privacy controls?</td><td>___ / 12.5</td></tr>
+            <tr><td>Culture &amp; Change Readiness</td><td>Is there appetite for change? Is experimentation encouraged?</td><td>___ / 12.5</td></tr>
+            <tr><td>Measurement &amp; ROI</td><td>Are AI outcomes tracked? Is there a dashboard or reporting cadence?</td><td>___ / 12.5</td></tr>
+            <tr class="total-row"><td><strong>TOTAL</strong></td><td></td><td><strong>___ / 100</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s1-3">1.3 Skills Gap Analysis Matrix</h3>
+      <p>Complete one row per role. Scoring key: <strong>1</strong> = No knowledge, <strong>2</strong> = Awareness only, <strong>3</strong> = Can use with guidance, <strong>4</strong> = Independent proficiency, <strong>5</strong> = Can teach others.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Role</th><th>AI Fund.</th><th>Prompt Eng.</th><th>Data Lit.</th><th>Tool Prof.</th><th>Workflow Auto.</th><th>AI Ethics</th><th>Current Avg</th><th>Target</th><th>Gap</th></tr></thead>
+          <tbody>
+            <tr><td>C-Suite Executive</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>3.5</td><td>___</td></tr>
+            <tr><td>VP / Director</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>3.5</td><td>___</td></tr>
+            <tr><td>Department Manager</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>4.0</td><td>___</td></tr>
+            <tr><td>Project Manager</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>4.0</td><td>___</td></tr>
+            <tr><td>Software Engineer</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>5.0</td><td>___</td></tr>
+            <tr><td>Data Analyst</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>5.0</td><td>___</td></tr>
+            <tr><td>Marketing Specialist</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>4.0</td><td>___</td></tr>
+            <tr><td>Sales Representative</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>3.5</td><td>___</td></tr>
+            <tr><td>Customer Support Rep</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>4.0</td><td>___</td></tr>
+            <tr><td>HR / People Ops</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>3.5</td><td>___</td></tr>
+            <tr><td>Finance / Accounting</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>3.5</td><td>___</td></tr>
+            <tr><td>Legal / Compliance</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>3.0</td><td>___</td></tr>
+            <tr><td>Operations / Logistics</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td><td>4.0</td><td>___</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s1-4">1.4 Technology Stack Audit Checklist</h3>
+      <p>Audit the client's current technology environment. Check all that apply:</p>
+
+      <p class="checklist-group-label">☁️ Cloud &amp; Infrastructure</p>
+      <ul class="checklist">
+        <li>Cloud provider identified (AWS / Azure / GCP / Other)</li>
+        <li>SSO / identity provider in place (Okta, Azure AD, etc.)</li>
+        <li>VPN or secure access for remote participants</li>
+        <li>API gateway or management layer available</li>
+        <li>Container orchestration capability (Docker, Kubernetes)</li>
+      </ul>
+
+      <p class="checklist-group-label">📊 Data &amp; Analytics</p>
+      <ul class="checklist">
+        <li>Centralized data warehouse or lake (Snowflake, BigQuery, Redshift)</li>
+        <li>Data governance policy documented</li>
+        <li>ETL / data pipeline tooling in place</li>
+        <li>BI / analytics platform (Tableau, Power BI, Looker)</li>
+        <li>Data access permissions model documented</li>
+      </ul>
+
+      <p class="checklist-group-label">🤖 AI &amp; ML Tooling</p>
+      <ul class="checklist">
+        <li>LLM API access (OpenAI, Anthropic, Google, Azure OpenAI)</li>
+        <li>AI coding assistants deployed (Copilot, Cursor, Cody)</li>
+        <li>No-code/low-code AI platforms (Zapier AI, Make, Microsoft Power Automate)</li>
+        <li>Vector database available (Pinecone, Weaviate, ChromaDB)</li>
+        <li>Model hosting / inference infrastructure</li>
+      </ul>
+
+      <p class="checklist-group-label">💬 Collaboration &amp; Productivity</p>
+      <ul class="checklist">
+        <li>Office suite identified (Google Workspace / Microsoft 365)</li>
+        <li>Project management tool (Jira, Asana, Monday, Linear)</li>
+        <li>Communication platform (Slack, Teams, Discord)</li>
+        <li>Knowledge base or wiki (Notion, Confluence, SharePoint)</li>
+        <li>LMS or training platform (existing or needed)</li>
+      </ul>
+
+      <p class="checklist-group-label">🔒 Security &amp; Compliance</p>
+      <ul class="checklist">
+        <li>AI acceptable use policy exists</li>
+        <li>Data classification policy (what can/cannot be sent to AI)</li>
+        <li>Vendor security review process</li>
+        <li>Audit logging for AI tool usage</li>
+        <li>Incident response plan includes AI-related scenarios</li>
+      </ul>
+
+      <h3 id="s1-5">1.5 Business Goals Alignment Worksheet</h3>
+      <p>Map each business goal to AI training outcomes:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Business Goal</th><th>AI Capability Needed</th><th>Training Track</th><th>Success Metric</th><th>Timeline</th></tr></thead>
+          <tbody>
+            <tr><td>Reduce customer response time by 40%</td><td>AI-powered support automation</td><td>End-User + Technical</td><td>Avg. response time (hrs)</td><td>90 days</td></tr>
+            <tr><td>Cut content production costs by 30%</td><td>Generative AI for marketing</td><td>End-User</td><td>Cost per content piece ($)</td><td>60 days</td></tr>
+            <tr><td>Accelerate software delivery by 25%</td><td>AI coding assistants, AI testing</td><td>Technical</td><td>Sprint velocity (story points)</td><td>90 days</td></tr>
+            <tr><td>Improve sales forecast accuracy to 90%</td><td>Predictive analytics, AI CRM</td><td>Manager + Technical</td><td>Forecast accuracy (%)</td><td>120 days</td></tr>
+            <tr><td>Reduce compliance review time by 50%</td><td>Document AI, policy automation</td><td>End-User + Manager</td><td>Hours per review cycle</td><td>90 days</td></tr>
+            <tr style="opacity:0.5"><td><em>[Client Goal 1]</em></td><td></td><td></td><td></td><td></td></tr>
+            <tr style="opacity:0.5"><td><em>[Client Goal 2]</em></td><td></td><td></td><td></td><td></td></tr>
+            <tr style="opacity:0.5"><td><em>[Client Goal 3]</em></td><td></td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s1-6">1.6 ROI Projection Model</h3>
+      <h4>Formula</h4>
+      <pre><code>ROI (%) = [(Total Benefits − Total Costs) / Total Costs] × 100</code></pre>
+
+      <h4>Cost Components</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Cost Item</th><th>Calculation</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>Training delivery fees</td><td>Per-person rate × headcount</td><td>$1,500 × 50 = $75,000</td></tr>
+            <tr><td>Employee time (opportunity cost)</td><td>Avg hourly rate × training hours × headcount</td><td>$65/hr × 16 hrs × 50 = $52,000</td></tr>
+            <tr><td>Technology / tool licenses</td><td>Per-seat cost × 12 months</td><td>$30/seat × 50 × 12 = $18,000</td></tr>
+            <tr><td>Internal coordination</td><td>Project manager hours × rate</td><td>80 hrs × $85/hr = $6,800</td></tr>
+            <tr class="total-row"><td><strong>Total Investment</strong></td><td></td><td><strong>$151,800</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Benefit Components</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Benefit Item</th><th>Calculation</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>Time saved per employee per week</td><td>Hours saved × hourly rate × 52 weeks × headcount</td><td>3 hrs × $65 × 52 × 50 = $507,000</td></tr>
+            <tr><td>Error reduction</td><td>Error cost × error reduction % × frequency</td><td>$500 × 40% × 200/yr = $40,000</td></tr>
+            <tr><td>Revenue acceleration</td><td>Faster deal cycles × avg deal value × close rate improvement</td><td>15% faster × $50K × 5% = $37,500</td></tr>
+            <tr><td>Reduced vendor/contractor spend</td><td>Current spend × replacement %</td><td>$200K × 30% = $60,000</td></tr>
+            <tr class="total-row"><td><strong>Total Annual Benefits</strong></td><td></td><td><strong>$644,500</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>ROI Calculation</h4>
+      <pre><code>ROI = [($644,500 − $151,800) / $151,800] × 100 = 324%
+Payback period = $151,800 / ($644,500 / 12) = 2.8 months</code></pre>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 2: PROGRAM DESIGN -->
+      <!-- ═══════════════════════════════════════ -->
+      <h2 id="section-2"><span class="section-num">2.</span> Program Design <span style="color:var(--text-muted);font-weight:400;font-size:0.85rem;">(Week 2)</span></h2>
+
+      <h3 id="s2-1">2.1 Training Tracks</h3>
+
+      <!-- Track A -->
+      <div class="track-card">
+        <h4>Track A: Executive Track (1 Day / 6 Hours)</h4>
+        <div class="track-meta">
+          <span>👥 Audience: C-suite, VPs, Directors, Board Members</span>
+          <span>📏 Class Size: 8–15</span>
+          <span>📋 Prerequisites: None</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Time</th><th>Module</th><th>Content</th><th>Format</th></tr></thead>
+            <tbody>
+              <tr><td>9:00–10:00</td><td>The AI Landscape</td><td>Current state of AI, key terminology demystified, what's hype vs. real. Market trends and competitor analysis.</td><td>Lecture + Discussion</td></tr>
+              <tr><td>10:00–10:45</td><td>AI Strategy Frameworks</td><td>Build vs. buy decisions, vendor evaluation criteria, total cost of ownership models.</td><td>Case Study Workshop</td></tr>
+              <tr><td>10:45–11:00</td><td>Break</td><td></td><td></td></tr>
+              <tr><td>11:00–12:00</td><td>Hands-On Executive Demo</td><td>Live demonstrations of 5 enterprise AI tools. Executives try real business scenarios with ChatGPT, Copilot, and industry-specific tools.</td><td>Guided Hands-On</td></tr>
+              <tr><td>12:00–1:00</td><td>Lunch</td><td></td><td></td></tr>
+              <tr><td>1:00–2:00</td><td>AI Governance &amp; Risk</td><td>AI policy creation, bias/fairness considerations, regulatory landscape, data privacy, IP ownership.</td><td>Workshop</td></tr>
+              <tr><td>2:00–2:45</td><td>ROI &amp; Business Case Building</td><td>How to model AI ROI, identify quick wins, build internal business cases for AI investment.</td><td>Template Exercise</td></tr>
+              <tr><td>2:45–3:00</td><td>Break</td><td></td><td></td></tr>
+              <tr><td>3:00–3:45</td><td>Change Management for AI</td><td>Leading AI transformation, managing employee concerns, communication strategies.</td><td>Panel Discussion</td></tr>
+              <tr><td>3:45–4:30</td><td>Action Planning</td><td>Each executive creates a 90-day AI action plan for their department.</td><td>Individual + Group</td></tr>
+              <tr><td>4:30–5:00</td><td>Q&amp;A and Wrap-Up</td><td>Open discussion, next steps, resources provided.</td><td>Open Forum</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="track-deliverables"><strong>Deliverables:</strong> 90-day AI Action Plan, Vendor Evaluation Scorecard, AI Policy Draft Template</div>
+      </div>
+
+      <!-- Track B -->
+      <div class="track-card">
+        <h4>Track B: Manager Track (2 Days / 14 Hours)</h4>
+        <div class="track-meta">
+          <span>👥 Audience: Department managers, team leads, PMs</span>
+          <span>📏 Class Size: 12–20</span>
+          <span>📋 Prerequisites: Basic AI familiarity</span>
+        </div>
+        <p><strong>Day 1: Understanding &amp; Planning</strong></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Time</th><th>Module</th><th>Content</th></tr></thead>
+            <tbody>
+              <tr><td>9:00–10:30</td><td>AI Foundations for Leaders</td><td>How LLMs, computer vision, and predictive models work at a conceptual level.</td></tr>
+              <tr><td>10:45–12:00</td><td>Identifying AI Opportunities</td><td>Framework for finding high-ROI AI use cases within your department. Hands-on use case mapping exercise.</td></tr>
+              <tr><td>1:00–2:30</td><td>Tool Evaluation &amp; Selection</td><td>Hands-on comparison of 8+ AI tools. Managers evaluate and score tools against department needs.</td></tr>
+              <tr><td>2:45–4:00</td><td>Implementation Planning</td><td>Project scoping, timeline estimation, resource requirements, risk identification.</td></tr>
+              <tr><td>4:00–5:00</td><td>Change Management Deep Dive</td><td>Resistance patterns, communication templates, stakeholder management.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Day 2: Execution &amp; Enablement</strong></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Time</th><th>Module</th><th>Content</th></tr></thead>
+            <tbody>
+              <tr><td>9:00–10:30</td><td>Prompt Engineering for Managers</td><td>Advanced prompting techniques for business use cases. Building prompt libraries for your team.</td></tr>
+              <tr><td>10:45–12:00</td><td>Workflow Automation Workshop</td><td>Hands-on building of 3 automated workflows using no-code AI tools.</td></tr>
+              <tr><td>1:00–2:30</td><td>Team Enablement Strategies</td><td>How to train your team, create adoption incentives, measure usage, and build an AI culture.</td></tr>
+              <tr><td>2:45–4:00</td><td>Measuring AI Impact</td><td>Setting KPIs, building dashboards, reporting to leadership.</td></tr>
+              <tr><td>4:00–5:00</td><td>Capstone: Department AI Roadmap</td><td>Each manager presents a 6-month AI adoption roadmap for their team.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="track-deliverables"><strong>Deliverables:</strong> Department AI Roadmap, Prompt Library Starter Kit, AI Adoption Measurement Dashboard Template</div>
+      </div>
+
+      <!-- Track C -->
+      <div class="track-card">
+        <h4>Track C: Technical Track (5 Days / 35 Hours)</h4>
+        <div class="track-meta">
+          <span>👥 Software engineers, data analysts, IT pros</span>
+          <span>📏 Class Size: 10–16</span>
+          <span>📋 Prerequisites: Python, command line</span>
+        </div>
+        <ul>
+          <li><strong>Day 1: AI Foundations &amp; Prompt Engineering</strong> — Transformer architectures, attention mechanisms, tokenization. Zero-shot, few-shot, chain-of-thought. Structured output. Lab: Multi-turn conversational assistant.</li>
+          <li><strong>Day 2: API Integration &amp; Application Development</strong> — OpenAI, Anthropic, Google APIs. FastAPI + LLM. Streaming, error handling. Lab: Full-stack AI application.</li>
+          <li><strong>Day 3: RAG &amp; Knowledge Systems</strong> — RAG architecture, chunking, embeddings, vector DBs. LangChain / LlamaIndex. Lab: Company knowledge base Q&amp;A system.</li>
+          <li><strong>Day 4: AI Agents &amp; Autonomous Systems</strong> — ReAct, Plan-and-Execute, multi-agent. Tool use, function calling. LangGraph, CrewAI. Lab: Multi-agent research system.</li>
+          <li><strong>Day 5: Deployment, Security &amp; Production</strong> — Containerization, scaling, prompt injection prevention, PII detection, cost optimization, monitoring. Lab: Production-ready deployment.</li>
+        </ul>
+        <div class="track-deliverables"><strong>Deliverables:</strong> 5 working AI applications, Production deployment playbook, Code repository with all labs</div>
+      </div>
+
+      <!-- Track D -->
+      <div class="track-card">
+        <h4>Track D: End-User Track (Half Day / 3.5 Hours)</h4>
+        <div class="track-meta">
+          <span>👥 All employees — sales, marketing, HR, finance, ops, support</span>
+          <span>📏 Class Size: 20–30</span>
+          <span>📋 Prerequisites: None</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Time</th><th>Module</th><th>Content</th></tr></thead>
+            <tbody>
+              <tr><td>9:00–9:30</td><td>Welcome &amp; AI at Our Company</td><td>Why we're investing in AI, what it means for your role, AI use policy overview.</td></tr>
+              <tr><td>9:30–10:15</td><td>AI Tools in Action</td><td>Live demos of approved AI tools. Real examples from your industry and role.</td></tr>
+              <tr><td>10:15–10:30</td><td>Break</td><td></td></tr>
+              <tr><td>10:30–11:15</td><td>Prompt Engineering Essentials</td><td>The CRAFT framework: Context, Role, Action, Format, Tone. Practice writing effective prompts.</td></tr>
+              <tr><td>11:15–12:00</td><td>Hands-On Lab: Your First AI Workflow</td><td>Participants complete 3 guided exercises using AI for tasks relevant to their actual job.</td></tr>
+              <tr><td>12:00–12:30</td><td>AI Ethics, Policy &amp; Q&amp;A</td><td>What you can/can't do with AI at work. Data privacy. When to trust AI output.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="track-deliverables"><strong>Deliverables:</strong> Quick-reference prompt card, 10 role-specific prompt templates, AI use policy acknowledgment</div>
+      </div>
+
+      <h3 id="s2-2">2.2 Industry Customization Matrix</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Module</th><th>Healthcare</th><th>Finance</th><th>Legal</th><th>Manufacturing</th><th>Retail</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Use Cases</strong></td><td>Clinical notes summarization, patient triage, drug interaction checks, radiology AI</td><td>Fraud detection, risk modeling, algorithmic trading, regulatory reporting</td><td>Contract analysis, legal research, e-discovery, compliance monitoring</td><td>Predictive maintenance, quality control, supply chain optimization, safety</td><td>Demand forecasting, personalization, inventory optimization, customer service automation</td></tr>
+            <tr><td><strong>Compliance</strong></td><td>HIPAA, FDA 21 CFR Part 11, clinical trial regulations</td><td>SOX, SEC, FINRA, PCI-DSS, Basel III</td><td>Attorney-client privilege, court e-filing, bar ethics</td><td>OSHA, ISO 9001, FDA (food), EPA</td><td>PCI-DSS, CCPA/GDPR, FTC advertising</td></tr>
+            <tr><td><strong>Sample Data</strong></td><td>De-identified patient records, clinical trial data, medical imaging</td><td>Stock prices, transaction logs, financial statements, credit scores</td><td>Contract corpus, case law, regulatory filings</td><td>Sensor readings, maintenance logs, QC images, supply chain data</td><td>Transaction data, customer reviews, inventory logs, web analytics</td></tr>
+            <tr><td><strong>Tools</strong></td><td>Epic AI, ambient scribes, medical coding AI</td><td>Bloomberg GPT, Kensho, Palantir, Alteryx</td><td>Harvey AI, CoCounsel, Westlaw AI</td><td>Siemens MindSphere, PTC ThingWorx, Augury</td><td>Shopify AI, Dynamic Yield, Salesforce Einstein</td></tr>
+            <tr><td><strong>Capstone</strong></td><td>Clinical decision support chatbot</td><td>Risk assessment automation pipeline</td><td>Contract review &amp; extraction system</td><td>Predictive maintenance alert system</td><td>Customer service AI with product recommendations</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s2-3">2.3 Learning Objectives — Bloom's Taxonomy Mapping</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Level</th><th>Verb</th><th>Executive</th><th>Manager</th><th>Technical</th><th>End-User</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Remember</strong></td><td>Define, List</td><td>Define 10 key AI terms</td><td>List 5 AI use case categories</td><td>Recall transformer architecture components</td><td>Define AI, LLM, prompt, hallucination</td></tr>
+            <tr><td><strong>Understand</strong></td><td>Explain, Summarize</td><td>Explain AI's strategic impact</td><td>Summarize change management principles</td><td>Explain how RAG systems work</td><td>Summarize company AI use policy</td></tr>
+            <tr><td><strong>Apply</strong></td><td>Use, Implement</td><td>Use a vendor evaluation scorecard</td><td>Implement a department AI audit</td><td>Build a working API integration</td><td>Use the CRAFT framework</td></tr>
+            <tr><td><strong>Analyze</strong></td><td>Compare, Evaluate</td><td>Analyze competitor AI strategies</td><td>Compare AI tools against requirements</td><td>Analyze embedding quality and retrieval accuracy</td><td>Analyze AI output for bias</td></tr>
+            <tr><td><strong>Evaluate</strong></td><td>Justify, Assess</td><td>Justify AI investment with ROI</td><td>Assess team readiness</td><td>Evaluate model performance metrics</td><td>Evaluate when to use AI vs. manual</td></tr>
+            <tr><td><strong>Create</strong></td><td>Design, Build</td><td>Design a 90-day AI action plan</td><td>Create a 6-month department roadmap</td><td>Build and deploy a production AI app</td><td>Create 5 custom prompts</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s2-4">2.4 Delivery Format Decision Tree</h3>
+      <pre><code>START: How many participants?
+│
+├─ < 15 participants
+│   ├─ All in same location? → IN-PERSON WORKSHOP
+│   └─ Distributed? → LIVE VIRTUAL (Zoom/Teams)
+│
+├─ 15–50 participants
+│   ├─ Same timezone (±2 hrs)? → LIVE VIRTUAL with breakout rooms
+│   └─ Multiple timezones?
+│       ├─ Budget allows multiple sessions? → MULTIPLE LIVE COHORTS
+│       └─ Budget constrained? → HYBRID (recorded lectures + live labs)
+│
+├─ 50–200 participants
+│   ├─ Same office/campus? → IN-PERSON (large venue) + breakout labs
+│   └─ Distributed?
+│       ├─ Staggered rollout OK? → COHORT MODEL (4–6 weeks, 20/cohort)
+│       └─ Need simultaneous? → LIVE VIRTUAL + self-paced pre-work
+│
+└─ 200+ participants
+    └─ BLENDED: Self-paced LMS modules + live virtual workshops + in-person capstone</code></pre>
+
+      <h3 id="s2-5">2.5 Resource Requirements Checklist</h3>
+
+      <p class="checklist-group-label">🏢 For In-Person Delivery</p>
+      <ul class="checklist">
+        <li>Training room with projector/large display and whiteboard</li>
+        <li>High-speed WiFi (minimum 100 Mbps, tested with full participant load)</li>
+        <li>Power strips / charging stations for all participants</li>
+        <li>Each participant has a laptop with admin/install privileges</li>
+        <li>Printed materials: agenda, quick-reference cards, exercise packets</li>
+        <li>Catering: AM snacks, lunch, PM snacks, beverages</li>
+        <li>A/V: wireless presenter, lapel mic for rooms &gt; 20 people</li>
+        <li>Backup mobile hotspot</li>
+      </ul>
+
+      <p class="checklist-group-label">💻 For Virtual Delivery</p>
+      <ul class="checklist">
+        <li>Video conferencing platform with breakout room capability</li>
+        <li>Shared coding environment (GitHub Codespaces, Replit, or Google Colab)</li>
+        <li>Digital whiteboard (Miro, FigJam)</li>
+        <li>Chat channel for Q&amp;A and resource sharing (Slack/Teams)</li>
+        <li>Recording capability and consent</li>
+        <li>Participant tech check scheduled 48 hours before</li>
+      </ul>
+
+      <p class="checklist-group-label">📦 For All Deliveries</p>
+      <ul class="checklist">
+        <li>Lead instructor (certified, 3+ deliveries of this content)</li>
+        <li>Teaching assistant (1 per 12 participants for technical tracks)</li>
+        <li>Pre-configured API keys with spending limits ($5–$20/participant)</li>
+        <li>Sample datasets relevant to client's industry</li>
+        <li>Git repository with all lab starter code</li>
+        <li>Post-training resource package (links, templates, recordings)</li>
+      </ul>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 3: PRE-TRAINING SETUP -->
+      <!-- ═══════════════════════════════════════ -->
+      <h2 id="section-3"><span class="section-num">3.</span> Pre-Training Setup <span style="color:var(--text-muted);font-weight:400;font-size:0.85rem;">(Week 3)</span></h2>
+
+      <h3 id="s3-1">3.1 Technical Environment Checklist</h3>
+      <p>Complete all items minimum 5 business days before training start.</p>
+
+      <p class="checklist-group-label">🔑 API Keys &amp; Accounts</p>
+      <ul class="checklist">
+        <li>OpenAI API key provisioned (spending limit: $__/participant)</li>
+        <li>Anthropic API key provisioned (if applicable)</li>
+        <li>Google AI Studio access (if applicable)</li>
+        <li>API keys tested and verified working</li>
+        <li>Rate limits confirmed sufficient for class size</li>
+      </ul>
+
+      <p class="checklist-group-label">⚙️ Development Environment</p>
+      <ul class="checklist">
+        <li>GitHub organization or repository created</li>
+        <li>Codespaces / cloud IDE configured and tested</li>
+        <li>Python 3.11+ environment with required packages pre-installed</li>
+        <li>requirements.txt verified — all dependencies install cleanly</li>
+        <li>Sample code repository cloned and tested end-to-end</li>
+        <li>Database instances provisioned (if applicable)</li>
+      </ul>
+
+      <p class="checklist-group-label">📄 Data &amp; Content</p>
+      <ul class="checklist">
+        <li>Training datasets uploaded to shared location</li>
+        <li>Datasets tested for completeness and format correctness</li>
+        <li>Sample documents for RAG exercises prepared</li>
+        <li>Client-specific use case examples prepared</li>
+        <li>All exercises tested with current API versions (within 48 hrs)</li>
+      </ul>
+
+      <p class="checklist-group-label">🔐 Access &amp; Security</p>
+      <ul class="checklist">
+        <li>Participant accounts created in all required platforms</li>
+        <li>SSO integration tested (if applicable)</li>
+        <li>VPN access confirmed (if required)</li>
+        <li>AI use policy signed by all participants</li>
+        <li>Data handling agreements in place for any client data used in training</li>
+      </ul>
+
+      <p class="checklist-group-label">🔄 Backup Plans</p>
+      <ul class="checklist">
+        <li>Offline versions of all slide decks downloaded</li>
+        <li>Pre-recorded demo videos for critical sections</li>
+        <li>Alternative exercises that don't require API access</li>
+        <li>Backup API keys from secondary provider</li>
+        <li>Local LLM option ready (Ollama + Llama 3) for network failures</li>
+      </ul>
+
+      <h3 id="s3-2">3.2 Pre-Assessment Quiz (10 Sample Questions)</h3>
+      <p><em>This quiz establishes your starting point. Answer honestly — there's no penalty for wrong answers. Results help us customize the training to your needs.</em></p>
+
+      <div class="quiz-question">
+        <p>Q1. What does "LLM" stand for?</p>
+        <span class="quiz-option correct">a) Large Language Model ✓</span>
+        <span class="quiz-option">b) Linear Learning Machine</span>
+        <span class="quiz-option">c) Logical Linguistic Method</span>
+        <span class="quiz-option">d) I'm not sure</span>
+      </div>
+      <div class="quiz-question">
+        <p>Q2. Which of the following is an example of generative AI?</p>
+        <span class="quiz-option">a) A spam filter</span>
+        <span class="quiz-option correct">b) ChatGPT writing an email draft ✓</span>
+        <span class="quiz-option">c) A thermostat adjusting temperature</span>
+        <span class="quiz-option">d) A calculator app</span>
+      </div>
+      <div class="quiz-question">
+        <p>Q3. What is "prompt engineering"?</p>
+        <span class="quiz-option">a) Building hardware for AI systems</span>
+        <span class="quiz-option correct">b) Crafting effective instructions to get better AI outputs ✓</span>
+        <span class="quiz-option">c) Programming in Python</span>
+        <span class="quiz-option">d) Designing user interfaces</span>
+      </div>
+      <div class="quiz-question">
+        <p>Q4. What is a "hallucination" in the context of AI?</p>
+        <span class="quiz-option correct">a) When AI generates plausible but incorrect information ✓</span>
+        <span class="quiz-option">b) When the AI refuses to answer</span>
+        <span class="quiz-option">c) When the screen displays visual glitches</span>
+        <span class="quiz-option">d) When the model runs out of memory</span>
+      </div>
+      <div class="quiz-question">
+        <p>Q5. Which of these is a potential risk of using AI in business?</p>
+        <span class="quiz-option correct">a) Accidentally sharing confidential data with an AI service ✓</span>
+        <span class="quiz-option">b) AI working too slowly</span>
+        <span class="quiz-option">c) AI making your computer run out of storage</span>
+        <span class="quiz-option">d) AI replacing all electricity</span>
+      </div>
+      <div class="quiz-question">
+        <p>Q6. What is RAG (Retrieval-Augmented Generation)?</p>
+        <span class="quiz-option">a) A type of AI image filter</span>
+        <span class="quiz-option correct">b) A technique that gives AI access to specific documents to improve accuracy ✓</span>
+        <span class="quiz-option">c) A programming language</span>
+        <span class="quiz-option">d) I'm not sure</span>
+      </div>
+      <div class="quiz-question">
+        <p>Q7. Which statement about AI-generated content is most accurate?</p>
+        <span class="quiz-option">a) AI output is always accurate and can be used without review</span>
+        <span class="quiz-option correct">b) AI output should always be reviewed by a human before use ✓</span>
+        <span class="quiz-option">c) AI output is always wrong and unreliable</span>
+        <span class="quiz-option">d) AI can only generate text, not other content types</span>
+      </div>
+      <div class="quiz-question">
+        <p>Q8. An AI "agent" is best described as:</p>
+        <span class="quiz-option">a) A human who manages AI systems</span>
+        <span class="quiz-option correct">b) An AI system that can take actions and make decisions to complete tasks ✓</span>
+        <span class="quiz-option">c) A customer service chatbot that only answers FAQs</span>
+        <span class="quiz-option">d) I'm not sure</span>
+      </div>
+      <div class="quiz-question">
+        <p>Q9. Your company's AI use policy is important because:</p>
+        <span class="quiz-option">a) It prevents all AI usage in the workplace</span>
+        <span class="quiz-option correct">b) It provides guidelines on what data can be shared with AI and how to use it responsibly ✓</span>
+        <span class="quiz-option">c) It only applies to the IT department</span>
+        <span class="quiz-option">d) It's just a formality with no real impact</span>
+      </div>
+      <div class="quiz-question">
+        <p>Q10. Which approach would likely give you the best results when using an AI assistant?</p>
+        <span class="quiz-option">a) "Fix this" (vague, no context)</span>
+        <span class="quiz-option correct">b) "You are an expert financial analyst. Review this Q3 report and identify the top 3 risks, with supporting data from the report." ✓</span>
+        <span class="quiz-option">c) "Do everything for me"</span>
+        <span class="quiz-option">d) All approaches work equally well</span>
+      </div>
+      <p><strong>Scoring:</strong> 8–10 correct = Advanced (may skip foundational modules) · 5–7 = Intermediate · 0–4 = Foundational (full program recommended)</p>
+
+      <h3 id="s3-3">3.3 LMS Configuration Checklist</h3>
+      <ul class="checklist">
+        <li>LMS instance created (or client LMS access granted)</li>
+        <li>Course shell built with correct module structure</li>
+        <li>All training materials uploaded (slides, handouts, lab guides)</li>
+        <li>Pre-assessment quiz configured and tested</li>
+        <li>Post-assessment quiz configured and tested</li>
+        <li>Discussion forums created for each module</li>
+        <li>Completion tracking enabled</li>
+        <li>Certificate template uploaded and auto-issuance configured</li>
+        <li>Participant roster imported with correct roles/permissions</li>
+        <li>Email notifications configured (enrollment confirmation, reminders, completions)</li>
+        <li>Mobile access tested (iOS and Android)</li>
+        <li>SSO integration tested with client's identity provider</li>
+        <li>Accessibility compliance verified (WCAG 2.1 AA)</li>
+        <li>Reporting dashboards configured for client admins</li>
+        <li>Backup export of all content created</li>
+      </ul>
+
+      <h3 id="s3-4">3.4 Communication Timeline</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Timing</th><th>Channel</th><th>Audience</th><th>Message</th></tr></thead>
+          <tbody>
+            <tr><td>T-14 days</td><td>Email</td><td>All participants</td><td><strong>Enrollment Confirmation</strong> — Welcome, training dates/times, logistics, pre-work instructions, calendar invite attached</td></tr>
+            <tr><td>T-14 days</td><td>Email</td><td>Managers</td><td><strong>Manager Briefing</strong> — What their reports will learn, time commitment, how to support them</td></tr>
+            <tr><td>T-10 days</td><td>LMS</td><td>All participants</td><td><strong>Pre-Assessment Quiz</strong> — "Complete by T-7 to help us customize the training"</td></tr>
+            <tr><td>T-7 days</td><td>Email</td><td>All participants</td><td><strong>Technical Setup Instructions</strong> — Account creation, software installation, environment testing</td></tr>
+            <tr><td>T-5 days</td><td>Email</td><td>All participants</td><td><strong>Pre-Reading Materials</strong> — Short articles/videos (&lt; 30 min total)</td></tr>
+            <tr><td>T-3 days</td><td>Slack/Teams</td><td>All participants</td><td><strong>Welcome to the Training Channel</strong> — Introductions, icebreaker, tech check reminder</td></tr>
+            <tr><td>T-2 days</td><td>Email</td><td>All participants</td><td><strong>Tech Check Reminder</strong> — "Have you tested your setup? Contact support if stuck."</td></tr>
+            <tr><td>T-1 day</td><td>Email</td><td>All participants</td><td><strong>Final Reminder</strong> — Tomorrow's agenda, start time, what to bring, parking/login details</td></tr>
+            <tr><td>T-0</td><td>Slack/Teams</td><td>All participants</td><td><strong>Day-of Welcome</strong> — "We're live in 30 minutes! Here's the link / room number"</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s3-5">3.5 Participant Welcome Packet</h3>
+      <p>Distribute digitally (PDF) at T-14 days:</p>
+      <ol>
+        <li><strong>Welcome letter</strong> from the lead instructor (personalized with company name)</li>
+        <li><strong>Training overview</strong> — dates, times, location/links, objectives</li>
+        <li><strong>Agenda</strong> — full schedule for all training days</li>
+        <li><strong>Pre-work checklist</strong> — what to complete before Day 1</li>
+        <li><strong>Technology setup guide</strong> — step-by-step with screenshots</li>
+        <li><strong>AI use policy acknowledgment</strong> — review and sign before Day 1</li>
+        <li><strong>FAQ</strong> — 10 most common questions about the training</li>
+        <li><strong>Instructor bio</strong> — credentials, experience, photo</li>
+        <li><strong>Learning objectives</strong> — what you'll be able to do after training</li>
+        <li><strong>Resource list</strong> — recommended books, channels, communities for continued learning</li>
+      </ol>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 4: TRAINING DELIVERY -->
+      <!-- ═══════════════════════════════════════ -->
+      <h2 id="section-4"><span class="section-num">4.</span> Training Delivery <span style="color:var(--text-muted);font-weight:400;font-size:0.85rem;">(Week 4+)</span></h2>
+
+      <h3 id="s4-1">4.1 Session Structure</h3>
+      <p>Every training session follows the <strong>30/70 Rule</strong>: 30% instructor-led content, 70% hands-on practice.</p>
+      <h4>Standard 90-Minute Block</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Segment</th><th>Duration</th><th>Activity</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Opening</td><td>5 min</td><td>Quick poll or quiz question</td><td>Activate prior knowledge</td></tr>
+            <tr><td>Concept</td><td>15 min</td><td>Instructor presentation with live demos</td><td>Deliver core content</td></tr>
+            <tr><td>Guided Practice</td><td>20 min</td><td>Instructor-led walkthrough — participants follow along</td><td>Bridge theory to practice</td></tr>
+            <tr><td>Independent Lab</td><td>35 min</td><td>Participants work on exercises (solo or pairs)</td><td>Build real skills</td></tr>
+            <tr><td>Debrief</td><td>10 min</td><td>Review solutions, discuss challenges, preview next topic</td><td>Consolidate learning</td></tr>
+            <tr><td>Checkpoint</td><td>5 min</td><td>Quick 3-question check + "muddiest point"</td><td>Verify understanding</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s4-2">4.2 Facilitation Guidelines</h3>
+      <h4>Do's ✅</h4>
+      <div class="do-dont">
+        <div class="do-dont-item"><span class="num">1.</span><span><strong>Start every session with a real-world story</strong> that connects AI to the participants' actual work</span></div>
+        <div class="do-dont-item"><span class="num">2.</span><span><strong>Use participants' names</strong> — learn them before Day 1 from the roster</span></div>
+        <div class="do-dont-item"><span class="num">3.</span><span><strong>Circulate during labs</strong> — check in with every participant at least once per exercise</span></div>
+        <div class="do-dont-item"><span class="num">4.</span><span><strong>Celebrate small wins</strong> — publicly acknowledge when someone gets a creative result</span></div>
+        <div class="do-dont-item"><span class="num">5.</span><span><strong>Adjust pace based on the room</strong> — if 50%+ are struggling, slow down; if 80%+ finish early, add stretch goals</span></div>
+        <div class="do-dont-item"><span class="num">6.</span><span><strong>Use the "I do, we do, you do" model</strong> for complex technical concepts</span></div>
+        <div class="do-dont-item"><span class="num">7.</span><span><strong>Provide multiple difficulty levels</strong> for labs (Standard, Advanced, Expert Challenge)</span></div>
+        <div class="do-dont-item"><span class="num">8.</span><span><strong>Document good questions</strong> and create an FAQ for the cohort</span></div>
+        <div class="do-dont-item"><span class="num">9.</span><span><strong>Take a break every 75–90 minutes</strong> — no exceptions</span></div>
+        <div class="do-dont-item"><span class="num">10.</span><span><strong>End each day with a 2-minute "wins and wishes"</strong> roundtable</span></div>
+      </div>
+
+      <h4>Don'ts ❌</h4>
+      <div class="do-dont">
+        <div class="do-dont-item"><span class="num">1.</span><span><strong>Don't read slides verbatim</strong> — slides are visual aids, not scripts</span></div>
+        <div class="do-dont-item"><span class="num">2.</span><span><strong>Don't skip the hands-on labs</strong> to "cover more content" — labs are the learning</span></div>
+        <div class="do-dont-item"><span class="num">3.</span><span><strong>Don't assume everyone is at the same level</strong> — always provide scaffolding</span></div>
+        <div class="do-dont-item"><span class="num">4.</span><span><strong>Don't dismiss "basic" questions</strong> — they often reveal gaps the whole class shares</span></div>
+        <div class="do-dont-item"><span class="num">5.</span><span><strong>Don't let one participant dominate discussion</strong> — use structured turn-taking</span></div>
+        <div class="do-dont-item"><span class="num">6.</span><span><strong>Don't troubleshoot one person's issue for 10+ minutes</strong> in front of the class — use TAs or break time</span></div>
+        <div class="do-dont-item"><span class="num">7.</span><span><strong>Don't use jargon without defining it first</strong> — even technical audiences appreciate clarity</span></div>
+        <div class="do-dont-item"><span class="num">8.</span><span><strong>Don't go over time</strong> — respect the schedule, people have other commitments</span></div>
+        <div class="do-dont-item"><span class="num">9.</span><span><strong>Don't ignore the chat</strong> (virtual) — assign a TA to monitor and surface questions</span></div>
+        <div class="do-dont-item"><span class="num">10.</span><span><strong>Don't present outdated demos</strong> — verify all tools and APIs within 48 hours of delivery</span></div>
+      </div>
+
+      <h3 id="s4-3">4.3 Lab Exercise Framework</h3>
+      <p>Use this template for every lab exercise:</p>
+      <pre><code>============================================
+LAB [NUMBER]: [TITLE]
+============================================
+
+OBJECTIVE:
+[1-2 sentences: what the participant will build/accomplish]
+
+ESTIMATED TIME: [XX] minutes
+
+DIFFICULTY: ☐ Standard  ☐ Advanced  ☐ Expert Challenge
+
+PREREQUISITES:
+- [Completed Lab X]
+- [API key configured]
+- [Specific tool installed]
+
+SCENARIO:
+[2-3 sentences setting a realistic business context]
+Example: "Your marketing team needs to generate personalized
+email campaigns for 5 customer segments. Build a prompt chain
+that takes a segment profile and generates subject line,
+email body, and CTA — maintaining brand voice throughout."
+
+STEP-BY-STEP INSTRUCTIONS:
+1. [First step with specific commands/actions]
+2. [Second step]
+3. [Continue...]
+
+EXPECTED OUTPUT:
+[Description or screenshot of what success looks like]
+
+STRETCH GOALS (optional):
+- [Additional challenge for fast finishers]
+- [Extended feature or optimization]
+
+COMMON ISSUES:
+- Issue: [description] → Fix: [solution]
+- Issue: [description] → Fix: [solution]
+
+SOLUTION CODE / REFERENCE:
+[Available in /solutions/lab-[number]/ — only check after attempting]
+============================================</code></pre>
+
+      <h3 id="s4-4">4.4 Virtual Delivery Best Practices</h3>
+      <ol>
+        <li><strong>Cameras on (encouraged, not required)</strong> — lead by example with your own camera on</li>
+        <li><strong>Use breakout rooms for every lab</strong> — groups of 2–3 for pair programming, 4–5 for discussions</li>
+        <li><strong>Share a persistent "parking lot" doc</strong> (Google Doc or Notion page) for questions that need follow-up</li>
+        <li><strong>Use polls every 20 minutes</strong> to maintain engagement and check comprehension</li>
+        <li><strong>Have a co-facilitator/TA</strong> monitoring chat at all times</li>
+        <li><strong>Provide pre-configured cloud environments</strong> — never waste training time on local setup issues</li>
+        <li><strong>Record all sessions</strong> (with consent) and share within 24 hours</li>
+        <li><strong>Use a 50-minute hour</strong> — end 10 minutes early each hour for bio breaks and screen rest</li>
+        <li><strong>Start each morning with a 5-minute informal check-in</strong> — build community</li>
+        <li><strong>Use annotation tools</strong> to highlight code on screen while explaining</li>
+        <li><strong>Create a dedicated Slack/Teams channel</strong> for real-time troubleshooting during labs</li>
+        <li><strong>Send a 2-minute video recap</strong> at the end of each day summarizing key takeaways</li>
+        <li><strong>Have participants share their screens</strong> during exercises — normalize showing work-in-progress</li>
+        <li><strong>Use timers visible to everyone</strong> for lab exercises — create gentle urgency</li>
+        <li><strong>Alternate between instructor-led and participant-led demos</strong> — let learners teach back</li>
+      </ol>
+
+      <h3 id="s4-5">4.5 Real-Time Assessment Checkpoint Rubric</h3>
+      <p>Use after each major module. Takes 3–5 minutes.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Criteria</th><th>Exceeds (3)</th><th>Meets (2)</th><th>Developing (1)</th><th>Not Yet (0)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Concept Understanding</strong></td><td>Can explain the concept to others using original examples</td><td>Can correctly describe the concept and its purpose</td><td>Can recognize the concept but struggles to explain it</td><td>Cannot identify or describe the concept</td></tr>
+            <tr><td><strong>Tool Proficiency</strong></td><td>Uses the tool efficiently with shortcuts and optimizations</td><td>Can complete required tasks independently</td><td>Can use the tool with step-by-step guidance</td><td>Cannot operate the tool even with assistance</td></tr>
+            <tr><td><strong>Problem Solving</strong></td><td>Identifies creative or novel approaches</td><td>Solves the exercise using taught methods</td><td>Partially completes the exercise with help</td><td>Cannot make meaningful progress</td></tr>
+            <tr><td><strong>Output Quality</strong></td><td>Output exceeds requirements — production-ready quality</td><td>Output meets all stated requirements</td><td>Output is partially complete or contains errors</td><td>No usable output produced</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Score Interpretation:</strong></p>
+      <ul>
+        <li><strong>10–12:</strong> Ready to advance — assign stretch goals</li>
+        <li><strong>7–9:</strong> On track — continue with standard curriculum</li>
+        <li><strong>4–6:</strong> Needs support — pair with advanced learner, provide extra practice</li>
+        <li><strong>0–3:</strong> Intervention needed — 1-on-1 TA support, modified exercises</li>
+      </ul>
+
+      <h3 id="s4-6">4.6 Troubleshooting Playbook</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Issue</th><th>Symptoms</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td><strong>API key not working</strong></td><td>401 Unauthorized error</td><td>Verify key is correct (no trailing spaces). Check billing. Regenerate key. Have backup keys ready.</td></tr>
+            <tr><td>2</td><td><strong>Rate limit exceeded</strong></td><td>429 Too Many Requests</td><td>Sequential (not simultaneous) API calls. Switch to gpt-4o-mini. Use pre-generated outputs for demos.</td></tr>
+            <tr><td>3</td><td><strong>Python package conflicts</strong></td><td>ImportError, version mismatch</td><td>Pre-built virtual environments. <code>pip install -r requirements.txt --force-reinstall</code>. Cloud IDE fallback.</td></tr>
+            <tr><td>4</td><td><strong>Slow internet / high latency</strong></td><td>Timeouts, frozen screens</td><td>Mobile hotspot. Reduce video quality. Pre-downloaded materials. Offline exercises.</td></tr>
+            <tr><td>5</td><td><strong>Participant can't access LMS</strong></td><td>Login failures, 403 errors</td><td>Verify email. Reset password. Check SSO. Direct-download links as backup.</td></tr>
+            <tr><td>6</td><td><strong>AI model returns unexpected results</strong></td><td>Hallucinations, wrong format</td><td>Teaching moment about AI limitations. Adjust temperature. More specific instructions.</td></tr>
+            <tr><td>7</td><td><strong>Participant far behind</strong></td><td>Not completing labs, frustrated</td><td>Assign TA 1-on-1. Provide completed starter code. Pair with advanced learner.</td></tr>
+            <tr><td>8</td><td><strong>Participant far ahead</strong></td><td>Finishing labs in half time</td><td>Assign stretch goals. Ask to help others. Advanced challenges. Consider for TA role.</td></tr>
+            <tr><td>9</td><td><strong>Audio/video issues (virtual)</strong></td><td>Echo, frozen video</td><td>Headphones, restart browser, leave/rejoin. Phone dial-in backup. Chat-based participation.</td></tr>
+            <tr><td>10</td><td><strong>Participant resistance / skepticism</strong></td><td>"AI will take my job"</td><td>Acknowledge concerns genuinely. Share augmentation vs. replacement data. Focus on concrete productivity gains.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s4-7">4.7 Daily Feedback Form</h3>
+      <p><strong>Training: [Program Name] — Day [X] Feedback</strong></p>
+      <p><em>Please take 2 minutes to share your feedback. Responses are anonymous and directly improve the training.</em></p>
+      <ol>
+        <li><strong>Overall, how would you rate today's training?</strong><br>
+          <span class="rating-scale"><span>Excellent (5)</span><span>Good (4)</span><span>Average (3)</span><span>Below Avg (2)</span><span>Poor (1)</span></span></li>
+        <li><strong>The pace of today's content was:</strong><br>
+          <span class="rating-scale"><span>Way too fast</span><span>Slightly fast</span><span>Just right</span><span>Slightly slow</span><span>Way too slow</span></span></li>
+        <li><strong>The hands-on labs were:</strong> (select all that apply)<br>
+          <span class="rating-scale"><span>Relevant</span><span>Engaging</span><span>Clear</span><span>Too easy</span><span>Too hard</span><span>Confusing</span></span></li>
+        <li><strong>What was the most valuable thing you learned today?</strong> <em>[Open text]</em></li>
+        <li><strong>What was the most confusing or unclear topic?</strong> <em>[Open text]</em></li>
+        <li><strong>What would you like more of tomorrow?</strong><br>
+          <span class="rating-scale"><span>More demos</span><span>More hands-on</span><span>More discussion</span><span>More examples</span><span>More breaks</span></span></li>
+        <li><strong>How confident are you in applying what you learned today?</strong><br>
+          <span class="rating-scale"><span>Very confident (5)</span><span>Confident (4)</span><span>Somewhat (3)</span><span>Not very (2)</span><span>Not at all (1)</span></span></li>
+        <li><strong>Any other comments or suggestions?</strong> <em>[Open text]</em></li>
+      </ol>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 5: POST-TRAINING -->
+      <!-- ═══════════════════════════════════════ -->
+      <h2 id="section-5"><span class="section-num">5.</span> Post-Training &amp; Reinforcement</h2>
+
+      <h3 id="s5-1">5.1 Knowledge Assessment Comparison</h3>
+      <h4>Pre/Post Assessment Score Tracking</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Participant</th><th>Pre-Score</th><th>Post-Score</th><th>Improvement</th><th>Meets Target (70%+)?</th></tr></thead>
+          <tbody>
+            <tr><td>[Name 1]</td><td>35%</td><td>82%</td><td>+47 pts</td><td>✅ Yes</td></tr>
+            <tr><td>[Name 2]</td><td>50%</td><td>91%</td><td>+41 pts</td><td>✅ Yes</td></tr>
+            <tr><td>[Name 3]</td><td>20%</td><td>65%</td><td>+45 pts</td><td>❌ No — schedule review</td></tr>
+            <tr class="total-row"><td><strong>Cohort Average</strong></td><td><strong>35%</strong></td><td><strong>83%</strong></td><td><strong>+48 pts</strong></td><td><strong>92% pass rate</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Cohort targets:</strong></p>
+      <ul>
+        <li>Average improvement: ≥ 30 percentage points</li>
+        <li>Post-training pass rate (70%+): ≥ 85% of participants</li>
+        <li>If targets not met: schedule supplementary workshop within 2 weeks</li>
+      </ul>
+
+      <h3 id="s5-2">5.2 Certification Criteria &amp; Badge Levels</h3>
+
+      <div class="cert-card">
+        <h4>🥉 AI Practitioner</h4>
+        <p><strong>Requirements:</strong></p>
+        <ul>
+          <li>Complete assigned training track (100% attendance or async completion)</li>
+          <li>Score 70%+ on post-assessment</li>
+          <li>Complete 1 guided capstone exercise</li>
+          <li>Sign AI use policy acknowledgment</li>
+        </ul>
+        <span class="validity">Validity: 1 year (renewable via refresher module)</span>
+      </div>
+
+      <div class="cert-card">
+        <h4>🥈 AI Professional</h4>
+        <p><strong>Requirements:</strong></p>
+        <ul>
+          <li>Hold AI Practitioner certification</li>
+          <li>Complete an additional advanced module (RAG, Agents, or Automation)</li>
+          <li>Score 85%+ on advanced assessment</li>
+          <li>Complete an independent capstone project with business impact documentation</li>
+          <li>Submit a peer-reviewed case study (500+ words)</li>
+          <li>30-day demonstrated AI usage in daily work (verified by manager)</li>
+        </ul>
+        <span class="validity">Validity: 2 years (renewable via advanced refresher or conference presentation)</span>
+      </div>
+
+      <div class="cert-card">
+        <h4>🥇 AI Expert</h4>
+        <p><strong>Requirements:</strong></p>
+        <ul>
+          <li>Hold AI Professional certification</li>
+          <li>Complete all 4 advanced modules</li>
+          <li>Score 95%+ on expert assessment</li>
+          <li>Build and deploy a production AI solution used by 5+ people</li>
+          <li>Deliver a presentation or workshop to peers (minimum 30 minutes)</li>
+          <li>Mentor 2+ AI Practitioner candidates through their certification</li>
+          <li>Pass a live technical interview with Austin AI School assessor</li>
+        </ul>
+        <span class="validity">Validity: 2 years (renewable via curriculum contribution or published case study)</span>
+      </div>
+
+      <h3 id="s5-3">5.3 30-60-90 Day Reinforcement Calendar</h3>
+
+      <h4>Days 1–30: Foundation</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Week</th><th>Activity</th><th>Format</th><th>Duration</th></tr></thead>
+          <tbody>
+            <tr><td>Week 1</td><td>Daily AI challenge: Use an AI tool for one new task each day</td><td>Self-paced</td><td>15 min/day</td></tr>
+            <tr><td>Week 2</td><td>Lunch &amp; Learn: "Show what you've built" — participants demo experiments</td><td>Virtual meetup</td><td>45 min</td></tr>
+            <tr><td>Week 3</td><td>Prompt library expansion: Add 5 new tested prompts to the team library</td><td>Async + peer review</td><td>30 min</td></tr>
+            <tr><td>Week 4</td><td>30-day check-in survey + 1-on-1 with mentor (15 min)</td><td>Survey + call</td><td>30 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Days 31–60: Application</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Week</th><th>Activity</th><th>Format</th><th>Duration</th></tr></thead>
+          <tbody>
+            <tr><td>Week 5</td><td>Identify an AI automation opportunity and document it</td><td>Written proposal</td><td>1 hour</td></tr>
+            <tr><td>Week 6</td><td>Build a prototype of your AI automation (with mentor support)</td><td>Hands-on + office hours</td><td>2 hours</td></tr>
+            <tr><td>Week 7</td><td>Advanced topic webinar: "What's New in AI" — latest tools and techniques</td><td>Live webinar</td><td>60 min</td></tr>
+            <tr><td>Week 8</td><td>Present prototype to team and gather feedback. 60-day survey.</td><td>Team meeting + survey</td><td>45 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Days 61–90: Mastery</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Week</th><th>Activity</th><th>Format</th><th>Duration</th></tr></thead>
+          <tbody>
+            <tr><td>Week 9</td><td>Refine and deploy your AI project based on feedback</td><td>Hands-on</td><td>2 hours</td></tr>
+            <tr><td>Week 10</td><td>Peer teaching: Teach one AI skill to a colleague not in training</td><td>1-on-1</td><td>30 min</td></tr>
+            <tr><td>Week 11</td><td>Document ROI: measure time saved, quality improved, or costs reduced</td><td>Written report</td><td>1 hour</td></tr>
+            <tr><td>Week 12</td><td>90-day capstone presentation + certification ceremony. Final survey.</td><td>Virtual event</td><td>90 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s5-4">5.4 Mentor Matching Criteria</h3>
+      <p>Each participant is matched with a mentor based on:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Criteria</th><th>Weight</th><th>Matching Logic</th></tr></thead>
+          <tbody>
+            <tr><td>Department/Function</td><td>30%</td><td>Same department preferred; adjacent department acceptable</td></tr>
+            <tr><td>Technical Level</td><td>25%</td><td>Mentor should be 1–2 levels above mentee (not more — avoid intimidation)</td></tr>
+            <tr><td>Learning Goals</td><td>20%</td><td>Mentor has experience in mentee's target skill area</td></tr>
+            <tr><td>Schedule Compatibility</td><td>15%</td><td>Overlapping working hours, similar timezone</td></tr>
+            <tr><td>Communication Style</td><td>10%</td><td>Match preferences (structured agendas vs. casual check-ins)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Mentor expectations:</strong></p>
+      <ul>
+        <li>1× 30-minute check-in per week for 12 weeks</li>
+        <li>Respond to async questions within 24 hours (business days)</li>
+        <li>Review mentee's capstone project and provide written feedback</li>
+        <li>Escalate blockers to program coordinator</li>
+      </ul>
+      <p><strong>Mentor qualifications:</strong></p>
+      <ul>
+        <li>Completed AI Professional certification (minimum)</li>
+        <li>6+ months of active AI tool usage in their role</li>
+        <li>Volunteer or nominated by manager</li>
+        <li>Completed 1-hour mentor orientation session</li>
+      </ul>
+
+      <h3 id="s5-5">5.5 Community Setup Checklist</h3>
+      <ul class="checklist">
+        <li><strong>Slack/Teams channel</strong> created: #ai-practitioners (all graduates)</li>
+        <li><strong>Weekly prompt</strong> posted every Monday: "AI Win of the Week" — share a success story</li>
+        <li><strong>Resource library</strong> set up: shared Google Drive / SharePoint folder with tools, templates, articles</li>
+        <li><strong>Monthly virtual meetup</strong> scheduled: rotating topics (tool demos, use case showcases, guest speakers)</li>
+        <li><strong>FAQ document</strong> started: crowdsourced answers to common AI questions</li>
+        <li><strong>Office hours</strong> scheduled: 1 hour/week with an Austin AI School instructor for ongoing questions</li>
+        <li><strong>Prompt library</strong> (shared): organized by department and use case, version-controlled</li>
+        <li><strong>Innovation board</strong>: Trello/Notion board where anyone can propose AI project ideas</li>
+        <li><strong>Newsletter</strong>: bi-weekly email with AI news, community highlights, new resources, upcoming events</li>
+        <li><strong>Recognition program</strong>: monthly "AI Champion" spotlight — peer-nominated</li>
+      </ul>
+
+      <h3 id="s5-6">5.6 Capstone Project Assignment Template</h3>
+      <pre><code>============================================
+CAPSTONE PROJECT ASSIGNMENT
+============================================
+
+PARTICIPANT: [Name]
+DEPARTMENT: [Department]
+MENTOR: [Assigned Mentor Name]
+DUE DATE: [90 days from training completion]
+
+PROJECT TITLE: [Participant chooses]
+
+BUSINESS PROBLEM:
+Identify a real workflow challenge in your department that AI
+can address. Describe the current state, pain points, and
+who is affected.
+
+PROPOSED SOLUTION:
+Describe the AI-powered solution you will build. Specify:
+- Which AI capabilities you will use (generation, analysis,
+  automation, classification, extraction, etc.)
+- Which tools/APIs you will use
+- Who will use the final solution
+- Expected time savings or quality improvement
+
+SUCCESS CRITERIA:
+Define 3 measurable outcomes:
+1. [e.g., "Reduce report generation time from 4 hours to 30 min"]
+2. [e.g., "Achieve 90%+ accuracy on document classification"]
+3. [e.g., "Adopted by 5+ team members within 2 weeks"]
+
+DELIVERABLES:
+☐ Working prototype (deployed or demo-ready)
+☐ 1-page project summary (problem, solution, results)
+☐ 5-minute presentation to cohort
+☐ ROI estimate (time saved, cost reduced, quality improved)
+
+EVALUATION RUBRIC:
+| Criteria              | Weight | Score (1-5) |
+|-----------------------|--------|-------------|
+| Business Relevance    | 25%    |             |
+| Technical Execution   | 25%    |             |
+| Measurable Impact     | 25%    |             |
+| Presentation Quality  | 15%    |             |
+| Innovation/Creativity | 10%    |             |
+| TOTAL                 | 100%   |             |
+
+Passing score: 3.5 / 5.0 weighted average
+============================================</code></pre>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 6: MEASUREMENT -->
+      <!-- ═══════════════════════════════════════ -->
+      <h2 id="section-6"><span class="section-num">6.</span> Measurement &amp; Reporting</h2>
+
+      <h3 id="s6-1">6.1 Kirkpatrick 4-Level Evaluation</h3>
+
+      <h4>Level 1: Reaction (Satisfaction Survey — Day of completion)</h4>
+      <p>Rate each item 1–5 (1 = Strongly Disagree, 5 = Strongly Agree):</p>
+      <ol>
+        <li>The training content was relevant to my job responsibilities.</li>
+        <li>The instructor was knowledgeable and well-prepared.</li>
+        <li>The hands-on exercises helped me understand the concepts.</li>
+        <li>The pace of the training was appropriate for my skill level.</li>
+        <li>I feel more confident using AI tools after this training.</li>
+        <li>The training materials (slides, handouts, labs) were high quality.</li>
+        <li>The training environment (room/virtual setup) was conducive to learning.</li>
+        <li>I would recommend this training to a colleague.</li>
+        <li>The training met or exceeded my expectations.</li>
+        <li>I can identify at least 3 ways to apply what I learned to my daily work.</li>
+      </ol>
+      <p><strong>Open-ended:</strong></p>
+      <ul>
+        <li>What was the single most valuable takeaway?</li>
+        <li>What one thing would you change about the training?</li>
+        <li>What additional topics would you like to learn about?</li>
+      </ul>
+      <p><strong>Target:</strong> Average score ≥ 4.2 / 5.0 across all questions</p>
+
+      <h4>Level 2: Learning (Assessment Rubric)</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Competency Area</th><th>Assessment Method</th><th>Passing Score</th><th>Weight</th></tr></thead>
+          <tbody>
+            <tr><td>AI Fundamentals</td><td>Multiple choice quiz (20 questions)</td><td>70%</td><td>20%</td></tr>
+            <tr><td>Prompt Engineering</td><td>Practical exercise: write 5 prompts evaluated by rubric</td><td>3.5/5 avg</td><td>25%</td></tr>
+            <tr><td>Tool Proficiency</td><td>Timed hands-on task: complete a workflow using AI tools</td><td>Complete within time limit</td><td>25%</td></tr>
+            <tr><td>Application</td><td>Capstone project scored by rubric</td><td>3.5/5 weighted</td><td>20%</td></tr>
+            <tr><td>Critical Thinking</td><td>Evaluate an AI output for accuracy, bias, and completeness</td><td>70%</td><td>10%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Overall passing threshold:</strong> Weighted average ≥ 70%</p>
+
+      <h4>Level 3: Behavior (Manager Observation — 30, 60, 90 days)</h4>
+      <p><em>Manager Assessment Form — completed by direct supervisor</em></p>
+      <p>Rate each behavior 1–5 (1 = Not observed, 5 = Consistently demonstrated):</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Behavior</th><th>30-Day</th><th>60-Day</th><th>90-Day</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Uses AI tools regularly in their daily workflow</td><td></td><td></td><td></td></tr>
+            <tr><td>2</td><td>Produces higher quality work output since training</td><td></td><td></td><td></td></tr>
+            <tr><td>3</td><td>Completes tasks faster than before training</td><td></td><td></td><td></td></tr>
+            <tr><td>4</td><td>Shares AI techniques and tips with teammates</td><td></td><td></td><td></td></tr>
+            <tr><td>5</td><td>Follows the company AI use policy consistently</td><td></td><td></td><td></td></tr>
+            <tr><td>6</td><td>Identifies new opportunities for AI in the department</td><td></td><td></td><td></td></tr>
+            <tr><td>7</td><td>Reviews and validates AI output before using it</td><td></td><td></td><td></td></tr>
+            <tr><td>8</td><td>Has built or contributed to at least one AI-powered workflow</td><td></td><td></td><td></td></tr>
+            <tr><td>9</td><td>Requires less support/hand-holding for AI-related tasks</td><td></td><td></td><td></td></tr>
+            <tr><td>10</td><td>Demonstrates enthusiasm for continued AI learning</td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Target:</strong> Average score ≥ 3.5 at 30 days, ≥ 4.0 at 60 days, ≥ 4.0 at 90 days</p>
+
+      <h4>Level 4: Results (Business KPI Tracking)</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>KPI</th><th>Baseline</th><th>30-Day</th><th>60-Day</th><th>90-Day</th><th>Target</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Avg. task completion time (hrs)</td><td>___</td><td>___</td><td>___</td><td>___</td><td>-30%</td><td>☐</td></tr>
+            <tr><td>Employee productivity score</td><td>___</td><td>___</td><td>___</td><td>___</td><td>+25%</td><td>☐</td></tr>
+            <tr><td>Customer satisfaction (CSAT)</td><td>___</td><td>___</td><td>___</td><td>___</td><td>+10%</td><td>☐</td></tr>
+            <tr><td>Error / rework rate (%)</td><td>___</td><td>___</td><td>___</td><td>___</td><td>-40%</td><td>☐</td></tr>
+            <tr><td>Revenue per employee ($)</td><td>___</td><td>___</td><td>___</td><td>___</td><td>+15%</td><td>☐</td></tr>
+            <tr><td>AI tool adoption rate (%)</td><td>___</td><td>___</td><td>___</td><td>___</td><td>80%+</td><td>☐</td></tr>
+            <tr><td>Time-to-first-value (days)</td><td>___</td><td>___</td><td>___</td><td>___</td><td>&lt; 14 days</td><td>☐</td></tr>
+            <tr><td>Employee confidence score</td><td>___</td><td>___</td><td>___</td><td>___</td><td>4.0/5.0</td><td>☐</td></tr>
+            <tr><td>Support ticket reduction (%)</td><td>___</td><td>___</td><td>___</td><td>___</td><td>-25%</td><td>☐</td></tr>
+            <tr><td>Content production volume</td><td>___</td><td>___</td><td>___</td><td>___</td><td>+50%</td><td>☐</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s6-2">6.2 ROI Calculation Methodology</h3>
+      <h4>Worked Example — Mid-size marketing agency, 40 employees trained</h4>
+
+      <p><strong>Costs:</strong></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Item</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Training fees (40 × $1,200)</td><td>$48,000</td></tr>
+            <tr><td>Employee time (40 × $55/hr × 8 hrs)</td><td>$17,600</td></tr>
+            <tr><td>AI tool licenses (40 × $25/mo × 12)</td><td>$12,000</td></tr>
+            <tr><td>Internal project management (60 hrs × $75/hr)</td><td>$4,500</td></tr>
+            <tr class="total-row"><td><strong>Total Cost</strong></td><td><strong>$82,100</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>Benefits (measured at 90 days, annualized):</strong></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Item</th><th>Calculation</th><th>Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Time saved on content creation</td><td>40 people × 4 hrs/week × $55/hr × 52 weeks</td><td>$457,600</td></tr>
+            <tr><td>Reduced freelancer spend</td><td>30% reduction × $180,000 annual spend</td><td>$54,000</td></tr>
+            <tr><td>Faster client deliverables</td><td>20% faster delivery × 15% more projects × $500K revenue</td><td>$15,000</td></tr>
+            <tr><td>Reduced errors / rework</td><td>35% fewer revision cycles × $40,000 annual rework cost</td><td>$14,000</td></tr>
+            <tr class="total-row"><td><strong>Total Annual Benefits</strong></td><td></td><td><strong>$540,600</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <pre><code>ROI = [($540,600 − $82,100) / $82,100] × 100 = 558%
+Payback Period = $82,100 / ($540,600 / 12) = 1.8 months
+Net Annual Value = $540,600 − $82,100 = $458,500</code></pre>
+
+      <h3 id="s6-3">6.3 Executive Summary Report Template</h3>
+      <pre><code>============================================
+AI TRAINING PROGRAM — EXECUTIVE SUMMARY
+============================================
+
+CLIENT: [Company Name]
+PROGRAM DATES: [Start] — [End]
+REPORT DATE: [Date]
+PREPARED BY: Austin AI School
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROGRAM OVERVIEW
+• Participants trained: [X]
+• Training tracks delivered: [list]
+• Total training hours: [X]
+• Completion rate: [X]%
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+KEY RESULTS
+
+Satisfaction (Level 1):
+  Overall satisfaction: [X.X] / 5.0  (target: 4.2)
+  Net Promoter Score: [X]  (target: 50+)
+  Would recommend: [X]%
+
+Learning (Level 2):
+  Pre-assessment average: [X]%
+  Post-assessment average: [X]%
+  Improvement: +[X] percentage points
+  Pass rate: [X]%  (target: 85%)
+
+Behavior Change (Level 3 — 90 days):
+  AI tool daily usage rate: [X]%  (target: 80%)
+  Manager observation avg score: [X.X] / 5.0
+  Capstone projects completed: [X] / [X]
+
+Business Impact (Level 4 — 90 days):
+  Productivity improvement: [X]%
+  Time saved per employee/week: [X] hours
+  Cost savings (annualized): $[X]
+  ROI: [X]%
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TOP ACHIEVEMENTS
+1. [Specific success story / project]
+2. [Specific success story / project]
+3. [Specific success story / project]
+
+AREAS FOR IMPROVEMENT
+1. [Finding + recommendation]
+2. [Finding + recommendation]
+
+RECOMMENDATIONS FOR NEXT PHASE
+1. [Specific next step]
+2. [Specific next step]
+3. [Specific next step]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</code></pre>
+
+      <h3 id="s6-4">6.4 Continuous Improvement Framework</h3>
+
+      <h4>After Every Cohort (within 5 business days)</h4>
+      <ul class="checklist">
+        <li>Compile all daily feedback forms and satisfaction surveys</li>
+        <li>Calculate aggregate scores across all Kirkpatrick levels</li>
+        <li>Conduct instructor debrief (what worked, what didn't, what to change)</li>
+        <li>Identify top 3 content updates needed (outdated tools, unclear exercises, missing topics)</li>
+        <li>Update exercise repository with bug fixes and improvements</li>
+        <li>Send thank-you email to participants with resource links</li>
+      </ul>
+
+      <h4>Monthly</h4>
+      <ul class="checklist">
+        <li>Review 30-day behavioral survey data from all active cohorts</li>
+        <li>Track industry changes — new tools, API updates, pricing changes</li>
+        <li>Update demo environments with latest tool versions</li>
+        <li>Publish "What's New in AI" update for alumni community</li>
+      </ul>
+
+      <h4>Quarterly</h4>
+      <ul class="checklist">
+        <li>Full curriculum review against current AI landscape</li>
+        <li>Update all case studies and industry examples</li>
+        <li>Review and refresh pre/post assessments</li>
+        <li>Analyze trends across cohorts (improving? declining? plateauing?)</li>
+        <li>Conduct instructor calibration session (multi-instructor consistency)</li>
+        <li>Update ROI calculation examples with latest client data</li>
+        <li>Review competitor training offerings</li>
+      </ul>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- SECTION 7: SCALING -->
+      <!-- ═══════════════════════════════════════ -->
+      <h2 id="section-7"><span class="section-num">7.</span> Scaling &amp; Repeatability</h2>
+
+      <h3 id="s7-1">7.1 Train-the-Trainer Certification Program</h3>
+      <p><strong>Duration:</strong> 3 days (24 hours) · <strong>Class Size:</strong> 6–10 trainer candidates</p>
+
+      <h4>Prerequisites</h4>
+      <ul>
+        <li>AI Expert certification (or equivalent demonstrated expertise)</li>
+        <li>2+ years of teaching/facilitation experience</li>
+        <li>Strong communication skills (assessed via video submission)</li>
+      </ul>
+
+      <h4>Day 1: Content Mastery</h4>
+      <ul>
+        <li>Deep dive into all 4 training tracks</li>
+        <li>Master every lab exercise (complete all, including stretch goals)</li>
+        <li>Understand common misconceptions and how to address them</li>
+        <li>Assessment: Score 95%+ on comprehensive technical exam</li>
+      </ul>
+
+      <h4>Day 2: Facilitation Skills</h4>
+      <ul>
+        <li>Adult learning theory (Kolb, Bloom, Knowles)</li>
+        <li>The 30/70 rule — designing for hands-on practice</li>
+        <li>Managing difficult participants (resistors, dominators, silent learners)</li>
+        <li>Virtual facilitation techniques</li>
+        <li>Inclusive teaching practices</li>
+        <li>Assessment: Deliver a 20-minute micro-teach, scored by rubric</li>
+      </ul>
+
+      <h4>Day 3: Operations &amp; Logistics</h4>
+      <ul>
+        <li>Pre-training setup procedures</li>
+        <li>Troubleshooting playbook practice (simulated failures)</li>
+        <li>Assessment and reporting procedures</li>
+        <li>Quality standards and brand consistency</li>
+        <li>Practice full session delivery with feedback</li>
+        <li>Assessment: Deliver a 45-minute mock session with live participants</li>
+      </ul>
+
+      <h4>Certification Requirements</h4>
+      <ul>
+        <li>95%+ on technical exam</li>
+        <li>4.0/5.0+ on micro-teach evaluation</li>
+        <li>4.0/5.0+ on mock session evaluation</li>
+        <li>Complete all administrative certifications (LMS, reporting)</li>
+        <li>Shadow 1 full training delivery as a TA</li>
+        <li>Deliver 1 full training under observation with debrief</li>
+      </ul>
+
+      <h4>Ongoing Requirements</h4>
+      <ul>
+        <li>Quarterly calibration sessions</li>
+        <li>Annual re-certification (updated content exam + observed delivery)</li>
+        <li>Maintain 4.2+ participant satisfaction average</li>
+      </ul>
+
+      <h3 id="s7-2">7.2 Content Update Cadence</h3>
+      <h4>Quarterly Review Checklist</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Category</th><th>Review Items</th><th>Owner</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><strong>API &amp; Tools</strong></td><td>Verify all API calls work with current versions</td><td>Technical Lead</td><td>☐</td></tr>
+            <tr><td></td><td>Update pricing examples with current rates</td><td>Technical Lead</td><td>☐</td></tr>
+            <tr><td></td><td>Test all lab exercises end-to-end</td><td>QA Team</td><td>☐</td></tr>
+            <tr><td></td><td>Add/remove tools based on market relevance</td><td>Curriculum Lead</td><td>☐</td></tr>
+            <tr><td><strong>Content</strong></td><td>Update industry statistics and research citations</td><td>Content Lead</td><td>☐</td></tr>
+            <tr><td></td><td>Refresh case studies with recent client successes</td><td>Program Manager</td><td>☐</td></tr>
+            <tr><td></td><td>Review and update all slide decks</td><td>Instructors</td><td>☐</td></tr>
+            <tr><td></td><td>Update competitor landscape slides</td><td>Business Dev</td><td>☐</td></tr>
+            <tr><td><strong>Assessment</strong></td><td>Review assessment questions for relevance</td><td>Curriculum Lead</td><td>☐</td></tr>
+            <tr><td></td><td>Analyze question-level performance data</td><td>Data Analyst</td><td>☐</td></tr>
+            <tr><td></td><td>Update certification exam question bank</td><td>Assessment Lead</td><td>☐</td></tr>
+            <tr><td><strong>Logistics</strong></td><td>Verify all environment setup scripts work</td><td>DevOps</td><td>☐</td></tr>
+            <tr><td></td><td>Update participant welcome packet</td><td>Program Manager</td><td>☐</td></tr>
+            <tr><td></td><td>Review and update communication templates</td><td>Marketing</td><td>☐</td></tr>
+            <tr><td><strong>Compliance</strong></td><td>Review AI use policy template for regulatory changes</td><td>Legal</td><td>☐</td></tr>
+            <tr><td></td><td>Update data handling procedures if needed</td><td>Compliance</td><td>☐</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s7-3">7.3 Multi-Site Deployment Playbook</h3>
+
+      <h4>Phase 1: Pilot (Month 1)</h4>
+      <ul>
+        <li>Select 1 site / department as pilot</li>
+        <li>Full protocol delivery with maximum observation and data collection</li>
+        <li>Document all deviations, issues, and learnings</li>
+        <li>Achieve baseline satisfaction score ≥ 4.2</li>
+      </ul>
+
+      <h4>Phase 2: Validation (Month 2)</h4>
+      <ul>
+        <li>Deploy to 2 additional sites simultaneously</li>
+        <li>Use trained TTT instructors (with Austin AI School observation)</li>
+        <li>Compare results across 3 sites — identify variance</li>
+        <li>Refine based on multi-site feedback</li>
+      </ul>
+
+      <h4>Phase 3: Scale (Months 3–6)</h4>
+      <ul>
+        <li>Roll out to remaining sites in cohorts of 3–5 per month</li>
+        <li>Assign regional coordinators for sites &gt; 3 per region</li>
+        <li>Establish shared resource repository across all sites</li>
+        <li>Weekly sync meetings across all active deployments</li>
+      </ul>
+
+      <h4>Phase 4: Sustain (Ongoing)</h4>
+      <ul>
+        <li>Transition to internal TTT-led delivery with quarterly Austin AI School audits</li>
+        <li>Monthly cross-site community calls</li>
+        <li>Quarterly content refresh (see 7.2)</li>
+        <li>Annual program review and strategic realignment</li>
+      </ul>
+
+      <h4>Scaling Metrics</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Metric</th><th>Pilot Target</th><th>Scale Target</th></tr></thead>
+          <tbody>
+            <tr><td>Participant satisfaction</td><td>≥ 4.2 / 5.0</td><td>≥ 4.0 / 5.0</td></tr>
+            <tr><td>Post-assessment pass rate</td><td>≥ 85%</td><td>≥ 80%</td></tr>
+            <tr><td>90-day AI adoption rate</td><td>≥ 75%</td><td>≥ 70%</td></tr>
+            <tr><td>Cross-site consistency (std dev)</td><td>N/A</td><td>≤ 0.3 pts on satisfaction</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="s7-4">7.4 Quality Assurance Scoring Rubric</h3>
+      <p>Score each delivery on the following dimensions (1–5 scale):</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dimension</th><th>5 (Exceptional)</th><th>3 (Acceptable)</th><th>1 (Unacceptable)</th><th>Score</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Content Accuracy</strong></td><td>100% accurate, current within 30 days</td><td>1-2 outdated examples but core content solid</td><td>Significant errors or outdated content</td><td>___</td></tr>
+            <tr><td><strong>Instructor Delivery</strong></td><td>Exceptional engagement, adapts perfectly</td><td>Adequate delivery, covers all material</td><td>Unprepared, confusing, poor communication</td><td>___</td></tr>
+            <tr><td><strong>Lab Quality</strong></td><td>All labs work perfectly, clear instructions</td><td>Labs work with some troubleshooting</td><td>Labs broken, can't complete exercises</td><td>___</td></tr>
+            <tr><td><strong>Participant Engagement</strong></td><td>90%+ active participation</td><td>60%+ active participation</td><td>Widespread disengagement or frustration</td><td>___</td></tr>
+            <tr><td><strong>Logistics &amp; Environment</strong></td><td>Flawless setup, all tech works</td><td>Some tech issues with moderate impact</td><td>Major failures preventing delivery</td><td>___</td></tr>
+            <tr><td><strong>Assessment &amp; Feedback</strong></td><td>All completed, rich data, acted upon</td><td>Assessments mostly completed</td><td>No assessments conducted</td><td>___</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Minimum passing score:</strong> 3.5 average · <strong>Target:</strong> 4.0+ · <strong>Corrective action at:</strong> &lt; 3.5 average or any single dimension scoring 2 or below</p>
+
+      <h3 id="s7-5">7.5 Partner Licensing Framework</h3>
+      <h4>License Tiers</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tier</th><th>Name</th><th>Rights</th><th>Annual Fee</th><th>Requirements</th></tr></thead>
+          <tbody>
+            <tr><td>Silver</td><td><strong>Authorized Delivery Partner</strong></td><td>Deliver curriculum to own clients using our materials</td><td>$25,000/yr</td><td>2+ certified TTT instructors, quarterly audits</td></tr>
+            <tr><td>Gold</td><td><strong>Premium Training Partner</strong></td><td>All Silver + co-branding, priority updates, dedicated support</td><td>$50,000/yr</td><td>4+ certified TTT, monthly reporting, annual review</td></tr>
+            <tr><td>Platinum</td><td><strong>Strategic Alliance Partner</strong></td><td>All Gold + curriculum customization, joint go-to-market, revenue sharing</td><td>$100,000/yr + rev share</td><td>6+ certified TTT, exclusive territory option, joint business planning</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Partner Requirements (All Tiers)</h4>
+      <ul>
+        <li>Maintain certified instructor pool (see TTT program, Section 7.1)</li>
+        <li>Submit delivery reports within 5 business days</li>
+        <li>Achieve minimum 4.0 / 5.0 satisfaction score average</li>
+        <li>Participate in quarterly partner calibration calls</li>
+        <li>Use only current-version materials (updated within 90 days)</li>
+        <li>Follow brand guidelines for all client-facing materials</li>
+        <li>Maintain appropriate business insurance and liability coverage</li>
+      </ul>
+
+      <h4>Quality Enforcement</h4>
+      <ul>
+        <li>Quarterly mystery audits (unannounced observation)</li>
+        <li>Annual instructor re-certification required</li>
+        <li>Partner scorecard reviewed quarterly: satisfaction, completion rates, assessment pass rates, reporting timeliness</li>
+        <li>Corrective action plan required if any metric falls below threshold for 2 consecutive quarters</li>
+        <li>License revocation after 3 consecutive quarters below threshold</li>
+      </ul>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- APPENDIX -->
+      <!-- ═══════════════════════════════════════ -->
+      <h2 id="appendix"><span class="section-num">📋</span> Appendix: Master Timeline</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Week</th><th>Phase</th><th>Key Deliverables</th></tr></thead>
+          <tbody>
+            <tr><td>Week 1</td><td>Discovery &amp; Assessment</td><td>Stakeholder interviews, maturity assessment, skills gap analysis, tech audit, ROI projection</td></tr>
+            <tr><td>Week 2</td><td>Program Design</td><td>Track selection, curriculum customization, learning objectives, resource planning</td></tr>
+            <tr><td>Week 3</td><td>Pre-Training Setup</td><td>Environment config, pre-assessments, LMS setup, communications, welcome packets</td></tr>
+            <tr><td>Week 4+</td><td>Training Delivery</td><td>Sessions delivered per track schedule (1–5 days depending on track)</td></tr>
+            <tr><td>Week 5–16</td><td>Reinforcement</td><td>30-60-90 day activities, mentoring, community building, capstone projects</td></tr>
+            <tr><td>Week 8</td><td>Mid-Point Report</td><td>60-day behavioral assessment, interim ROI estimate</td></tr>
+            <tr><td>Week 16</td><td>Final Report</td><td>Full Kirkpatrick evaluation, ROI calculation, executive summary, recommendations</td></tr>
+            <tr><td>Ongoing</td><td>Scaling</td><td>TTT certification, quarterly content updates, multi-site deployment, QA audits</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr>
+      <p style="font-size:0.85rem;color:var(--text-muted);font-style:italic;">This protocol is the proprietary methodology of Austin AI School. For licensing inquiries, contact partnerships@austinai.school.</p>
+      <p style="font-size:0.85rem;color:var(--text-muted);font-style:italic;">Version 2.1 — Last updated 2026. Developed from training programs delivered across 240+ locations to 10,000+ professionals.</p>
+
+      <!-- CTA -->
+      <div class="protocol-cta">
+        <h2>Ready to train your team?</h2>
+        <p>Our team will customize this protocol for your organization, industry, and goals. Let's talk.</p>
+        <a href="mailto:hello@austinai.school?subject=Corporate%20Training%20Inquiry" class="btn btn-primary">Book a Call →</a>
+      </div>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>🧠 Austin AI School</strong>
+          <p>Corporate Training & Workforce Development</p>
+          <p style="margin-top: 8px;">Austin, TX</p>
+        </div>
+        <div class="footer-col">
+          <h4>Programs</h4>
+          <a href="index.html#corporate">Corporate Training</a>
+          <a href="index.html#workforce">Workforce Dev</a>
+          <a href="events.html">Events</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="blog.html">Blog</a>
+          <a href="faq.html">FAQ</a>
+          <a href="mailto:hello@austinai.school">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Austin AI School. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Nav Toggle ───
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    if (toggle) toggle.addEventListener('click', () => links.classList.toggle('active'));
+
+    // ─── Mobile TOC ───
+    const tocToggle = document.getElementById('toc-toggle');
+    const tocSidebar = document.getElementById('toc-sidebar');
+    const tocOverlay = document.getElementById('toc-overlay');
+
+    function openToc() {
+      tocSidebar.classList.add('mobile-open');
+      tocOverlay.classList.add('show');
+      tocToggle.textContent = '✕';
+    }
+    function closeToc() {
+      tocSidebar.classList.remove('mobile-open');
+      tocOverlay.classList.remove('show');
+      tocToggle.textContent = '☰';
+    }
+
+    tocToggle.addEventListener('click', () => {
+      if (tocSidebar.classList.contains('mobile-open')) closeToc();
+      else openToc();
+    });
+    tocOverlay.addEventListener('click', closeToc);
+
+    // Close TOC on mobile when clicking a link
+    document.querySelectorAll('.toc-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) closeToc();
+      });
+    });
+
+    // ─── Scroll Spy ───
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const sections = [];
+
+    tocLinks.forEach(link => {
+      const id = link.getAttribute('href').substring(1);
+      const el = document.getElementById(id);
+      if (el) sections.push({ id, el, link });
+    });
+
+    function updateScrollSpy() {
+      const scrollPos = window.scrollY + 120;
+      let activeIdx = 0;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (sections[i].el.offsetTop <= scrollPos) {
+          activeIdx = i;
+          break;
+        }
+      }
+
+      tocLinks.forEach(l => l.classList.remove('active'));
+      if (sections[activeIdx]) {
+        sections[activeIdx].link.classList.add('active');
+
+        // Scroll the active link into view within the sidebar
+        const activeLink = sections[activeIdx].link;
+        const sidebar = tocSidebar;
+        const linkTop = activeLink.offsetTop;
+        const sidebarHeight = sidebar.clientHeight;
+        const scrollTop = sidebar.scrollTop;
+
+        if (linkTop < scrollTop + 60 || linkTop > scrollTop + sidebarHeight - 60) {
+          sidebar.scrollTo({ top: linkTop - sidebarHeight / 3, behavior: 'smooth' });
+        }
+      }
+    }
+
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          updateScrollSpy();
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    });
+
+    // Initial call
+    updateScrollSpy();
+
+    // ─── Smooth Scroll for TOC links ───
+    document.querySelectorAll('.toc-link, a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const target = document.getElementById(href.substring(1));
+          if (target) {
+            e.preventDefault();
+            const offset = 80;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+            history.pushState(null, null, href);
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
