@@ -1,142 +1,117 @@
-// ===== NAVIGATION =====
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.querySelector('.hamburger');
-  const mobileNav = document.querySelector('.mobile-nav');
-  const navbar = document.querySelector('.navbar');
+document.addEventListener("DOMContentLoaded", () => {
+  const navToggle = document.querySelector(".nav-toggle");
+  const navLinks = document.querySelector(".nav-links");
 
-  // Hamburger toggle
-  if (hamburger && mobileNav) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileNav.classList.toggle('active');
-      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+  if (navToggle && navLinks) {
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", String(!isOpen));
+      navLinks.classList.toggle("active", !isOpen);
+      document.body.classList.toggle("nav-open", !isOpen);
     });
 
-    // Close on link click
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileNav.classList.remove('active');
-        document.body.style.overflow = '';
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navToggle.setAttribute("aria-expanded", "false");
+        navLinks.classList.remove("active");
+        document.body.classList.remove("nav-open");
       });
     });
   }
 
-  // Navbar scroll effect
-  if (navbar) {
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const targetId = link.getAttribute("href");
+      if (!targetId || targetId === "#") return;
+
+      const target = document.querySelector(targetId);
+      if (!target) return;
+
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
-  }
+  });
 
-  // ===== FAQ ACCORDION =====
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const answer = item.querySelector('.faq-answer');
-      const isActive = item.classList.contains('active');
+  document.querySelectorAll(".faq-question").forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = button.closest(".faq-item");
+      const isOpen = item.classList.contains("active");
 
-      // Close all
-      document.querySelectorAll('.faq-item.active').forEach(active => {
-        active.classList.remove('active');
-        active.querySelector('.faq-answer').style.maxHeight = '0';
+      document.querySelectorAll(".faq-item.active").forEach((openItem) => {
+        openItem.classList.remove("active");
+        const openButton = openItem.querySelector(".faq-question");
+        if (openButton) openButton.setAttribute("aria-expanded", "false");
       });
 
-      // Open clicked (if wasn't already open)
-      if (!isActive) {
-        item.classList.add('active');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
+      if (!isOpen) {
+        item.classList.add("active");
+        button.setAttribute("aria-expanded", "true");
       }
     });
   });
 
-  // ===== APPLICATION FORM =====
-  const appForm = document.getElementById('application-form');
-  const formSuccess = document.getElementById('form-success');
-
-  if (appForm) {
-    appForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      // Basic validation
-      const required = appForm.querySelectorAll('[required]');
-      let valid = true;
-      required.forEach(field => {
-        if (!field.value.trim()) {
-          field.style.borderColor = '#ef4444';
-          valid = false;
-        } else {
-          field.style.borderColor = '';
-        }
-      });
-
-      if (!valid) return;
-
-      // Simulate submission
-      const btn = appForm.querySelector('button[type="submit"]');
-      btn.textContent = 'Submitting...';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        appForm.style.display = 'none';
-        if (formSuccess) formSuccess.classList.add('show');
-        window.scrollTo({ top: formSuccess.offsetTop - 120, behavior: 'smooth' });
-      }, 1200);
+  document.querySelectorAll("[data-demo-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const shell = form.closest(".form-shell") || form;
+      shell.classList.add("is-submitted");
+      form.reset();
     });
+  });
+
+  if (document.querySelector("[data-events-list]") && typeof EVENTS !== "undefined") {
+    renderEvents();
   }
-
-  // ===== NEWSLETTER FORM =====
-  document.querySelectorAll('.newsletter-form').forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const input = form.querySelector('input');
-      const btn = form.querySelector('button');
-      if (input.value.trim() && input.value.includes('@')) {
-        btn.textContent = '✓ Subscribed!';
-        btn.style.background = '#10b981';
-        input.value = '';
-        setTimeout(() => {
-          btn.textContent = 'Subscribe';
-          btn.style.background = '';
-        }, 3000);
-      }
-    });
-  });
-
-  // ===== SMOOTH SCROLL for anchor links =====
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  // ===== SCROLL ANIMATIONS =====
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.card, .program-card, .testimonial-card, .timeline-item, .stat-card, .role-card, .blog-card, .team-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
-
-  // ===== ACTIVE NAV LINK =====
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      link.classList.add('active');
-    }
-  });
 });
+
+function renderEvents() {
+  const list = document.querySelector("[data-events-list]");
+  const featured = document.querySelector("[data-featured-event]");
+  const now = new Date();
+  const upcoming = EVENTS
+    .filter((event) => new Date(event.date) >= now)
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  if (featured && upcoming.length) {
+    const next = upcoming[0];
+    const nextDate = new Date(next.date);
+    featured.querySelector("[data-featured-title]").textContent = next.title;
+    featured.querySelector("[data-featured-meta]").textContent =
+      `${formatFullDate(nextDate)} · ${next.time} · ${next.price === 0 ? "Free" : "$" + next.price}`;
+    featured.querySelector("[data-featured-copy]").textContent = next.description;
+    featured.querySelector("a").href = `event-detail.html?id=${next.id}`;
+  }
+
+  if (!list) return;
+
+  list.innerHTML = upcoming.slice(0, 6).map((event) => {
+    const date = new Date(event.date);
+    const price = event.price === 0 ? "Free" : "$" + event.price;
+    return `
+      <article class="event-card">
+        <div class="event-date">${date.toLocaleDateString("en-US", { month: "short" })}<br>${date.getDate()}</div>
+        <h3>${event.title}</h3>
+        <p>${event.description}</p>
+        <div class="event-meta">
+          <span>${event.time}</span>
+          <span>${capitalize(event.type)}</span>
+          <span>${price}</span>
+        </div>
+        <a class="button button-secondary button-small" href="event-detail.html?id=${event.id}">View event</a>
+      </article>
+    `;
+  }).join("");
+}
+
+function formatFullDate(date) {
+  return date.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric"
+  });
+}
+
+function capitalize(value) {
+  return value ? value.charAt(0).toUpperCase() + value.slice(1) : "";
+}

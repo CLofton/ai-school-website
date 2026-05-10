@@ -3,163 +3,190 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Austin AI School</title>
-  <meta name="description" content="Meet Chris Lofton and learn about Austin AI School's mission to make AI skills accessible to everyone through corporate training and workforce development.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>About | Austin AI School</title>
+  <meta name="description" content="Austin AI School helps companies and workforce partners build practical AI capability through training, implementation labs, and community webinars.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
-  <meta name="theme-color" content="#0a0a0f">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%2305070D'/%3E%3Cpath d='M14 34L24 12l10 22M19 25.5h10' fill='none' stroke='%23F7FAFF' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='12' r='3.4' fill='%2358E6B0'/%3E%3Ccircle cx='14' cy='34' r='3.1' fill='%2320D3EE'/%3E%3Ccircle cx='34' cy='34' r='3.1' fill='%23326BFF'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#05070D">
 </head>
 <body>
-  <!-- NAV -->
-  <nav class="nav">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo">🧠 Austin AI School</a>
-      <button class="nav-toggle" aria-label="Menu">☰</button>
-      <div class="nav-links">
-        <a href="index.html#corporate">Corporate Training</a>
-        <a href="index.html#workforce">Workforce Dev</a>
-        <a href="index.html#events">Events</a>
-        <a href="about.html">About</a>
-        <a href="index.html#apply" class="btn btn-nav">Register Now</a>
+      <a class="brand" href="index.html" aria-label="Austin AI School home">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+          <rect width="48" height="48" rx="13" fill="#05070D"></rect>
+          <path d="M14 34L24 12l10 22" fill="none" stroke="#F7FAFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M18.8 25.5h10.4" fill="none" stroke="#20D3EE" stroke-width="3.2" stroke-linecap="round"></path>
+          <path d="M24 12v8.2M18.8 25.5l-5 8.5M29.2 25.5l4.8 8.5" fill="none" stroke="#326BFF" stroke-width="1.6" stroke-linecap="round" opacity=".72"></path>
+          <circle cx="24" cy="12" r="3.4" fill="#58E6B0"></circle>
+          <circle cx="14" cy="34" r="3.1" fill="#20D3EE"></circle>
+          <circle cx="34" cy="34" r="3.1" fill="#326BFF"></circle>
+        </svg>
+        <span class="brand-word"><span class="brand-name">Austin AI School</span><span class="brand-domain">learnaischool.org</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="curriculum.html">Curriculum</a>
+        <a href="events.html">Events</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="faq.html">FAQ</a>
+        <a class="button button-primary button-small" href="index.html#contact">Train Your Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">About Austin AI School</p>
+        <h1 class="page-title">AI education built for the way teams actually work.</h1>
+        <p class="lead">We help organizations build practical AI capability through training that connects strategy, tools, workflows, and measurable adoption.</p>
       </div>
-    </div>
-  </nav>
+    </section>
 
-  <!-- HERO -->
-  <section class="hero" style="min-height: auto; padding: 160px 0 80px;">
-    <div class="hero-bg"></div>
-    <div class="container hero-content">
-      <div class="hero-badge">Our Story</div>
-      <h1 class="hero-title">About <span class="gradient-text">Austin AI School</span></h1>
-      <p class="hero-sub">Making AI skills accessible to everyone — from Fortune 500 teams to career changers to underserved communities.</p>
-    </div>
-  </section>
+    <section class="section section-band">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Mission</p>
+          <h2>Make AI skills operational, accessible, and useful.</h2>
+          <p class="lead">Most professionals do not need more AI hype. They need a clear path for using AI responsibly inside the work they already own.</p>
+        </div>
+        <div class="stack">
+          <article class="info-card">
+            <h3>Corporate AI Training</h3>
+            <p>Role-specific programs for leaders, operators, analysts, and engineers who need to adopt AI without losing quality or control.</p>
+          </article>
+          <article class="info-card">
+            <h3>Workforce Development</h3>
+            <p>Structured pathways for partners preparing professionals for AI-enabled roles across business, operations, and technology.</p>
+          </article>
+          <article class="info-card">
+            <h3>Tuesday Webinars</h3>
+            <p>Free weekly sessions that make AI concepts approachable, current, and immediately applicable.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <!-- MISSION -->
-  <section class="section">
-    <div class="container" style="max-width: 900px;">
-      <div class="section-badge">Our Mission</div>
-      <h2 class="section-title">AI Training for Everyone</h2>
-      <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px; text-align: center;">
-        The AI revolution is here — but most people are being left behind. Enterprise teams need to upskill fast. Workers need new career paths. Communities need access to the skills that will define the next decade of the economy.
-      </p>
-      <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px; text-align: center;">
-        Austin AI School exists to close that gap. We deliver practical, hands-on AI training to corporations, workforce development organizations, and individuals. No fluff. No hype. Just the skills you need to work with AI — starting today.
-      </p>
-      <p style="font-size: 18px; color: var(--text-secondary); line-height: 1.8; text-align: center;">
-        Based in <strong style="color: var(--text);">Austin, TX</strong> — the tech capital of the South — we're building the training infrastructure for the AI-powered workforce.
-      </p>
-    </div>
-  </section>
-
-  <!-- FOUNDER -->
-  <section class="section section-dark">
-    <div class="container" style="max-width: 900px;">
-      <div class="section-badge">Founder</div>
-      <h2 class="section-title">Meet Chris Lofton</h2>
-      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 48px; margin-top: 40px;">
-        <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
-          <div style="flex: 0 0 140px; text-align: center;">
-            <div style="width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--cyan)); display: flex; align-items: center; justify-content: center; font-size: 56px;">CL</div>
-            <p style="margin-top: 12px; font-weight: 600; color: var(--text);">Chris Lofton</p>
-            <p style="font-size: 14px; color: var(--primary);">Founder & CEO</p>
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Operating Principles</p>
+            <h2>The standard is practical adoption.</h2>
           </div>
-          <div style="flex: 1; min-width: 280px;">
-            <p style="font-size: 17px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">
-              Chris Lofton has spent his career at the intersection of education and technology. As a senior education leader, he managed training programs across <strong style="color: var(--text);">240+ locations</strong> nationwide, building systems that delivered consistent, high-quality education at scale.
-            </p>
-            <p style="font-size: 17px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">
-              Over his career, Chris has been responsible for training <strong style="color: var(--text);">10,000+ students</strong> — from corporate professionals to career changers to underserved populations. He knows what it takes to build training programs that actually work: clear outcomes, hands-on practice, and accountability.
-            </p>
-            <p style="font-size: 17px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 20px;">
-              Now, Chris is applying that operational expertise to the biggest skills challenge of our generation: <strong style="color: var(--text);">artificial intelligence</strong>. Austin AI School combines institutional-grade training infrastructure with cutting-edge AI curriculum to prepare the modern workforce for an AI-powered future.
-            </p>
-            <p style="font-size: 17px; color: var(--text-secondary); line-height: 1.8;">
-              His mission is simple: <em style="color: var(--primary);">make AI skills accessible to everyone</em> — regardless of background, experience level, or zip code.
-            </p>
+          <p class="section-kicker">Every program is designed to move learners from understanding to repeatable performance.</p>
+        </div>
+        <div class="grid grid-4">
+          <article class="step-card">
+            <span class="pill cyan">01</span>
+            <h3>Hands-on first</h3>
+            <p>Participants learn through labs, templates, demos, and applied workplace exercises.</p>
+          </article>
+          <article class="step-card">
+            <span class="pill mint">02</span>
+            <h3>Role-specific</h3>
+            <p>Executives, operators, analysts, and engineers need different levels of depth and risk control.</p>
+          </article>
+          <article class="step-card">
+            <span class="pill amber">03</span>
+            <h3>Measurable</h3>
+            <p>Training should connect to cycle time, quality, adoption, and readiness metrics.</p>
+          </article>
+          <article class="step-card">
+            <span class="pill">04</span>
+            <h3>Responsible</h3>
+            <p>AI usage must include governance, review habits, data boundaries, and escalation paths.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-band">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Founder</p>
+          <h2>Training expertise with an implementation mindset.</h2>
+          <p class="lead">Austin AI School was founded by Chris Lofton to bring operational education discipline to the AI skills gap.</p>
+        </div>
+        <div class="info-card">
+          <div class="program-meta">
+            <span class="pill mint">Founder & CEO</span>
+            <span class="pill cyan">Austin, TX</span>
+          </div>
+          <h3>Chris Lofton</h3>
+          <p>Chris has led education programs across large distributed networks and trained thousands of learners across professional and workforce contexts. Austin AI School applies that operating experience to the urgent need for practical AI fluency.</p>
+          <p>The work is straightforward: help teams understand where AI belongs, practice with the tools, build useful workflows, and scale what works.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header center">
+          <p class="eyebrow">Who We Serve</p>
+          <h2>Built for institutions that need real capability.</h2>
+        </div>
+        <div class="grid grid-3">
+          <article class="metric-card">
+            <b>Teams</b>
+            <p>Operations, HR, finance, sales, support, marketing, analytics, and engineering departments.</p>
+          </article>
+          <article class="metric-card">
+            <b>Partners</b>
+            <p>Workforce boards, community organizations, employers, and public-sector training initiatives.</p>
+          </article>
+          <article class="metric-card">
+            <b>Professionals</b>
+            <p>Working adults who want to understand, use, and build AI workflows with confidence.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tight">
+      <div class="container">
+        <div class="cta-band">
+          <p class="eyebrow">Next Step</p>
+          <h2>Bring practical AI training to your team.</h2>
+          <div class="section-actions">
+            <a class="button button-primary" href="index.html#contact">Request a training plan</a>
+            <a class="button button-secondary" href="events.html">Attend a Tuesday webinar</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- BY THE NUMBERS -->
-  <section class="section">
-    <div class="container" style="max-width: 900px;">
-      <div class="section-badge">By the Numbers</div>
-      <h2 class="section-title">Track Record</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; margin-top: 40px;">
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; text-align: center;">
-          <div style="font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">240+</div>
-          <div style="font-size: 14px; color: var(--text-muted);">Training Locations Managed</div>
-        </div>
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; text-align: center;">
-          <div style="font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">10K+</div>
-          <div style="font-size: 14px; color: var(--text-muted);">Students Trained</div>
-        </div>
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; text-align: center;">
-          <div style="font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">50+</div>
-          <div style="font-size: 14px; color: var(--text-muted);">Corporate Clients</div>
-        </div>
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; text-align: center;">
-          <div style="font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">Weekly</div>
-          <div style="font-size: 14px; color: var(--text-muted);">Free Community Webinars</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section section-dark" style="padding: 60px 0;">
-    <div class="container" style="text-align: center;">
-      <h2 class="section-title" style="margin-bottom: 16px;">Ready to Get Started?</h2>
-      <p class="section-sub" style="margin-left: auto; margin-right: auto;">Whether you're exploring corporate training or looking for workforce development partnerships, we'd love to talk.</p>
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
-        <a href="index.html#apply" class="btn btn-primary btn-lg">Register Now →</a>
-        <a href="mailto:hello@austinai.school" class="btn btn-outline btn-lg">Contact Us</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <strong>🧠 Austin AI School</strong>
-          <p>Corporate Training & Workforce Development</p>
-          <p style="margin-top: 8px;">Austin, TX</p>
+          <a class="brand" href="index.html" aria-label="Austin AI School home">
+            <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+              <rect width="48" height="48" rx="13" fill="#05070D"></rect>
+              <path d="M14 34L24 12l10 22" fill="none" stroke="#F7FAFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M18.8 25.5h10.4" fill="none" stroke="#20D3EE" stroke-width="3.2" stroke-linecap="round"></path>
+              <circle cx="24" cy="12" r="3.4" fill="#58E6B0"></circle>
+              <circle cx="14" cy="34" r="3.1" fill="#20D3EE"></circle>
+              <circle cx="34" cy="34" r="3.1" fill="#326BFF"></circle>
+            </svg>
+            <span class="brand-word"><span class="brand-name">Austin AI School</span><span class="brand-domain">learnaischool.org</span></span>
+          </a>
+          <p>Corporate AI training, workforce development, and Tuesday webinars from Austin, Texas.</p>
         </div>
-        <div class="footer-col">
-          <h4>Programs</h4>
-          <a href="index.html#corporate">Corporate Training</a>
-          <a href="index.html#workforce">Workforce Dev</a>
-          <a href="index.html#events">Weekly Webinars</a>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="faq.html">FAQ</a>
-          <a href="mailto:hello@austinai.school">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-        </div>
+        <div class="footer-col"><h4>Programs</h4><a href="curriculum.html">Curriculum</a><a href="index.html#programs">Corporate training</a><a href="events.html">Tuesday webinars</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="brand-guide.md">Brand guide</a></div>
+        <div class="footer-col"><h4>Contact</h4><a href="mailto:hello@learnaischool.org">Email</a><a href="index.html#contact">Training inquiry</a></div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Austin AI School. All rights reserved.</p>
-      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Austin AI School. All rights reserved.</p><p>Practical AI capability for the modern workforce.</p></div>
     </div>
   </footer>
 
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const links = document.querySelector('.nav-links');
-    if (toggle) toggle.addEventListener('click', () => links.classList.toggle('active'));
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

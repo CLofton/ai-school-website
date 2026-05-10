@@ -3,304 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ — Austin AI School</title>
-  <meta name="description" content="Frequently asked questions about Austin AI School's corporate AI training, workforce development programs, webinars, and more.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>FAQ | Austin AI School</title>
+  <meta name="description" content="Answers to common questions about Austin AI School corporate training, workforce development, Tuesday webinars, curriculum, and private cohorts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
-  <meta name="theme-color" content="#0a0a0f">
-  <style>
-    .faq-list {
-      max-width: 800px;
-      margin: 48px auto 0;
-    }
-    .faq-item {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      margin-bottom: 12px;
-      background: var(--surface);
-      overflow: hidden;
-      transition: border-color 0.3s;
-    }
-    .faq-item.active {
-      border-color: var(--primary);
-    }
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 24px 28px;
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--text);
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      font-family: inherit;
-      line-height: 1.4;
-    }
-    .faq-question:hover {
-      color: var(--primary);
-    }
-    .faq-icon {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(139, 92, 246, 0.15);
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: transform 0.3s;
-    }
-    .faq-item.active .faq-icon {
-      transform: rotate(45deg);
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-    }
-    .faq-answer-inner {
-      padding: 0 28px 24px;
-      font-size: 16px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-    }
-    .faq-item.active .faq-answer {
-      max-height: 1000px;
-    }
-  </style>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%2305070D'/%3E%3Cpath d='M14 34L24 12l10 22M19 25.5h10' fill='none' stroke='%23F7FAFF' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='12' r='3.4' fill='%2358E6B0'/%3E%3Ccircle cx='14' cy='34' r='3.1' fill='%2320D3EE'/%3E%3Ccircle cx='34' cy='34' r='3.1' fill='%23326BFF'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#05070D">
 </head>
 <body>
-  <!-- NAV -->
-  <nav class="nav">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-nav">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo">🧠 Austin AI School</a>
-      <button class="nav-toggle" aria-label="Menu">☰</button>
-      <div class="nav-links">
-        <a href="index.html#corporate">Corporate Training</a>
-        <a href="index.html#workforce">Workforce Dev</a>
-        <a href="index.html#events">Events</a>
+      <a class="brand" href="index.html" aria-label="Austin AI School home">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+          <rect width="48" height="48" rx="13" fill="#05070D"></rect>
+          <path d="M14 34L24 12l10 22" fill="none" stroke="#F7FAFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M18.8 25.5h10.4" fill="none" stroke="#20D3EE" stroke-width="3.2" stroke-linecap="round"></path>
+          <path d="M24 12v8.2M18.8 25.5l-5 8.5M29.2 25.5l4.8 8.5" fill="none" stroke="#326BFF" stroke-width="1.6" stroke-linecap="round" opacity=".72"></path>
+          <circle cx="24" cy="12" r="3.4" fill="#58E6B0"></circle>
+          <circle cx="14" cy="34" r="3.1" fill="#20D3EE"></circle>
+          <circle cx="34" cy="34" r="3.1" fill="#326BFF"></circle>
+        </svg>
+        <span class="brand-word"><span class="brand-name">Austin AI School</span><span class="brand-domain">learnaischool.org</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="curriculum.html">Curriculum</a>
+        <a href="events.html">Events</a>
         <a href="about.html">About</a>
-        <a href="index.html#apply" class="btn btn-nav">Register Now</a>
+        <a href="faq.html" aria-current="page">FAQ</a>
+        <a class="button button-primary button-small" href="index.html#contact">Train Your Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">FAQ</p>
+        <h1 class="page-title">Questions about AI training, answered clearly.</h1>
+        <p class="lead">Here are the details corporate teams, workforce partners, and webinar attendees usually need before getting started.</p>
       </div>
-    </div>
-  </nav>
+    </section>
 
-  <!-- HERO -->
-  <section class="hero" style="min-height: auto; padding: 160px 0 80px;">
-    <div class="hero-bg"></div>
-    <div class="container hero-content">
-      <div class="hero-badge">Questions & Answers</div>
-      <h1 class="hero-title">Frequently Asked <span class="gradient-text">Questions</span></h1>
-      <p class="hero-sub">Everything you need to know about Austin AI School, our programs, and how to get started.</p>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section">
-    <div class="container">
-      <div class="faq-list">
-
-        <div class="faq-item active">
-          <button class="faq-question" aria-expanded="true">
-            What is AI training, and what will I learn?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              AI training at Austin AI School covers the practical skills needed to understand, use, and build AI systems. Depending on the program, you'll learn AI literacy (understanding what AI can and can't do), how to use AI tools effectively in your daily work, and — for technical tracks — how to build AI agents, work with LLM APIs, create RAG systems, and deploy production AI applications. Our focus is always on hands-on, practical skills you can apply immediately.
-            </div>
+    <section class="section section-band">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Quick Answers</p>
+          <h2>Most teams start with a short readiness call.</h2>
+          <p class="lead">We use that conversation to understand your audience, workflows, tools, timeline, and risk constraints before recommending a training path.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="index.html#contact">Request a training plan</a>
+            <a class="button button-secondary" href="events.html">Join a webinar</a>
           </div>
         </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Who is this training for?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Our programs serve a wide range of learners. Corporate training is designed for business teams — executives, managers, and engineers who need to upskill in AI. Workforce development programs serve career changers, job seekers, veterans, returning citizens, and anyone looking to build AI skills for the modern economy. Our weekly webinars are open to everyone, regardless of experience level.
-            </div>
-          </div>
+        <div class="grid grid-2">
+          <article class="metric-card"><b>1-5</b><p>Day workshop formats for most corporate cohorts.</p></article>
+          <article class="metric-card"><b>Tues</b><p>Free weekly AI webinars at 7:00 PM Central.</p></article>
+          <article class="metric-card"><b>Live</b><p>Remote, onsite, or hybrid delivery options.</p></article>
+          <article class="metric-card"><b>Custom</b><p>Curriculum can adapt to your tools and workflows.</p></article>
         </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Do I need coding experience to participate?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Not for all programs. Our AI Literacy Workshop and many workforce development programs require zero coding experience — they focus on understanding AI concepts and using AI tools effectively. Our more technical programs (AI Implementation and AI Engineering Intensive) do involve some coding, primarily in Python. We'll let you know the prerequisites for each program upfront so you can choose the right fit.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            How much does corporate training cost?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Corporate training pricing depends on the program: the 1-day AI Literacy Workshop is $500/person, the 3-day AI Implementation Program is $2,000/person, and the 5-day AI Engineering Intensive is $5,000/person. We also offer custom enterprise programs with volume pricing for larger teams. <a href="index.html#apply" style="color: var(--primary);">Contact us</a> for a custom quote tailored to your organization's needs.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            When are the free weekly webinars?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Our free community webinars — called "Tuesday Night AI" — happen every Tuesday at 7:00 PM Central Time. Each session is approximately 60 minutes and covers a different AI topic, from career advice to live coding demos to industry trends. They're completely free and open to everyone. <a href="index.html#apply" style="color: var(--primary);">Register here</a> to save your spot for the next one.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            How do I register for a program or webinar?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              You can register through the form on our <a href="index.html#apply" style="color: var(--primary);">homepage</a>. Just fill in your name, email, and select what you're interested in — whether that's a free webinar, a specific corporate training program, or a workforce development partnership. We'll respond within 24 hours with next steps, scheduling details, and any additional information you need.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Can I attend training remotely, or is it in-person only?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              We offer both options. Our weekly webinars are fully remote via video conference. Corporate training programs can be delivered on-site at your office, at our Austin location, or fully remote — whatever works best for your team. Workforce development programs vary by partnership, but most include remote-friendly options. Just let us know your preference when you register.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Do you offer certificates upon completion?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Yes. All participants who complete a corporate training program or workforce development course receive an Austin AI School Certificate of Completion. This certificate documents the skills covered, hours completed, and competencies demonstrated. For corporate clients, we also provide detailed team progress reports. Our certificates are recognized by employers across the Austin tech ecosystem and beyond.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            What is your refund policy?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              We offer a full refund if you cancel at least 7 days before your program start date. Cancellations within 7 days of the start date are eligible for a 50% refund or full credit toward a future program. If you're unsatisfied after the first day of a multi-day program, we'll work with you to find a solution — including a prorated refund. Free webinars, of course, have no cost and no cancellation policy. Contact us at <a href="mailto:hello@austinai.school" style="color: var(--primary);">hello@austinai.school</a> for any refund requests.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            How can I contact Austin AI School?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              The best way to reach us is by email at <a href="mailto:hello@austinai.school" style="color: var(--primary);">hello@austinai.school</a>. You can also use the <a href="index.html#apply" style="color: var(--primary);">registration form</a> on our website to send us a message. We typically respond within 24 hours. For corporate training inquiries, include your company name, team size, and goals — it helps us get back to you with the most relevant information.
-            </div>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="section section-dark" style="padding: 60px 0;">
-    <div class="container" style="text-align: center;">
-      <h2 class="section-title" style="margin-bottom: 16px;">Still Have Questions?</h2>
-      <p class="section-sub" style="margin-left: auto; margin-right: auto;">We're happy to help. Reach out anytime or join a free Tuesday webinar to ask live.</p>
-      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;">
-        <a href="index.html#apply" class="btn btn-primary btn-lg">Register Now →</a>
-        <a href="mailto:hello@austinai.school" class="btn btn-outline btn-lg">Email Us</a>
+    <section class="section">
+      <div class="container">
+        <div class="section-header center">
+          <p class="eyebrow">Questions</p>
+          <h2>Corporate training and workforce development.</h2>
+        </div>
+        <div class="faq-list">
+          <article class="faq-item active">
+            <button class="faq-question" type="button" aria-expanded="true">
+              <span>Who is Austin AI School for?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer"><p>Austin AI School serves corporate professionals, enterprise teams, workforce partners, and working adults who need practical AI capability. Programs can be shaped for executives, managers, operators, analysts, engineers, and job seekers entering AI-enabled roles.</p></div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Do participants need coding experience?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer"><p>No for AI literacy and workflow labs. Those tracks focus on understanding AI, using tools responsibly, and redesigning work. Coding experience is useful for the AI Agent Engineering track, where participants work with APIs, retrieval, structured outputs, and prototypes.</p></div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Can training be customized for our company?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer"><p>Yes. Corporate cohorts can be customized around your departments, approved tools, policies, data boundaries, and target workflows. Customization is especially useful for teams in finance, HR, operations, sales, support, and analytics.</p></div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>How are the programs delivered?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer"><p>Training can be remote, onsite, or hybrid. Webinars are remote. Corporate workshops can run as half-day briefings, one-day literacy sessions, multi-day labs, or longer enablement cohorts with office hours and implementation support.</p></div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>What happens in a typical corporate cohort?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer"><p>A typical cohort starts with readiness and use-case selection, moves into role-specific training, then applies AI to a real workflow. The final output is usually a playbook, template set, prototype, or adoption roadmap the team can keep using.</p></div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>When are the Tuesday webinars?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer"><p>Tuesday Night AI runs weekly at 7:00 PM Central. Sessions are free and cover practical topics such as prompt systems, AI agents, RAG, enterprise adoption, workflow automation, and AI career pathways.</p></div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Do you provide certificates?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer"><p>Certificates of completion can be provided for corporate and workforce programs. For enterprise clients, we can also provide cohort summaries, attendance reports, and curriculum documentation.</p></div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>How do workforce partnerships work?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer"><p>We work with partners to define learner outcomes, curriculum modules, cohort schedules, employer needs, and portfolio projects. Programs can support AI workplace fundamentals, AI operations, and applied AI builder pathways.</p></div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>How do we get pricing?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer"><p>Pricing depends on cohort size, delivery format, customization, and whether implementation support is included. Use the inquiry form on the homepage with your team size and goals, and we will recommend a scope.</p></div>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
+    <section class="section section-tight">
+      <div class="container">
+        <div class="cta-band">
+          <p class="eyebrow">Still Deciding?</p>
+          <h2>Attend a free webinar or request a private training plan.</h2>
+          <div class="section-actions">
+            <a class="button button-primary" href="events.html">See upcoming events</a>
+            <a class="button button-secondary" href="index.html#contact">Request training plan</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <strong>🧠 Austin AI School</strong>
-          <p>Corporate Training & Workforce Development</p>
-          <p style="margin-top: 8px;">Austin, TX</p>
+          <a class="brand" href="index.html" aria-label="Austin AI School home">
+            <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+              <rect width="48" height="48" rx="13" fill="#05070D"></rect>
+              <path d="M14 34L24 12l10 22" fill="none" stroke="#F7FAFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M18.8 25.5h10.4" fill="none" stroke="#20D3EE" stroke-width="3.2" stroke-linecap="round"></path>
+              <circle cx="24" cy="12" r="3.4" fill="#58E6B0"></circle>
+              <circle cx="14" cy="34" r="3.1" fill="#20D3EE"></circle>
+              <circle cx="34" cy="34" r="3.1" fill="#326BFF"></circle>
+            </svg>
+            <span class="brand-word"><span class="brand-name">Austin AI School</span><span class="brand-domain">learnaischool.org</span></span>
+          </a>
+          <p>Corporate AI training, workforce development, and Tuesday webinars from Austin, Texas.</p>
         </div>
-        <div class="footer-col">
-          <h4>Programs</h4>
-          <a href="index.html#corporate">Corporate Training</a>
-          <a href="index.html#workforce">Workforce Dev</a>
-          <a href="index.html#events">Weekly Webinars</a>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="about.html">About</a>
-          <a href="blog.html">Blog</a>
-          <a href="faq.html">FAQ</a>
-          <a href="mailto:hello@austinai.school">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-        </div>
+        <div class="footer-col"><h4>Programs</h4><a href="curriculum.html">Curriculum</a><a href="index.html#programs">Corporate training</a><a href="events.html">Tuesday webinars</a></div>
+        <div class="footer-col"><h4>Company</h4><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="brand-guide.md">Brand guide</a></div>
+        <div class="footer-col"><h4>Contact</h4><a href="mailto:hello@learnaischool.org">Email</a><a href="index.html#contact">Training inquiry</a></div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Austin AI School. All rights reserved.</p>
-      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Austin AI School. All rights reserved.</p><p>Practical AI capability for the modern workforce.</p></div>
     </div>
   </footer>
 
-  <script>
-    // Nav toggle
-    const toggle = document.querySelector('.nav-toggle');
-    const links = document.querySelector('.nav-links');
-    if (toggle) toggle.addEventListener('click', () => links.classList.toggle('active'));
-
-    // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const wasActive = item.classList.contains('active');
-        // Close all
-        document.querySelectorAll('.faq-item').forEach(i => {
-          i.classList.remove('active');
-          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-        });
-        // Toggle clicked
-        if (!wasActive) {
-          item.classList.add('active');
-          btn.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

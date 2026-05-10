@@ -5,7 +5,7 @@ const EVENTS = [
   {
     id: "opencall-launch-first-community-webinar",
     title: "OpenCall Launch — First Community Webinar",
-    date: "2026-05-13T19:00:00-05:00",
+    date: "2026-05-12T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -29,7 +29,7 @@ const EVENTS = [
   {
     id: "ai-agents-101-what-they-are-why-they-matter",
     title: "AI Agents 101 — What They Are & Why They Matter",
-    date: "2026-05-20T19:00:00-05:00",
+    date: "2026-05-19T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -53,7 +53,7 @@ const EVENTS = [
   {
     id: "from-zero-to-ai-engineer-career-change-roadmap",
     title: "From Zero to AI Engineer — Career Change Roadmap",
-    date: "2026-05-27T19:00:00-05:00",
+    date: "2026-05-26T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -77,7 +77,7 @@ const EVENTS = [
   {
     id: "live-build-rag-knowledge-base-45-minutes",
     title: "Live Build: RAG Knowledge Base in 45 Minutes",
-    date: "2026-06-03T19:00:00-05:00",
+    date: "2026-06-02T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -102,7 +102,7 @@ const EVENTS = [
   {
     id: "ai-in-the-enterprise-replacing-departments-with-agents",
     title: "AI in the Enterprise — Replacing Departments with Agents",
-    date: "2026-06-10T19:00:00-05:00",
+    date: "2026-06-09T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -126,7 +126,7 @@ const EVENTS = [
   {
     id: "prompt-engineering-masterclass",
     title: "Prompt Engineering Masterclass",
-    date: "2026-06-17T19:00:00-05:00",
+    date: "2026-06-16T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -150,7 +150,7 @@ const EVENTS = [
   {
     id: "building-ai-chatbots-that-actually-work",
     title: "Building AI Chatbots That Actually Work",
-    date: "2026-06-24T19:00:00-05:00",
+    date: "2026-06-23T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -174,7 +174,7 @@ const EVENTS = [
   {
     id: "the-ai-stack-llms-embeddings-vector-dbs-explained",
     title: "The AI Stack — LLMs, Embeddings, Vector DBs Explained",
-    date: "2026-07-01T19:00:00-05:00",
+    date: "2026-06-30T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -198,7 +198,7 @@ const EVENTS = [
   {
     id: "ai-for-non-technical-leaders",
     title: "AI for Non-Technical Leaders",
-    date: "2026-07-08T19:00:00-05:00",
+    date: "2026-07-07T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -222,7 +222,7 @@ const EVENTS = [
   {
     id: "multi-agent-systems-when-one-ai-isnt-enough",
     title: "Multi-Agent Systems — When One AI Isn't Enough",
-    date: "2026-07-15T19:00:00-05:00",
+    date: "2026-07-14T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -246,7 +246,7 @@ const EVENTS = [
   {
     id: "ai-ethics-responsible-deployment",
     title: "AI Ethics & Responsible Deployment",
-    date: "2026-07-22T19:00:00-05:00",
+    date: "2026-07-21T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -270,7 +270,7 @@ const EVENTS = [
   {
     id: "demo-day-community-project-showcase",
     title: "Demo Day — Community Project Showcase",
-    date: "2026-07-29T19:00:00-05:00",
+    date: "2026-07-28T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:30 PM CT",
     type: "webinar",
@@ -293,7 +293,7 @@ const EVENTS = [
   {
     id: "ai-in-healthcare-finance-legal",
     title: "AI in Healthcare, Finance & Legal",
-    date: "2026-08-05T19:00:00-05:00",
+    date: "2026-08-04T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -317,7 +317,7 @@ const EVENTS = [
   {
     id: "fine-tuning-models-when-and-how",
     title: "Fine-Tuning Models — When & How",
-    date: "2026-08-12T19:00:00-05:00",
+    date: "2026-08-11T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -341,7 +341,7 @@ const EVENTS = [
   {
     id: "production-ai-monitoring-testing-deployment",
     title: "Production AI — Monitoring, Testing, Deployment",
-    date: "2026-08-19T19:00:00-05:00",
+    date: "2026-08-18T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
@@ -365,7 +365,7 @@ const EVENTS = [
   {
     id: "building-your-ai-startup",
     title: "Building Your AI Startup",
-    date: "2026-08-26T19:00:00-05:00",
+    date: "2026-08-25T19:00:00-05:00",
     time: "7:00 PM CT",
     endTime: "8:00 PM CT",
     type: "webinar",
